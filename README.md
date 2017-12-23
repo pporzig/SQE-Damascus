@@ -1,7 +1,10 @@
 # Data-files
 This repository houses datafiles and database dumps used in the SQE project
 
-## SQE-2017-12-20-12-08-25.sql.gz
+## SQE-SCHEMA_2017-12-23-13-30.tar.gz
+This is the latest dump of the schema of the SQE database for our online platform.  Use this if you want to populate the database from scratch.
+
+## SQE_2017-12-23-13-30.tar.gz
 This is the latest dump of the SQE database for our online platform.  Use this if you are building a system for local development.
 
 ## SQE_A.sql
