@@ -1,1 +1,1 @@
-SQE-Schema-01.02.2018.sql
+SQE-Schema-01.02.2018-2.sql
