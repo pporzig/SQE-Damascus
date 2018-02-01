@@ -18,9 +18,9 @@ The script will fail on importing tables if you are trying to import them into a
 ## Package notes
 Most of database parsing used to extract the database tables is handled automatically by our backup scripts.  The usage of a specialized backup system was necessitated by the large size of the database (a gzipped mysql dump exceeding the GitHub size quotas), and by the need to filter out private user data from our production database.  The system we are using to filter and export tables, however, does not play nicely with geometric data types, so we have handled those in a more manual fashion, which is why those tables appear in the /geom_tables folder.  Nevertheless, this distinction does not affect user installation.
 
-#Legacy info (disregard)
+# Legacy info (disregard)
 
-##SQE-transitional-update-schema/data.sql.tar.gz
+## SQE-transitional-update-schema/data.sql.tar.gz
 This is the latest update of the database schema and its data.  It will not work with the current master branch of the Scrollery Website.  The devel version that this works with will be pushed to master soon.
 
 ## SQE-SCHEMA_2017-12-23-13-30.tar.gz
