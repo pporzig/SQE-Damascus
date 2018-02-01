@@ -102,7 +102,9 @@ done
 for file in tables/*.sql; do
     table=${file%.sql}
     printf "\rLoading table: ${table##*/}\n"
-    mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "LOAD DATA LOCAL INFILE '$cwd/$file' INTO TABLE ${table##*/}" &
+    mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
+    LOAD DATA LOCAL INFILE '$cwd/$file' INTO TABLE ${table##*/};
+    SET FOREIGN_KEY_CHECKS=1;" &
     pid=$! # Process Id of the previous running command
 
     spin='-\|/'
@@ -118,10 +120,12 @@ done
 
 ## Load manually created tables with Geometry
 printf "\rLoading table with geometry: artefact\n"
-mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "LOAD DATA INFILE
+mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
+LOAD DATA INFILE
 '${cwd}/geom_tables/artefact.sql'
 INTO TABLE artefact (artefact_id, @var1, owner_id, date_of_adding, commentary, sqe_image_id)
-SET region_in_master_image = ST_GEOMFROMTEXT(@var1)" &
+SET region_in_master_image = ST_GEOMFROMTEXT(@var1);
+SET FOREIGN_KEY_CHECKS=1;" &
 pid=$! # Process Id of the previous running command
 
 spin='-\|/'
@@ -135,10 +139,12 @@ do
 done
 
 printf "\rLoading table with geometry: artefact_position\n"
-mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "LOAD DATA INFILE
+mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
+LOAD DATA INFILE
 '${cwd}/geom_tables/artefact_position.sql'
 INTO TABLE artefact_position (artefact_position_id, artefact_id, @var1, z_index, rotation, @var2, scroll_id, commentary, date_of_adding)
-SET position_in_scroll = ST_GEOMFROMTEXT(@var1), artefact_in_scroll = ST_GEOMFROMTEXT(@var2)" &
+SET position_in_scroll = ST_GEOMFROMTEXT(@var1), artefact_in_scroll = ST_GEOMFROMTEXT(@var2);
+SET FOREIGN_KEY_CHECKS=1;" &
 pid=$! # Process Id of the previous running command
 
 spin='-\|/'
@@ -152,10 +158,12 @@ do
 done
 
 printf "\rLoading table with geometry: external_font_glyph\n"
-mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "LOAD DATA INFILE
+mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
+LOAD DATA INFILE
 '${cwd}/geom_tables/external_font_glyph.sql'
 INTO TABLE external_font_glyph (external_font_glyph_id, external_font_id, unicode_char, @var1, width, height)
-SET path = ST_GEOMFROMTEXT(@var1)" &
+SET path = ST_GEOMFROMTEXT(@var1);
+SET FOREIGN_KEY_CHECKS=1;" &
 pid=$! # Process Id of the previous running command
 
 spin='-\|/'
@@ -169,10 +177,12 @@ do
 done
 
 printf "\rLoading table with geometry: image_to_image_map\n"
-mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "LOAD DATA INFILE
+mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
+LOAD DATA INFILE
 '${cwd}/geom_tables/image_to_image_map.sql'
 INTO TABLE image_to_image_map (image_to_image_map_id, image1_id, image2_id, @var1, @var2, rotation, map_type, validated, date_of_adding)
-SET region_on_image1 = ST_GEOMFROMTEXT(@var1), region_on_image2 = ST_GEOMFROMTEXT(@var2)" &
+SET region_on_image1 = ST_GEOMFROMTEXT(@var1), region_on_image2 = ST_GEOMFROMTEXT(@var2);
+SET FOREIGN_KEY_CHECKS=1;" &
 pid=$! # Process Id of the previous running command
 
 spin='-\|/'
