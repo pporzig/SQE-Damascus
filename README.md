@@ -14,9 +14,34 @@ The script can take several switches:
 * -h: the address of your database (this defaults to "localhost")
 
 The script will fail on importing tables if you are trying to import them into a database that has those tables already populated with data.  This is intended for installation to a new database only, not for reloading data into an existing one.
- 
+
 ## Package notes
 Most of database parsing used to extract the database tables is handled automatically by our backup scripts.  The usage of a specialized backup system was necessitated by the large size of the database (a gzipped mysql dump exceeding the GitHub size quotas), and by the need to filter out private user data from our production database.  The system we are using to filter and export tables, however, does not play nicely with geometric data types, so we have handled those in a more manual fashion, which is why those tables appear in the /geom_tables folder.  Nevertheless, this distinction does not affect user installation.
+
+## Running in Docker
+
+Prerequisites is to have Docker installed on your machine.
+
+Follow these steps, replacing the bits in square brackets `[]` with whatever values you'd like:
+
+```bash
+# clone this repository
+git clone https://github.com/Scripta-Qumranica-Electronica/Data-files.git
+
+# Cd into the directory
+cd Data-files
+
+# Build the image
+docker build -t sqe-maria:latest .
+
+# start the container
+docker run --name [CONTAINER NAME] -e MYSQL_ROOT_PASSWORD=[ROOT PW] -d -p [YOUR MACHINE PORT]:3306 sqe-maria:latest
+
+# import the data
+docker exec -i [CONTAINER NAME] /tmp/import-docker.sh
+```
+
+At this point, you should be able to connect to the SQE DB locally at `localhost:[YOUR MACHINE PORT]` using using the root user and whatever password you input for `[YOUR MACHINE PORT]`.
 
 # Legacy info (disregard)
 
