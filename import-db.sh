@@ -50,6 +50,7 @@ cwd=$(pwd)
 echo Creating DB ${database}
 mysql --host=${host} --user=${user} --password=${password} -e "CREATE DATABASE IF NOT EXISTS ${database} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci"
 
+# TODO: Please check or add validation for actual schema file being imported.
 echo Loading SQE DB Schema
 mysql --host=${host} --user=${user} --password=${password} ${database} < ./schema/SQE-Schema-current.sql &
 pid=$! # Process Id of the previous running command
