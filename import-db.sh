@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#TODO please add a warning that the database you are uploading to should not already exist on the server.
 POSITIONAL=()
 while [[ $# -gt 0 ]]
 do
@@ -73,9 +73,6 @@ for file in tables/*.sql.gz; do
     gunzip $file &
     pid=$! # Process Id of the previous running command
 
-    spin='-\|/'
-
-    i=0
     while kill -0 $pid 2>/dev/null
     do
       i=$(( (i+1) %4 ))
@@ -89,9 +86,6 @@ for file in geom_tables/*.sql.gz; do
     gunzip $file &
     pid=$! # Process Id of the previous running command
 
-    spin='-\|/'
-
-    i=0
     while kill -0 $pid 2>/dev/null
     do
       i=$(( (i+1) %4 ))
@@ -108,9 +102,6 @@ for file in tables/*.sql; do
     SET FOREIGN_KEY_CHECKS=1;" &
     pid=$! # Process Id of the previous running command
 
-    spin='-\|/'
-
-    i=0
     while kill -0 $pid 2>/dev/null
     do
       i=$(( (i+1) %4 ))
@@ -124,33 +115,11 @@ printf "\rLoading table with geometry: artefact\n"
 mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
 LOAD DATA INFILE
 '${cwd}/geom_tables/artefact.sql'
-INTO TABLE artefact (artefact_id, @var1, owner_id, date_of_adding, commentary, sqe_image_id)
+INTO TABLE artefact (artefact_id, @var1, date_of_adding, commentary, sqe_image_id)
 SET region_in_master_image = ST_GEOMFROMTEXT(@var1);
 SET FOREIGN_KEY_CHECKS=1;" &
 pid=$! # Process Id of the previous running command
 
-spin='-\|/'
-
-i=0
-while kill -0 $pid 2>/dev/null
-do
-  i=$(( (i+1) %4 ))
-  printf "\r${spin:$i:1}"
-  sleep .1
-done
-
-printf "\rLoading table with geometry: artefact_position\n"
-mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
-LOAD DATA INFILE
-'${cwd}/geom_tables/artefact_position.sql'
-INTO TABLE artefact_position (artefact_position_id, artefact_id, @var1, z_index, rotation, @var2, scroll_id, commentary, date_of_adding)
-SET position_in_scroll = ST_GEOMFROMTEXT(@var1), artefact_in_scroll = ST_GEOMFROMTEXT(@var2);
-SET FOREIGN_KEY_CHECKS=1;" &
-pid=$! # Process Id of the previous running command
-
-spin='-\|/'
-
-i=0
 while kill -0 $pid 2>/dev/null
 do
   i=$(( (i+1) %4 ))
@@ -167,9 +136,6 @@ SET path = ST_GEOMFROMTEXT(@var1);
 SET FOREIGN_KEY_CHECKS=1;" &
 pid=$! # Process Id of the previous running command
 
-spin='-\|/'
-
-i=0
 while kill -0 $pid 2>/dev/null
 do
   i=$(( (i+1) %4 ))
@@ -186,9 +152,6 @@ SET region_on_image1 = ST_GEOMFROMTEXT(@var1), region_on_image2 = ST_GEOMFROMTEX
 SET FOREIGN_KEY_CHECKS=1;" &
 pid=$! # Process Id of the previous running command
 
-spin='-\|/'
-
-i=0
 while kill -0 $pid 2>/dev/null
 do
   i=$(( (i+1) %4 ))

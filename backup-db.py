@@ -19,7 +19,7 @@ result_set = cursor.fetchall()
 path = '/Users/bronson/sqe-mysql-backup/'
 owner_tables = set()
 non_owner_tables = set()
-exclude_tables = {'user', 'user_sessions', 'sqe_session', 'artefact', 'artefact_position', 'scroll_version',
+exclude_tables = {'user', 'user_sessions', 'sqe_session', 'artefact', 'scroll_version',
                   'external_font_glyph', 'image_to_image_map', 'single_action', 'main_action'}
 for result in result_set:
     if 'owner' in result[0]:
@@ -51,21 +51,12 @@ for table in non_owner_tables:
 # Custom commands for tables with geometry data:
 # artefact, artefact_position, external_font_glyph, image_to_image_map
 print('Exporting table: artefact')
-query4 = 'SELECT artefact_id, ST_ASTEXT(artefact.region_in_master_image), owner_id, date_of_adding, commentary, sqe_image_id ' \
+query4 = 'SELECT artefact_id, ST_ASTEXT(artefact.region_in_master_image), date_of_adding, commentary, sqe_image_id ' \
          'INTO OUTFILE "' + path + 'geom_tables/artefact.sql" ' \
          'FROM artefact ' \
          'JOIN artefact_owner USING(artefact_id) ' \
          'WHERE artefact_owner.scroll_version_id = 1'
 cursor.execute(query4)
-
-print('Exporting table: artefact_position')
-query5 = 'SELECT artefact_position_id, artefact_id, ST_ASTEXT(position_in_scroll), z_index, ' \
-         'rotation, ST_ASTEXT(artefact_in_scroll), scroll_id, commentary, date_of_adding ' \
-         'INTO OUTFILE "' + path + 'geom_tables/artefact_position.sql" ' \
-         'FROM artefact_position ' \
-         'JOIN artefact_position_owner USING(artefact_position_id) ' \
-         'WHERE artefact_position_owner.scroll_version_id = 1'
-cursor.execute(query5)
 
 print('Exporting table: external_font_glyph')
 query6 = 'SELECT external_font_glyph_id, external_font_id, unicode_char, ST_ASTEXT(path), width, height ' \
