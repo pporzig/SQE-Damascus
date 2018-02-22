@@ -94,27 +94,8 @@ printf "\rLoading table with geometry: artefact\n"
 mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
 LOAD DATA INFILE
 '/tmp/geom_tables/artefact.sql'
-INTO TABLE artefact (artefact_id, @var1, owner_id, date_of_adding, commentary, sqe_image_id)
+INTO TABLE artefact (artefact_id, @var1, date_of_adding, commentary, sqe_image_id)
 SET region_in_master_image = ST_GEOMFROMTEXT(@var1);
-SET FOREIGN_KEY_CHECKS=1;" &
-pid=$! # Process Id of the previous running command
-
-spin='-\|/'
-
-i=0
-while kill -0 $pid 2>/dev/null
-do
-  i=$(( (i+1) %4 ))
-  printf "\r${spin:$i:1}"
-  sleep .1
-done
-
-printf "\rLoading table with geometry: artefact_position\n"
-mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
-LOAD DATA INFILE
-'/tmp/geom_tables/artefact_position.sql'
-INTO TABLE artefact_position (artefact_position_id, artefact_id, @var1, z_index, rotation, @var2, scroll_id, commentary, date_of_adding)
-SET position_in_scroll = ST_GEOMFROMTEXT(@var1), artefact_in_scroll = ST_GEOMFROMTEXT(@var2);
 SET FOREIGN_KEY_CHECKS=1;" &
 pid=$! # Process Id of the previous running command
 
