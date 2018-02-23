@@ -92,7 +92,7 @@ done
 ## Load manually created tables with Geometry
 printf "\rLoading table with geometry: artefact\n"
 mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
-LOAD DATA INFILE
+LOAD DATA LOCAL INFILE
 '/tmp/geom_tables/artefact.sql'
 INTO TABLE artefact (artefact_id, @var1, date_of_adding, commentary, sqe_image_id)
 SET region_in_master_image = ST_GEOMFROMTEXT(@var1);
@@ -111,7 +111,7 @@ done
 
 printf "\rLoading table with geometry: external_font_glyph\n"
 mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
-LOAD DATA INFILE
+LOAD DATA LOCAL INFILE
 '/tmp/geom_tables/external_font_glyph.sql'
 INTO TABLE external_font_glyph (external_font_glyph_id, external_font_id, unicode_char, @var1, width, height)
 SET path = ST_GEOMFROMTEXT(@var1);
@@ -130,7 +130,7 @@ done
 
 printf "\rLoading table with geometry: image_to_image_map\n"
 mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
-LOAD DATA INFILE
+LOAD DATA LOCAL INFILE
 '/tmp/geom_tables/image_to_image_map.sql'
 INTO TABLE image_to_image_map (image_to_image_map_id, image1_id, image2_id, @var1, @var2, rotation, map_type, validated, date_of_adding)
 SET region_on_image1 = ST_GEOMFROMTEXT(@var1), region_on_image2 = ST_GEOMFROMTEXT(@var2);
