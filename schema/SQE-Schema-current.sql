@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : SQE-Dev-local
+ Source Server         : LocalHost
  Source Server Type    : MariaDB
- Source Server Version : 100211
- Source Host           : localhost:3307
+ Source Server Version : 100212
+ Source Host           : localhost:3306
  Source Schema         : SQE
 
  Target Server Type    : MariaDB
- Target Server Version : 100211
+ Target Server Version : 100212
  File Encoding         : 65001
 
- Date: 22/02/2018 16:51:58
+ Date: 23/02/2018 13:59:39
 */
 
 SET NAMES utf8mb4;
@@ -1073,7 +1073,7 @@ delimiter ;;
 CREATE DEFINER=`bronson`@`localhost` PROCEDURE `getScrollHeight`(scroll_id_num int unsigned, version_id int unsigned)
     DETERMINISTIC
     SQL SECURITY INVOKER
-select artefact_id, ST_Y(position_in_scroll) + ((ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 3)) - ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 1))) * (1215 / SQE_image.dpi)) as max_y from artefact_position join artefact_position_owner using(artefact_position_id) join artefact using(artefact_id) join scroll_version using(scroll_version_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and image_catalog.catalog_side=0 order by max_y DESC limit 1;
+select artefact_id, JSON_EXTRACT(transform_matrix, '$.matrix[1][2]') + ((ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 3)) - ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 1))) * (1215 / SQE_image.dpi)) as max_y from artefact_position join artefact_position_owner using(artefact_position_id) join artefact using(artefact_id) join scroll_version using(scroll_version_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and image_catalog.catalog_side=0 order by max_y DESC limit 1;
 ;;
 delimiter ;
 
@@ -1097,7 +1097,7 @@ delimiter ;;
 CREATE DEFINER=`bronson`@`localhost` PROCEDURE `getScrollWidth`(scroll_id_num int unsigned, version_id int unsigned)
     DETERMINISTIC
     SQL SECURITY INVOKER
-select artefact_id, ST_X(position_in_scroll) + ((ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 2)) - ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 1))) * (1215 / SQE_image.dpi)) as max_x from artefact_position join artefact_position_owner using(artefact_position_id) join artefact using(artefact_id) join scroll_version using(scroll_version_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and image_catalog.catalog_side=0 order by max_x DESC limit 1;
+select artefact_id, JSON_EXTRACT(transform_matrix, '$.matrix[0][2]') + ((ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 2)) - ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 1))) * (1215 / SQE_image.dpi)) as max_x from artefact_position join artefact_position_owner using(artefact_position_id) join artefact using(artefact_id) join scroll_version using(scroll_version_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and image_catalog.catalog_side=0 order by max_x DESC limit 1;
 ;;
 delimiter ;
 
