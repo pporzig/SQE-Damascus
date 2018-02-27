@@ -1,3 +1,11 @@
+# This leaves two folders full of files.
+# Those files should all be gzipped and then
+# the local instance of Data-files can be
+# updated with the following bash command:
+# for file in ./*; do if cmp -i 8 "$file" "/Users/path/to/Data-files/tables/$(basename "$file")"; then echo "$file is the same"; else cp -f "$file" "/path/to/Data-files/tables/$(basename "$file")"; fi; done
+# That command should be run for the tables folder
+# and for the geom_tables folder.
+
 import mysql.connector
 from mysql.connector.pooling import MySQLConnectionPool
 
@@ -33,12 +41,12 @@ for table in owner_tables:
     if table not in exclude_tables:
         print('Exporting table: %s' % table)
         query1 = 'SELECT ' + table + '.* INTO OUTFILE "' + path + 'tables/' + table + '.sql" FROM ' + table + ' JOIN ' \
-                + table + '_owner USING(' + table + '_id) WHERE ' + table + '_owner.scroll_version_id = 1'
+                + table + '_owner USING(' + table + '_id) WHERE ' + table + '_owner.scroll_version_id < 1058'
         cursor.execute(query1)
 
     print('Exporting table: %s_owner' % table)
     query2 = 'SELECT * INTO OUTFILE "' + path + 'tables/' + table + '_owner.sql" FROM ' + table + '_owner WHERE ' \
-             + table + '_owner.scroll_version_id = 1'
+             + table + '_owner.scroll_version_id < 1058'
     cursor.execute(query2)
     files.add(path + table + '.sql')
     files.add(path + table + '_owner.sql')
@@ -55,7 +63,7 @@ query4 = 'SELECT artefact_id, ST_ASTEXT(artefact.region_in_master_image), date_o
          'INTO OUTFILE "' + path + 'geom_tables/artefact.sql" ' \
          'FROM artefact ' \
          'JOIN artefact_owner USING(artefact_id) ' \
-         'WHERE artefact_owner.scroll_version_id = 1'
+         'WHERE artefact_owner.scroll_version_id < 1058'
 cursor.execute(query4)
 
 print('Exporting table: external_font_glyph')
@@ -73,7 +81,7 @@ cursor.execute(query7)
 
 print('Exporting table: scroll_version')
 query8 = 'SELECT * INTO OUTFILE "' + path + 'tables/scroll_version.sql" ' \
-            'FROM scroll_version WHERE scroll_version.version = 0'
+            'FROM scroll_version WHERE scroll_version.user_id = 0'
 cursor.execute(query8)
 
 cursor.close()

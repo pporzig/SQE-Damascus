@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : LocalHost
+ Source Server         : SQE-Dev-local
  Source Server Type    : MariaDB
- Source Server Version : 100212
- Source Host           : localhost:3306
- Source Schema         : SQE
+ Source Server Version : 100211
+ Source Host           : localhost:3307
+ Source Schema         : SQE_DEV
 
  Target Server Type    : MariaDB
- Target Server Version : 100212
+ Target Server Version : 100211
  File Encoding         : 65001
 
- Date: 23/02/2018 13:59:39
+ Date: 27/02/2018 13:07:31
 */
 
 SET NAMES utf8mb4;
@@ -42,6 +42,19 @@ CREATE TABLE `SQE_image` (
   CONSTRAINT `fk_image_to_edition` FOREIGN KEY (`edition_catalog_id`) REFERENCES `edition_catalog` (`edition_catalog_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_image_to_url` FOREIGN KEY (`image_urls_id`) REFERENCES `image_urls` (`image_urls_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=7374 DEFAULT CHARSET=utf8 COMMENT='This table defines an image.  It contains referencing data to access the image via iiif servers, it also stores metadata relating to the image itself, such as sizing, resolution, image color range, etc.  It also maintains a link to the institutional referencing system, and the referencing of the editio princeps (as provided by the imaging institution).';
+
+-- ----------------------------
+-- Table structure for SQE_image_to_edition_catalog
+-- ----------------------------
+DROP TABLE IF EXISTS `SQE_image_to_edition_catalog`;
+CREATE TABLE `SQE_image_to_edition_catalog` (
+  `sqe_image_id` int(11) unsigned NOT NULL,
+  `edition_catalog_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`sqe_image_id`,`edition_catalog_id`),
+  KEY `fk_sidtoeid_to_edition_catalog` (`edition_catalog_id`),
+  CONSTRAINT `fk_sidtoeid_to_edition_catalog` FOREIGN KEY (`edition_catalog_id`) REFERENCES `edition_catalog` (`edition_catalog_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sidtoeid_to_sqe_image` FOREIGN KEY (`sqe_image_id`) REFERENCES `SQE_image` (`sqe_image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for area_group
