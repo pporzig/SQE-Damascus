@@ -10,21 +10,23 @@ import mysql.connector
 from mysql.connector.pooling import MySQLConnectionPool
 
 dbconfig = {'host': "localhost",
-            'user': "bronson",
+            'port': "3307",
+            'user': "root",
             'password': "none",
-            'database': "SQE"
+            'database': "SQE_DEV"
             }
 
-cnxpool = mysql.connector.pooling.MySQLConnectionPool(pool_name = "mypool",
-                                                      pool_size = 30,
-                                                      **dbconfig)
+cnxpool = MySQLConnectionPool(
+    pool_name = "mypool",
+    pool_size = 30,
+    **dbconfig)
 
 db = cnxpool.get_connection()
 cursor = db.cursor()
 sql = 'SHOW TABLES'
 cursor.execute(sql)
 result_set = cursor.fetchall()
-path = '/Users/bronson/sqe-mysql-backup/'
+path = '/tmp/backup/'
 owner_tables = set()
 non_owner_tables = set()
 exclude_tables = {'user', 'user_sessions', 'sqe_session', 'artefact', 'scroll_version',

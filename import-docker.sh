@@ -21,7 +21,7 @@ cwd=$(pwd)
 echo Creating DB ${database}
 mysql --host=${host} --user=${user} --password=${password} -e "CREATE DATABASE IF NOT EXISTS ${database} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci"
 
-echo Loading SQE DB Schema
+echo Loading ${database} DB Schema
 mysql --host=${host} --user=${user} --password=${password} ${database} < /tmp/schema/SQE-Schema-current.sql &
 pid=$! # Process Id of the previous running command
 
