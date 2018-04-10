@@ -45,6 +45,7 @@ def main(argv):
     db = cnxpool.get_connection()
     cursor = db.cursor()
     unprocessed = []
+    exclude = ['1094','1095','1096','1097','1098','1099','1100','1101','1102','1103','1104','1106','1107','998']
     lines = [line.rstrip('\n') for line in open(inputfile)]
     for line in lines:
         print(line)
@@ -86,20 +87,20 @@ def main(argv):
             cursor.execute(sql)
             result_set = cursor.fetchall()
             print(plate, fragment, side, result_set)
+            # I should perhaps have an else clause following 
+            # this conditional that sticks images without edition 
+            # cataloguing data into 4Q9999 or something like that.
             if (cursor.rowcount != 0):
                 imageCatalogId = str(result_set[0][0])
                 editionCatalogId = str(result_set[0][1])
-            else:
-                
-            print(plate, fragment, side, wvStart, wvEnd, type, imageCatalogId, editionCatalogId)
-            exclude = ['1094','1095','1096','1097','1098','1099','1100','1101','1102','1103','1104','1106','1107','998']
-            if any(x not in plate for x in exclude):
-                sql = 'INSERT IGNORE INTO SQE_image '\
-                '(image_urls_id, filename, native_width, native_height, dpi, type, wavelength_start, wavelength_end, is_master, image_catalog_id, edition_catalog_id) '\
-                'VALUES(2,"' + line + '",7216,5412,1215,' + type +',' + wvStart + ',' + wvEnd + ',' + master + ',' + imageCatalogId + ',' + editionCatalogId + ');'
-                cursor.execute(sql)
-                db.commit()
-                print('New id:', cursor.lastrowid)
+                print(plate, fragment, side, wvStart, wvEnd, type, imageCatalogId, editionCatalogId)
+                if any(x not in plate for x in exclude):
+                    sql = 'INSERT IGNORE INTO SQE_image '\
+                    '(image_urls_id, filename, native_width, native_height, dpi, type, wavelength_start, wavelength_end, is_master, image_catalog_id, edition_catalog_id) '\
+                    'VALUES(2,"' + line + '",7216,5412,1215,' + type +',' + wvStart + ',' + wvEnd + ',' + master + ',' + imageCatalogId + ',' + editionCatalogId + ');'
+                    cursor.execute(sql)
+                    db.commit()
+                    print('New id:', cursor.lastrowid)
         else:
             unprocessed.append(line)
     cursor.close()
