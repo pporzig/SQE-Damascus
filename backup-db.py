@@ -29,7 +29,7 @@ result_set = cursor.fetchall()
 path = '/tmp/backup/'
 owner_tables = set()
 non_owner_tables = set()
-exclude_tables = {'user', 'user_sessions', 'sqe_session', 'artefact', 'scroll_version',
+exclude_tables = {'user', 'user_sessions', 'sqe_session', 'artefact_shape', 'scroll_version',
                   'external_font_glyph', 'image_to_image_map', 'single_action', 'main_action'}
 for result in result_set:
     if 'owner' in result[0]:
@@ -60,12 +60,12 @@ for table in non_owner_tables:
 
 # Custom commands for tables with geometry data:
 # artefact, artefact_position, external_font_glyph, image_to_image_map
-print('Exporting table: artefact')
-query4 = 'SELECT artefact_id, ST_ASTEXT(artefact.region_in_master_image), date_of_adding, commentary, sqe_image_id ' \
-         'INTO OUTFILE "' + path + 'geom_tables/artefact.sql" ' \
-         'FROM artefact ' \
-         'JOIN artefact_owner USING(artefact_id) ' \
-         'WHERE artefact_owner.scroll_version_id < 1058'
+print('Exporting table: artefact_shape')
+query4 = 'SELECT artefact_shape_id, artefact_id, sqe_image_id, ST_ASTEXT(artefact_shape.region_in_sqe_image), date_of_adding, commentary ' \
+         'INTO OUTFILE "' + path + 'geom_tables/artefact_shape.sql" ' \
+         'FROM artefact_shape ' \
+         'JOIN artefact_shape_owner USING(artefact_shape_id) ' \
+         'WHERE artefact_shape_owner.scroll_version_id < 1058'
 cursor.execute(query4)
 
 print('Exporting table: external_font_glyph')
