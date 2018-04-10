@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# This readins in a simple .txt file containing a list of filenames.
+# This reads in a simple .txt file containing a list of filenames.
 # The IAA's iiif server code address is hardcoded on line 90. 
 # We grab the info.json file for the image and get width and height. 
 # Then we parse the filename, look up the plate and fragment in the DB. 
