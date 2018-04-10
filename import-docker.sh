@@ -90,12 +90,12 @@ for file in tmp/tables/*.sql; do
 done
 
 ## Load manually created tables with Geometry
-printf "\rLoading table with geometry: artefact\n"
+printf "\rLoading table with geometry: artefact_shape\n"
 mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
 LOAD DATA LOCAL INFILE
-'/tmp/geom_tables/artefact.sql'
-INTO TABLE artefact (artefact_id, @var1, date_of_adding, commentary, sqe_image_id)
-SET region_in_master_image = ST_GEOMFROMTEXT(@var1);
+'${cwd}/geom_tables/artefact_shape.sql'
+INTO TABLE artefact (artefact_shape_id, artefact_id, sqe_image_id, @var1, date_of_adding, commentary)
+SET region_in_sqe_image = ST_GEOMFROMTEXT(@var1);
 SET FOREIGN_KEY_CHECKS=1;" &
 pid=$! # Process Id of the previous running command
 
