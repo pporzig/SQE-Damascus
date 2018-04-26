@@ -11,7 +11,7 @@
  Target Server Version : 100211
  File Encoding         : 65001
 
- Date: 26/04/2018 17:16:42
+ Date: 26/04/2018 23:09:59
 */
 
 SET NAMES utf8mb4;
@@ -33,13 +33,10 @@ CREATE TABLE `SQE_image` (
   `wavelength_end` smallint(5) unsigned NOT NULL DEFAULT 704 COMMENT 'Ending wavelength of image in nanometers.',
   `is_master` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Boolean determining if the image is a “master image”.  Since we have multiple images of each fragment, one image is designated as the master (generally the full color image), all others are non master images and will have a corresponding entry in “image_to_image_map” which provides and transforms (translate, scale, rotate) necessary to line the two images up with each other.',
   `image_catalog_id` int(11) unsigned DEFAULT 0,
-  `edition_catalog_id` int(11) unsigned DEFAULT 0,
   PRIMARY KEY (`sqe_image_id`),
   UNIQUE KEY `url_UNIQUE` (`image_urls_id`,`filename`) USING BTREE,
-  KEY `fk_image_to_edition` (`edition_catalog_id`),
   KEY `fk_image_to_catalog` (`image_catalog_id`),
   CONSTRAINT `fk_image_to_catalog` FOREIGN KEY (`image_catalog_id`) REFERENCES `image_catalog` (`image_catalog_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_image_to_edition` FOREIGN KEY (`edition_catalog_id`) REFERENCES `edition_catalog` (`edition_catalog_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_image_to_url` FOREIGN KEY (`image_urls_id`) REFERENCES `image_urls` (`image_urls_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=38808 DEFAULT CHARSET=utf8 COMMENT='This table defines an image.  It contains referencing data to access the image via iiif servers, it also stores metadata relating to the image itself, such as sizing, resolution, image color range, etc.  It also maintains a link to the institutional referencing system, and the referencing of the editio princeps (as provided by the imaging institution).';
 
@@ -400,7 +397,7 @@ CREATE TABLE `external_font_glyph` (
   UNIQUE KEY `char_idx` (`unicode_char`) USING BTREE,
   KEY `fk_efg_to_external_font_idx` (`external_font_id`),
   CONSTRAINT `fk_efg_to_external_font` FOREIGN KEY (`external_font_id`) REFERENCES `external_font` (`external_font_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2371 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for form_of_writing
@@ -771,7 +768,7 @@ CREATE TABLE `scroll_version` (
   KEY `fk_scroll_version_tos_vg_idx` (`scroll_version_group_id`),
   CONSTRAINT `fk_scroll_version_to_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_scroll_version_tos_vg` FOREIGN KEY (`scroll_version_group_id`) REFERENCES `scroll_version_group` (`scroll_version_group_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table defines unique versions of a reconstructed scroll.';
+) ENGINE=InnoDB AUTO_INCREMENT=1606 DEFAULT CHARSET=utf8 COMMENT='This table defines unique versions of a reconstructed scroll.';
 
 -- ----------------------------
 -- Table structure for scroll_version_group
@@ -849,7 +846,7 @@ CREATE TABLE `sign_char` (
   PRIMARY KEY (`sign_char_id`),
   KEY `fk_sign_char_to_sign_idx` (`sign_id`),
   CONSTRAINT `fk_sign_char_to_sign` FOREIGN KEY (`sign_id`) REFERENCES `sign` (`sign_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table describes signs on a manuscript.  Currently this includes both characters and spaces, it could perhaps also include other elements that one might want to define as a sign.';
+) ENGINE=InnoDB AUTO_INCREMENT=1733925 DEFAULT CHARSET=utf8 COMMENT='This table describes signs on a manuscript.  Currently this includes both characters and spaces, it could perhaps also include other elements that one might want to define as a sign.';
 
 -- ----------------------------
 -- Table structure for sign_char_commentary
@@ -965,7 +962,7 @@ CREATE TABLE `user_comment` (
   PRIMARY KEY (`comment_id`,`user_id`),
   KEY `fk_user_comment_to_user_idx` (`user_id`),
   CONSTRAINT `fk_user_comment_to_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Created by Martin 17/03/03';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Created by Martin 17/03/03';
 
 -- ----------------------------
 -- Table structure for user_contributions
@@ -1003,7 +1000,7 @@ CREATE TABLE `word` (
   `commentary` text DEFAULT NULL,
   PRIMARY KEY (`word_id`),
   KEY `old_word_idx` (`qwb_word_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='A collection of signs from a stream. Maintains link to original QWB word id.';
+) ENGINE=InnoDB AUTO_INCREMENT=380474 DEFAULT CHARSET=utf8 COMMENT='A collection of signs from a stream. Maintains link to original QWB word id.';
 
 -- ----------------------------
 -- Table structure for word_owner
@@ -1147,8 +1144,8 @@ delimiter ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `getScrollDimensions`(scroll_id_num int unsigned, version_id int unsigned)
     DETERMINISTIC
 select artefact_id,
-MAX(JSON_EXTRACT(transform_matrix, '$.matrix[0][2]') + ((ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 2)) - ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 1))) * (1215 / SQE_image.dpi))) as max_x,
-MAX(JSON_EXTRACT(transform_matrix, '$.matrix[1][2]') + ((ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 3)) - ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 1))) * (1215 / SQE_image.dpi))) as max_y from artefact_position join artefact_position_owner using(artefact_position_id) join artefact using(artefact_id) join scroll_version using(scroll_version_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and image_catalog.catalog_side=0;
+MAX(JSON_EXTRACT(transform_matrix, '$.matrix[0][2]') + ((ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 2)) - ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 1))) * (1215 / SQE_image.dpi))) as max_x,
+MAX(JSON_EXTRACT(transform_matrix, '$.matrix[1][2]') + ((ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 3)) - ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 1))) * (1215 / SQE_image.dpi))) as max_y from artefact_position join artefact_position_owner using(artefact_position_id) join artefact_shape using(artefact_id) join artefact_shape_owner using(artefact_shape_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and artefact_shape_owner.scroll_version_id = version_id and image_catalog.catalog_side=0;
 ;;
 delimiter ;
 
@@ -1160,7 +1157,7 @@ delimiter ;;
 CREATE DEFINER=`bronson`@`localhost` PROCEDURE `getScrollHeight`(scroll_id_num int unsigned, version_id int unsigned)
     DETERMINISTIC
     SQL SECURITY INVOKER
-select artefact_id, MAX(JSON_EXTRACT(transform_matrix, '$.matrix[1][2]') + ((ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 3)) - ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 1))) * (1215 / SQE_image.dpi))) as max_y from artefact_position join artefact_position_owner using(artefact_position_id) join artefact using(artefact_id) join scroll_version using(scroll_version_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and image_catalog.catalog_side=0;
+select artefact_id, MAX(JSON_EXTRACT(transform_matrix, '$.matrix[1][2]') + ((ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 3)) - ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 1))) * (1215 / SQE_image.dpi))) as max_y from artefact_position join artefact_position_owner using(artefact_position_id) join artefact_shape using(artefact_id) join artefact_shape_owner using(artefact_shape_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and artefact_shape_owner.scroll_version_id = version_id and image_catalog.catalog_side=0;
 ;;
 delimiter ;
 
@@ -1184,7 +1181,7 @@ delimiter ;;
 CREATE DEFINER=`bronson`@`localhost` PROCEDURE `getScrollWidth`(scroll_id_num int unsigned, version_id int unsigned)
     DETERMINISTIC
     SQL SECURITY INVOKER
-select artefact_id, MAX(JSON_EXTRACT(transform_matrix, '$.matrix[0][2]') + ((ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 2)) - ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_master_image)), 1))) * (1215 / SQE_image.dpi))) as max_x from artefact_position join artefact_position_owner using(artefact_position_id) join artefact using(artefact_id) join scroll_version using(scroll_version_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and image_catalog.catalog_side=0;
+select artefact_id, MAX(JSON_EXTRACT(transform_matrix, '$.matrix[0][2]') + ((ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 2)) - ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 1))) * (1215 / SQE_image.dpi))) as max_x from artefact_position join artefact_position_owner using(artefact_position_id) join artefact_shape using(artefact_id) join artefact_shape_owner using(artefact_shape_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and artefact_shape_owner.scroll_version_id = version_id and image_catalog.catalog_side=0;
 ;;
 delimiter ;
 
