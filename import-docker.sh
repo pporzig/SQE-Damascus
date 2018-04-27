@@ -150,7 +150,7 @@ done
 printf "\rLoading table with geometry: roi_shape\n"
 mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
 LOAD DATA LOCAL INFILE
-'${cwd}/geom_tables/roi_shape.sql'
+'/tmp/geom_tables/roi_shape.sql'
 INTO TABLE roi_shape (roi_shape_id, @var1)
 SET path = ST_GEOMFROMTEXT(@var1);
 SET FOREIGN_KEY_CHECKS=1;" &
