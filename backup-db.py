@@ -30,7 +30,8 @@ path = '/tmp/backup/'
 owner_tables = set()
 non_owner_tables = set()
 exclude_tables = {'user', 'user_sessions', 'sqe_session', 'artefact_shape', 'scroll_version',
-                  'external_font_glyph', 'image_to_image_map', 'single_action', 'main_action'}
+                  'external_font_glyph', 'image_to_image_map', 'single_action', 'main_action',
+                  'roi_shape'}
 for result in result_set:
     if 'owner' in result[0]:
         owner_tables.add(result[0].replace("_owner", ""))
@@ -81,10 +82,19 @@ query7 = 'SELECT image_to_image_map_id, image1_id, image2_id, ST_ASTEXT(region_o
          'FROM image_to_image_map '
 cursor.execute(query7)
 
-print('Exporting table: scroll_version')
-query8 = 'SELECT * INTO OUTFILE "' + path + 'tables/scroll_version.sql" ' \
-            'FROM scroll_version WHERE scroll_version.user_id = 1'
+print('Exporting table: roi_shape')
+query8 = 'SELECT roi_shape_id, ST_ASTEXT(roi_shape.path) ' \
+        'INTO OUTFILE "' + path + 'geom_tables/roi_shape.sql" ' \
+        'FROM roi_shape ' \
+        'JOIN sign_char_roi USING(roi_shape_id) ' \
+        'JOIN sign_char_roi_owner USING(sign_char_roi_id)' \
+        'WHERE sign_char_roi_owner.scroll_version_id < 1606'
 cursor.execute(query8)
+
+print('Exporting table: scroll_version')
+query9 = 'SELECT * INTO OUTFILE "' + path + 'tables/scroll_version.sql" ' \
+            'FROM scroll_version WHERE scroll_version.user_id = 1'
+cursor.execute(query9)
 
 cursor.close()
 db.close()

@@ -11,7 +11,7 @@
  Target Server Version : 100211
  File Encoding         : 65001
 
- Date: 26/04/2018 23:09:59
+ Date: 27/04/2018 11:04:54
 */
 
 SET NAMES utf8mb4;
@@ -256,7 +256,9 @@ CREATE TABLE `attribute_value_css` (
   `attribute_value_css_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `attribute_value_id` int(10) unsigned NOT NULL DEFAULT 0,
   `css` varchar(250) DEFAULT NULL,
-  PRIMARY KEY (`attribute_value_css_id`)
+  PRIMARY KEY (`attribute_value_css_id`),
+  KEY `fk_attribute_value_css_to_attribute_value` (`attribute_value_id`),
+  CONSTRAINT `fk_attribute_value_css_to_attribute_value` FOREIGN KEY (`attribute_value_id`) REFERENCES `attribute_value` (`attribute_value_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -587,10 +589,13 @@ CREATE TABLE `position_in_stream` (
   `next_sign_id` int(10) unsigned DEFAULT NULL COMMENT 'Links to another sign in order to create a linked list.',
   `version` smallint(5) unsigned NOT NULL DEFAULT 0,
   `commentary` text DEFAULT NULL,
+  `prev_sign_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`position_in_stream_id`),
   KEY `position_in_stream_next_sign_id_IDX` (`sign_id`),
   KEY `fk_next_to_sign` (`next_sign_id`),
+  KEY `fk_prev_to_sign` (`prev_sign_id`),
   CONSTRAINT `fk_next_to_sign` FOREIGN KEY (`next_sign_id`) REFERENCES `sign` (`sign_id`),
+  CONSTRAINT `fk_prev_to_sign` FOREIGN KEY (`prev_sign_id`) REFERENCES `sign` (`sign_id`),
   CONSTRAINT `fk_to_sign` FOREIGN KEY (`sign_id`) REFERENCES `sign` (`sign_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=1733729 DEFAULT CHARSET=utf8 COMMENT='Put signs in one-dimensional stream (≈ text)\nThe reason for this table is, that the manuscripts may contain parallel text-streams created by corrections. Sometimes also scholars put superlinear signs at different places. Thus, this is a discrete layer of interpretation between signs and words.';
 
@@ -868,17 +873,17 @@ CREATE TABLE `sign_char_commentary` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for sign_roi
+-- Table structure for sign_char_roi
 -- ----------------------------
-DROP TABLE IF EXISTS `sign_roi`;
-CREATE TABLE `sign_roi` (
-  `sign_roi_id` int(10) unsigned NOT NULL,
+DROP TABLE IF EXISTS `sign_char_roi`;
+CREATE TABLE `sign_char_roi` (
+  `sign_char_roi_id` int(10) unsigned NOT NULL DEFAULT 0,
   `sign_char_id` int(10) unsigned NOT NULL,
   `roi_shape_id` int(10) unsigned NOT NULL,
   `roi_position_id` int(10) unsigned NOT NULL,
   `values_set` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `exceptional` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  PRIMARY KEY (`sign_roi_id`),
+  PRIMARY KEY (`sign_char_roi_id`),
   KEY `fk_sign_area_to_sign_char_idx` (`sign_char_id`),
   KEY `fk_sign_area_to_area_idx` (`roi_shape_id`),
   KEY `fk_sign_area_to_area_position_idx` (`roi_position_id`),
@@ -888,15 +893,15 @@ CREATE TABLE `sign_roi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for sign_roi_owner
+-- Table structure for sign_char_roi_owner
 -- ----------------------------
-DROP TABLE IF EXISTS `sign_roi_owner`;
-CREATE TABLE `sign_roi_owner` (
-  `sign_roi_id` int(10) unsigned NOT NULL,
+DROP TABLE IF EXISTS `sign_char_roi_owner`;
+CREATE TABLE `sign_char_roi_owner` (
+  `sign_char_roi_id` int(10) unsigned NOT NULL DEFAULT 0,
   `scroll_version_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`sign_roi_id`,`scroll_version_id`),
+  PRIMARY KEY (`sign_char_roi_id`,`scroll_version_id`),
   KEY `fk_sign_area_owner_to_sv_idx` (`scroll_version_id`),
-  CONSTRAINT `fk_sign_area_owner_to_sign_area` FOREIGN KEY (`sign_roi_id`) REFERENCES `sign_roi` (`sign_roi_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sign_area_owner_to_sign_area` FOREIGN KEY (`sign_char_roi_id`) REFERENCES `sign_char_roi` (`sign_char_roi_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_sign_area_owner_to_sv` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

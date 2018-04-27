@@ -158,3 +158,19 @@ do
   printf "\r${spin:$i:1}"
   sleep .1
 done
+
+printf "\rLoading table with geometry: roi_shape\n"
+mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
+LOAD DATA LOCAL INFILE
+'${cwd}/geom_tables/roi_shape.sql'
+INTO TABLE roi_shape (roi_shape_id, @var1)
+SET path = ST_GEOMFROMTEXT(@var1);
+SET FOREIGN_KEY_CHECKS=1;" &
+pid=$! # Process Id of the previous running command
+
+while kill -0 $pid 2>/dev/null
+do
+  i=$(( (i+1) %4 ))
+  printf "\r${spin:$i:1}"
+  sleep .1
+done
