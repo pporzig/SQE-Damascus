@@ -1,62 +1,30 @@
-/*
- Navicat Premium Data Transfer
+# ************************************************************
+# Sequel Pro SQL dump
+# Version 4541
+#
+# http://www.sequelpro.com/
+# https://github.com/sequelpro/sequelpro
+#
+# Host: 127.0.0.1 (MySQL 5.5.5-10.2.11-MariaDB-10.2.11+maria~jessie)
+# Datenbank: SQE_DEV
+# Erstellt am: 2018-04-29 17:54:38 +0000
+# ************************************************************
 
- Source Server         : SQE-Dev-local
- Source Server Type    : MariaDB
- Source Server Version : 100211
- Source Host           : localhost:3307
- Source Schema         : SQE_DEV
 
- Target Server Type    : MariaDB
- Target Server Version : 100211
- File Encoding         : 65001
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
- Date: 27/04/2018 11:04:54
-*/
 
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
+# Export von Tabelle area_group
+# ------------------------------------------------------------
 
--- ----------------------------
--- Table structure for SQE_image
--- ----------------------------
-DROP TABLE IF EXISTS `SQE_image`;
-CREATE TABLE `SQE_image` (
-  `sqe_image_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `image_urls_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'Link to image_urls table which contains the url of the iiif server that provides this image and the default suffix used to get images from that server.',
-  `filename` varchar(128) NOT NULL DEFAULT '''''' COMMENT 'Filename of the image, which matches exactly the filename of the image on the provider''s image server.',
-  `native_width` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'We store internally the pixel width of the full size image.',
-  `native_height` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'We store internally the pixel height of the full size image.',
-  `dpi` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'The DPI of the full size image (used to calculate relative scaling of images).',
-  `type` tinyint(1) unsigned NOT NULL DEFAULT 0 COMMENT 'Two values:\nColor = 0\nGrayscale = 1\nPerhaps remove in favor of “wavelength_start" and “wavelength_end”.',
-  `wavelength_start` smallint(5) unsigned NOT NULL DEFAULT 445 COMMENT 'Starting wavelength of image in nanometers.',
-  `wavelength_end` smallint(5) unsigned NOT NULL DEFAULT 704 COMMENT 'Ending wavelength of image in nanometers.',
-  `is_master` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Boolean determining if the image is a “master image”.  Since we have multiple images of each fragment, one image is designated as the master (generally the full color image), all others are non master images and will have a corresponding entry in “image_to_image_map” which provides and transforms (translate, scale, rotate) necessary to line the two images up with each other.',
-  `image_catalog_id` int(11) unsigned DEFAULT 0,
-  PRIMARY KEY (`sqe_image_id`),
-  UNIQUE KEY `url_UNIQUE` (`image_urls_id`,`filename`) USING BTREE,
-  KEY `fk_image_to_catalog` (`image_catalog_id`),
-  CONSTRAINT `fk_image_to_catalog` FOREIGN KEY (`image_catalog_id`) REFERENCES `image_catalog` (`image_catalog_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_image_to_url` FOREIGN KEY (`image_urls_id`) REFERENCES `image_urls` (`image_urls_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=38808 DEFAULT CHARSET=utf8 COMMENT='This table defines an image.  It contains referencing data to access the image via iiif servers, it also stores metadata relating to the image itself, such as sizing, resolution, image color range, etc.  It also maintains a link to the institutional referencing system, and the referencing of the editio princeps (as provided by the imaging institution).';
-
--- ----------------------------
--- Table structure for SQE_image_to_edition_catalog
--- ----------------------------
-DROP TABLE IF EXISTS `SQE_image_to_edition_catalog`;
-CREATE TABLE `SQE_image_to_edition_catalog` (
-  `sqe_image_id` int(11) unsigned NOT NULL,
-  `edition_catalog_id` int(11) unsigned NOT NULL,
-  PRIMARY KEY (`sqe_image_id`,`edition_catalog_id`),
-  KEY `fk_sidtoeid_to_edition_catalog` (`edition_catalog_id`),
-  CONSTRAINT `fk_sidtoeid_to_edition_catalog` FOREIGN KEY (`edition_catalog_id`) REFERENCES `edition_catalog` (`edition_catalog_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_sidtoeid_to_sqe_image` FOREIGN KEY (`sqe_image_id`) REFERENCES `SQE_image` (`sqe_image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for area_group
--- ----------------------------
 DROP TABLE IF EXISTS `area_group`;
+
 CREATE TABLE `area_group` (
   `area_group_id` int(10) unsigned NOT NULL,
   `area_id` int(10) unsigned NOT NULL,
@@ -67,10 +35,13 @@ CREATE TABLE `area_group` (
   PRIMARY KEY (`area_group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for area_group_member
--- ----------------------------
+
+
+# Export von Tabelle area_group_member
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `area_group_member`;
+
 CREATE TABLE `area_group_member` (
   `area_group_id` int(10) unsigned NOT NULL,
   `area_id` int(11) NOT NULL,
@@ -79,10 +50,13 @@ CREATE TABLE `area_group_member` (
   CONSTRAINT `fk_group_member_to_group` FOREIGN KEY (`area_group_id`) REFERENCES `area_group` (`area_group_id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for area_group_owner
--- ----------------------------
+
+
+# Export von Tabelle area_group_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `area_group_owner`;
+
 CREATE TABLE `area_group_owner` (
   `area_group_id` int(10) unsigned NOT NULL,
   `scroll_version_id` int(10) unsigned NOT NULL DEFAULT 0,
@@ -92,10 +66,13 @@ CREATE TABLE `area_group_owner` (
   CONSTRAINT `fk_area_group_owner_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for artefact
--- ----------------------------
+
+
+# Export von Tabelle artefact
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `artefact`;
+
 CREATE TABLE `artefact` (
   `artefact_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `region_in_master_image` polygon DEFAULT NULL COMMENT 'This is the exact polygon of the artefact’s location within the master image’s coordinate system.',
@@ -105,12 +82,15 @@ CREATE TABLE `artefact` (
   PRIMARY KEY (`artefact_id`,`sqe_image_id`),
   KEY `fk_artefact_to_image_idx` (`sqe_image_id`),
   CONSTRAINT `fk_artefact_to_image` FOREIGN KEY (`sqe_image_id`) REFERENCES `SQE_image` (`sqe_image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3262 DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
 
--- ----------------------------
--- Table structure for artefact_data
--- ----------------------------
+
+
+# Export von Tabelle artefact_data
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `artefact_data`;
+
 CREATE TABLE `artefact_data` (
   `artefact_data_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `artefact_id` int(10) unsigned NOT NULL,
@@ -119,12 +99,15 @@ CREATE TABLE `artefact_data` (
   PRIMARY KEY (`artefact_data_id`),
   KEY `fk_artefact_data_to_artefact` (`artefact_id`),
   CONSTRAINT `fk_artefact_data_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1998 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for artefact_data_owner
--- ----------------------------
+
+
+# Export von Tabelle artefact_data_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `artefact_data_owner`;
+
 CREATE TABLE `artefact_data_owner` (
   `artefact_data_id` int(10) unsigned NOT NULL,
   `scroll_version_id` int(10) unsigned NOT NULL,
@@ -134,10 +117,13 @@ CREATE TABLE `artefact_data_owner` (
   CONSTRAINT `fk_artefact_data_owner_to_scroll_version_id` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for artefact_owner
--- ----------------------------
+
+
+# Export von Tabelle artefact_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `artefact_owner`;
+
 CREATE TABLE `artefact_owner` (
   `artefact_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `scroll_version_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -145,12 +131,15 @@ CREATE TABLE `artefact_owner` (
   KEY `fk_artefact_owner_to_scroll_version` (`scroll_version_id`),
   CONSTRAINT `fk_artefact_owner_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`),
   CONSTRAINT `fk_artefact_owner_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3262 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for artefact_position
--- ----------------------------
+
+
+# Export von Tabelle artefact_position
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `artefact_position`;
+
 CREATE TABLE `artefact_position` (
   `artefact_position_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `artefact_id` int(10) unsigned NOT NULL,
@@ -164,12 +153,15 @@ CREATE TABLE `artefact_position` (
   KEY `fk_artefact_position_to_sign_id` (`scroll_id`),
   CONSTRAINT `fk_artefact_position_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_artefact_position_to_sign_id` FOREIGN KEY (`scroll_id`) REFERENCES `scroll` (`scroll_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1998 DEFAULT CHARSET=utf8 COMMENT='This table defines the location and rotation of an artefact within the scroll.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table defines the location and rotation of an artefact within the scroll.';
 
--- ----------------------------
--- Table structure for artefact_position_owner
--- ----------------------------
+
+
+# Export von Tabelle artefact_position_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `artefact_position_owner`;
+
 CREATE TABLE `artefact_position_owner` (
   `artefact_position_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `scroll_version_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -177,12 +169,15 @@ CREATE TABLE `artefact_position_owner` (
   KEY `fk_artefact_position_owner_to_scroll_version` (`scroll_version_id`),
   CONSTRAINT `fk_artefact_position_owner_to_artefact` FOREIGN KEY (`artefact_position_id`) REFERENCES `artefact_position` (`artefact_position_id`),
   CONSTRAINT `fk_artefact_position_owner_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1998 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for artefact_shape
--- ----------------------------
+
+
+# Export von Tabelle artefact_shape
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `artefact_shape`;
+
 CREATE TABLE `artefact_shape` (
   `artefact_shape_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `artefact_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -195,12 +190,15 @@ CREATE TABLE `artefact_shape` (
   KEY `fk_artefact_shape_to_artefact` (`artefact_id`),
   CONSTRAINT `fk_artefact_shape_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_artefact_shape_to_sqe_image` FOREIGN KEY (`sqe_image_id`) REFERENCES `SQE_image` (`sqe_image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3262 DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
 
--- ----------------------------
--- Table structure for artefact_shape_owner
--- ----------------------------
+
+
+# Export von Tabelle artefact_shape_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `artefact_shape_owner`;
+
 CREATE TABLE `artefact_shape_owner` (
   `artefact_shape_id` int(11) unsigned NOT NULL DEFAULT 0,
   `scroll_version_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -210,34 +208,43 @@ CREATE TABLE `artefact_shape_owner` (
   CONSTRAINT `fk_artefact_shape_owner_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for attribute
--- ----------------------------
+
+
+# Export von Tabelle attribute
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `attribute`;
+
 CREATE TABLE `attribute` (
   `attribute_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `type` enum('BOOLEAN','NUMBER','STRING') DEFAULT NULL COMMENT 'BOOLEAN should only be stored if true = string_value in attribute_value=‚true‘\n \nNUMBER values are stored in field numeric_value in sign_attribute (default values should not be stored) \n\nSTRING values are stored in field string_value in attribute_value',
   `description` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`attribute_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for attribute_numeric
--- ----------------------------
-DROP TABLE IF EXISTS `attribute_numeric`;
-CREATE TABLE `attribute_numeric` (
-  `sign_attribute_id` int(10) unsigned NOT NULL,
-  `value` float DEFAULT 0,
-  PRIMARY KEY (`sign_attribute_id`),
-  KEY `value` (`value`),
-  CONSTRAINT `fk_numeric_to_sign_attribute` FOREIGN KEY (`sign_attribute_id`) REFERENCES `sign_attribute` (`sign_attribute_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for attribute_value
--- ----------------------------
+
+
+# Export von Tabelle attribute_numeric
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `attribute_numeric`;
+
+CREATE TABLE `attribute_numeric` (
+  `sign_char_attribute_id` int(10) unsigned NOT NULL,
+  `value` float DEFAULT 0,
+  PRIMARY KEY (`sign_char_attribute_id`),
+  KEY `value` (`value`),
+  CONSTRAINT `fk_attr_num_to_sign_char_attr` FOREIGN KEY (`sign_char_attribute_id`) REFERENCES `sign_char_attribute` (`sign_char_attribute_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Export von Tabelle attribute_value
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `attribute_value`;
+
 CREATE TABLE `attribute_value` (
   `attribute_value_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `attribute_id` int(10) unsigned NOT NULL,
@@ -246,12 +253,15 @@ CREATE TABLE `attribute_value` (
   PRIMARY KEY (`attribute_value_id`),
   KEY `fk_att_val_to_att_idx` (`attribute_id`),
   CONSTRAINT `fk_att_val_to_att` FOREIGN KEY (`attribute_id`) REFERENCES `attribute` (`attribute_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for attribute_value_css
--- ----------------------------
+
+
+# Export von Tabelle attribute_value_css
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `attribute_value_css`;
+
 CREATE TABLE `attribute_value_css` (
   `attribute_value_css_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `attribute_value_id` int(10) unsigned NOT NULL DEFAULT 0,
@@ -261,10 +271,13 @@ CREATE TABLE `attribute_value_css` (
   CONSTRAINT `fk_attribute_value_css_to_attribute_value` FOREIGN KEY (`attribute_value_id`) REFERENCES `attribute_value` (`attribute_value_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for char_of_writing
--- ----------------------------
+
+
+# Export von Tabelle char_of_writing
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `char_of_writing`;
+
 CREATE TABLE `char_of_writing` (
   `char_of_writing_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `form_of_writing_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -278,10 +291,13 @@ CREATE TABLE `char_of_writing` (
   CONSTRAINT `fk_to_form_of_writing` FOREIGN KEY (`form_of_writing_id`) REFERENCES `form_of_writing` (`form_of_writing_id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table stores info about the characters of a particular scribal hand.';
 
--- ----------------------------
--- Table structure for char_of_writing_owner
--- ----------------------------
+
+
+# Export von Tabelle char_of_writing_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `char_of_writing_owner`;
+
 CREATE TABLE `char_of_writing_owner` (
   `char_of_writing_id` int(10) unsigned NOT NULL,
   `scroll_version_id` int(10) unsigned NOT NULL,
@@ -291,19 +307,25 @@ CREATE TABLE `char_of_writing_owner` (
   CONSTRAINT `cow_owner_to_scrollversion` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for col
--- ----------------------------
+
+
+# Export von Tabelle col
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `col`;
+
 CREATE TABLE `col` (
   `col_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`col_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11177 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for col_data
--- ----------------------------
+
+
+# Export von Tabelle col_data
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `col_data`;
+
 CREATE TABLE `col_data` (
   `col_data_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `col_id` int(10) unsigned NOT NULL,
@@ -311,12 +333,15 @@ CREATE TABLE `col_data` (
   PRIMARY KEY (`col_data_id`),
   KEY `fk_col_data_to_col_idx` (`col_id`),
   CONSTRAINT `fk_col_data_to_col` FOREIGN KEY (`col_id`) REFERENCES `col` (`col_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11177 DEFAULT CHARSET=utf8 COMMENT='This table defines the properties of a column of text within a scroll.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table defines the properties of a column of text within a scroll.';
 
--- ----------------------------
--- Table structure for col_data_owner
--- ----------------------------
+
+
+# Export von Tabelle col_data_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `col_data_owner`;
+
 CREATE TABLE `col_data_owner` (
   `col_data_id` int(10) unsigned NOT NULL,
   `scroll_version_id` int(10) unsigned NOT NULL,
@@ -326,10 +351,13 @@ CREATE TABLE `col_data_owner` (
   CONSTRAINT `fk_col_data_owner_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for col_to_line
--- ----------------------------
+
+
+# Export von Tabelle col_to_line
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `col_to_line`;
+
 CREATE TABLE `col_to_line` (
   `col_to_line_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `col_id` int(10) unsigned NOT NULL,
@@ -339,12 +367,15 @@ CREATE TABLE `col_to_line` (
   KEY `fk_col_to_line_to_line_idx` (`line_id`),
   CONSTRAINT `fk_col_to_line_to_col` FOREIGN KEY (`col_id`) REFERENCES `col` (`col_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_col_to_line_to_line` FOREIGN KEY (`line_id`) REFERENCES `line` (`line_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=54448 DEFAULT CHARSET=utf8 COMMENT='This table links lines of a scroll to a specific column.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table links lines of a scroll to a specific column.';
 
--- ----------------------------
--- Table structure for col_to_line_owner
--- ----------------------------
+
+
+# Export von Tabelle col_to_line_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `col_to_line_owner`;
+
 CREATE TABLE `col_to_line_owner` (
   `col_to_line_id` int(10) unsigned NOT NULL,
   `scroll_version_id` int(10) unsigned NOT NULL,
@@ -354,10 +385,13 @@ CREATE TABLE `col_to_line_owner` (
   CONSTRAINT `fk_col_to_linew_owner_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for edition_catalog
--- ----------------------------
+
+
+# Export von Tabelle edition_catalog
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `edition_catalog`;
+
 CREATE TABLE `edition_catalog` (
   `edition_catalog_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `composition` varchar(128) NOT NULL DEFAULT '''''' COMMENT 'Canonical name of the scroll.',
@@ -371,23 +405,29 @@ CREATE TABLE `edition_catalog` (
   UNIQUE KEY `unique_edition_entry` (`edition_location_1`,`edition_location_2`,`edition_name`,`edition_side`,`edition_volume`,`composition`) USING BTREE,
   KEY `fk_edition_catalog_to_scroll_id` (`scroll_id`),
   CONSTRAINT `fk_edition_catalog_to_scroll_id` FOREIGN KEY (`scroll_id`) REFERENCES `scroll` (`scroll_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=34649 DEFAULT CHARSET=utf8 COMMENT='This table contains the IAA data for the editio princeps reference for all of their images.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table contains the IAA data for the editio princeps reference for all of their images.';
 
--- ----------------------------
--- Table structure for external_font
--- ----------------------------
+
+
+# Export von Tabelle external_font
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `external_font`;
+
 CREATE TABLE `external_font` (
   `external_font_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `font_id` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`external_font_id`),
   UNIQUE KEY `font_id_idx` (`font_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for external_font_glyph
--- ----------------------------
+
+
+# Export von Tabelle external_font_glyph
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `external_font_glyph`;
+
 CREATE TABLE `external_font_glyph` (
   `external_font_glyph_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `external_font_id` int(10) unsigned NOT NULL,
@@ -399,12 +439,15 @@ CREATE TABLE `external_font_glyph` (
   UNIQUE KEY `char_idx` (`unicode_char`) USING BTREE,
   KEY `fk_efg_to_external_font_idx` (`external_font_id`),
   CONSTRAINT `fk_efg_to_external_font` FOREIGN KEY (`external_font_id`) REFERENCES `external_font` (`external_font_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2371 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for form_of_writing
--- ----------------------------
+
+
+# Export von Tabelle form_of_writing
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `form_of_writing`;
+
 CREATE TABLE `form_of_writing` (
   `form_of_writing_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `scribes_scribe_id` int(10) unsigned NOT NULL,
@@ -418,10 +461,13 @@ CREATE TABLE `form_of_writing` (
   CONSTRAINT `fk_form_to_scribe` FOREIGN KEY (`scribes_scribe_id`) REFERENCES `scribe` (`scribe_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Defines the actual scribe of of sign. As actual scribe the scribe as person using at the very moment a special „font“ caused by the mood the scribe is in (conecentrated, sloppy, fast and furious) and the used equipment. Thus even change of quills or the status of a quill (fresh filled, new, old) could be distinguished. ';
 
--- ----------------------------
--- Table structure for form_of_writing_owner
--- ----------------------------
+
+
+# Export von Tabelle form_of_writing_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `form_of_writing_owner`;
+
 CREATE TABLE `form_of_writing_owner` (
   `form_of_writing_id` int(10) unsigned NOT NULL,
   `scroll_version_id` int(10) unsigned NOT NULL,
@@ -431,10 +477,13 @@ CREATE TABLE `form_of_writing_owner` (
   CONSTRAINT `fk_form_of_writing_to_scrollversion` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for image_catalog
--- ----------------------------
+
+
+# Export von Tabelle image_catalog
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `image_catalog`;
+
 CREATE TABLE `image_catalog` (
   `image_catalog_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `institution` varchar(128) DEFAULT 'NULL' COMMENT 'Institution responsible for (and probably hosting) the image.',
@@ -443,12 +492,15 @@ CREATE TABLE `image_catalog` (
   `catalog_side` tinyint(1) unsigned DEFAULT 0 COMMENT 'Side reference designation.',
   PRIMARY KEY (`image_catalog_id`),
   UNIQUE KEY `unique_catalog_entry` (`catalog_number_1`,`catalog_number_2`,`catalog_side`,`institution`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=34777 DEFAULT CHARSET=utf8 COMMENT='The referencing system of the institution providing the images.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='The referencing system of the institution providing the images.';
 
--- ----------------------------
--- Table structure for image_to_edition_catalog
--- ----------------------------
+
+
+# Export von Tabelle image_to_edition_catalog
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `image_to_edition_catalog`;
+
 CREATE TABLE `image_to_edition_catalog` (
   `edition_catalog_id` int(11) unsigned NOT NULL DEFAULT 0,
   `image_catalog_id` int(11) unsigned NOT NULL DEFAULT 0,
@@ -458,10 +510,13 @@ CREATE TABLE `image_to_edition_catalog` (
   CONSTRAINT `fk_to_edition_id` FOREIGN KEY (`edition_catalog_id`) REFERENCES `edition_catalog` (`edition_catalog_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Temporary table to link image catalog info with edition info until the SQE_image table is fully populated.  Once that table is populated this one will become redundant.  This was autogenerated from IAA data.';
 
--- ----------------------------
--- Table structure for image_to_image_map
--- ----------------------------
+
+
+# Export von Tabelle image_to_image_map
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `image_to_image_map`;
+
 CREATE TABLE `image_to_image_map` (
   `image_to_image_map_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `image1_id` int(10) unsigned NOT NULL DEFAULT 0,
@@ -479,10 +534,13 @@ CREATE TABLE `image_to_image_map` (
   CONSTRAINT `fk_image2_to_image_id` FOREIGN KEY (`image2_id`) REFERENCES `SQE_image` (`sqe_image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table contains the mapping information to correlate images of the same object.';
 
--- ----------------------------
--- Table structure for image_urls
--- ----------------------------
+
+
+# Export von Tabelle image_urls
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `image_urls`;
+
 CREATE TABLE `image_urls` (
   `image_urls_id` int(11) unsigned NOT NULL DEFAULT 0,
   `url` varchar(128) NOT NULL COMMENT 'Address to iiif compliant server.',
@@ -490,10 +548,13 @@ CREATE TABLE `image_urls` (
   PRIMARY KEY (`image_urls_id`,`url`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='URL’s for the iiif image servers providing our images.';
 
--- ----------------------------
--- Table structure for kerning_of_char
--- ----------------------------
+
+
+# Export von Tabelle kerning_of_char
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `kerning_of_char`;
+
 CREATE TABLE `kerning_of_char` (
   `kerning` smallint(6) NOT NULL DEFAULT 0 COMMENT 'Kerning in mm',
   `previous_char` char(1) NOT NULL,
@@ -502,19 +563,25 @@ CREATE TABLE `kerning_of_char` (
   CONSTRAINT `fk_to_chars_of_writing` FOREIGN KEY (`chars_of_writing_char_of_writing_id`) REFERENCES `char_of_writing` (`char_of_writing_id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Describes character to character kerning relationships.';
 
--- ----------------------------
--- Table structure for line
--- ----------------------------
+
+
+# Export von Tabelle line
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `line`;
+
 CREATE TABLE `line` (
   `line_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`line_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for line_data
--- ----------------------------
+
+
+# Export von Tabelle line_data
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `line_data`;
+
 CREATE TABLE `line_data` (
   `line_data_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT 'NULL' COMMENT 'Name of line (should be unique in comparison to other lines in column).',
@@ -522,12 +589,15 @@ CREATE TABLE `line_data` (
   PRIMARY KEY (`line_data_id`,`line_id`),
   KEY `fk_line_data_to_line_idx` (`line_id`),
   CONSTRAINT `fk_line_data_to_line` FOREIGN KEY (`line_id`) REFERENCES `line` (`line_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=54448 DEFAULT CHARSET=utf8 COMMENT='Data pertaining to the description of a line of transcribed text.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Data pertaining to the description of a line of transcribed text.';
 
--- ----------------------------
--- Table structure for line_data_owner
--- ----------------------------
+
+
+# Export von Tabelle line_data_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `line_data_owner`;
+
 CREATE TABLE `line_data_owner` (
   `line_data_id` int(10) unsigned NOT NULL,
   `scroll_version_id` int(10) unsigned NOT NULL,
@@ -537,10 +607,13 @@ CREATE TABLE `line_data_owner` (
   CONSTRAINT `fk_line_data_owner_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for line_to_sign
--- ----------------------------
+
+
+# Export von Tabelle line_to_sign
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `line_to_sign`;
+
 CREATE TABLE `line_to_sign` (
   `line_to_sign_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `sign_id` int(10) unsigned NOT NULL,
@@ -550,12 +623,15 @@ CREATE TABLE `line_to_sign` (
   KEY `fk_line_to_sign_to_line_idx` (`line_id`),
   CONSTRAINT `fk_line_to_sign_to_line` FOREIGN KEY (`line_id`) REFERENCES `line` (`line_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_line_to_sign_to_sign` FOREIGN KEY (`sign_id`) REFERENCES `sign` (`sign_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1733925 DEFAULT CHARSET=utf8 COMMENT='Linking of signs to a line.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Linking of signs to a line.';
 
--- ----------------------------
--- Table structure for line_to_sign_owner
--- ----------------------------
+
+
+# Export von Tabelle line_to_sign_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `line_to_sign_owner`;
+
 CREATE TABLE `line_to_sign_owner` (
   `line_to_sign_id` int(10) unsigned NOT NULL,
   `scroll_version_id` int(10) unsigned NOT NULL,
@@ -565,10 +641,13 @@ CREATE TABLE `line_to_sign_owner` (
   CONSTRAINT `fl_to_sign_owner_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for main_action
--- ----------------------------
+
+
+# Export von Tabelle main_action
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `main_action`;
+
 CREATE TABLE `main_action` (
   `main_action_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `time` datetime(6) DEFAULT current_timestamp(6) COMMENT 'The time that the execution was performed.',
@@ -579,10 +658,13 @@ CREATE TABLE `main_action` (
   CONSTRAINT `main_action_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table for an undo system.  This table stores the state of the action (rewound or not), the date of the change, and the version of the scroll that the action is associated with.  The table single_action links to the entries here and describe the table in which the action occurred, the id of the entry in that table that was involved, and the nature of the action (creating a connection between that entry and the scroll version of the main_action, or deleting the connection between that entry and the scroll version of the main_action).';
 
--- ----------------------------
--- Table structure for position_in_stream
--- ----------------------------
+
+
+# Export von Tabelle position_in_stream
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `position_in_stream`;
+
 CREATE TABLE `position_in_stream` (
   `position_in_stream_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Uinique identifiere',
   `sign_id` int(11) unsigned NOT NULL COMMENT 'References a sign',
@@ -597,12 +679,15 @@ CREATE TABLE `position_in_stream` (
   CONSTRAINT `fk_next_to_sign` FOREIGN KEY (`next_sign_id`) REFERENCES `sign` (`sign_id`),
   CONSTRAINT `fk_prev_to_sign` FOREIGN KEY (`prev_sign_id`) REFERENCES `sign` (`sign_id`),
   CONSTRAINT `fk_to_sign` FOREIGN KEY (`sign_id`) REFERENCES `sign` (`sign_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1733729 DEFAULT CHARSET=utf8 COMMENT='Put signs in one-dimensional stream (≈ text)\nThe reason for this table is, that the manuscripts may contain parallel text-streams created by corrections. Sometimes also scholars put superlinear signs at different places. Thus, this is a discrete layer of interpretation between signs and words.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Put signs in one-dimensional stream (≈ text)\nThe reason for this table is, that the manuscripts may contain parallel text-streams created by corrections. Sometimes also scholars put superlinear signs at different places. Thus, this is a discrete layer of interpretation between signs and words.';
 
--- ----------------------------
--- Table structure for position_in_stream_owner
--- ----------------------------
+
+
+# Export von Tabelle position_in_stream_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `position_in_stream_owner`;
+
 CREATE TABLE `position_in_stream_owner` (
   `position_in_stream_id` int(10) unsigned NOT NULL,
   `scroll_version_id` int(10) unsigned NOT NULL,
@@ -612,10 +697,13 @@ CREATE TABLE `position_in_stream_owner` (
   CONSTRAINT `fk_position_in_stream_owner_to_position_in_stream` FOREIGN KEY (`position_in_stream_id`) REFERENCES `position_in_stream` (`position_in_stream_id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for position_in_stream_to_word_rel
--- ----------------------------
+
+
+# Export von Tabelle position_in_stream_to_word_rel
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `position_in_stream_to_word_rel`;
+
 CREATE TABLE `position_in_stream_to_word_rel` (
   `position_in_stream_id` int(10) unsigned NOT NULL COMMENT 'References a sign in a stream',
   `word_id` int(10) unsigned NOT NULL DEFAULT 0,
@@ -627,30 +715,39 @@ CREATE TABLE `position_in_stream_to_word_rel` (
   CONSTRAINT `fk_rel_to_word` FOREIGN KEY (`word_id`) REFERENCES `word` (`word_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Links individual signs to words, which are then linked to data in the QWB database.';
 
--- ----------------------------
--- Table structure for roi_position
--- ----------------------------
+
+
+# Export von Tabelle roi_position
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `roi_position`;
+
 CREATE TABLE `roi_position` (
   `roi_position_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `transform_matrix` longtext DEFAULT NULL,
   PRIMARY KEY (`roi_position_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for roi_shape
--- ----------------------------
+
+
+# Export von Tabelle roi_shape
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `roi_shape`;
+
 CREATE TABLE `roi_shape` (
   `roi_shape_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `path` multipolygon DEFAULT NULL,
   PRIMARY KEY (`roi_shape_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for scribal_font_type
--- ----------------------------
+
+
+# Export von Tabelle scribal_font_type
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `scribal_font_type`;
+
 CREATE TABLE `scribal_font_type` (
   `scribal_font_type_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Provides metadata for „Fonts“ used by scribes .\n\nToDo: Define the ontology (fromal …) which should be used',
   `font_name` varchar(45) NOT NULL DEFAULT '???',
@@ -658,10 +755,13 @@ CREATE TABLE `scribal_font_type` (
   UNIQUE KEY `style_name_idx` (`font_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for scribal_font_type_owner
--- ----------------------------
+
+
+# Export von Tabelle scribal_font_type_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `scribal_font_type_owner`;
+
 CREATE TABLE `scribal_font_type_owner` (
   `scribal_font_type_id` int(10) unsigned NOT NULL,
   `scroll_version_id` int(10) unsigned NOT NULL,
@@ -671,10 +771,13 @@ CREATE TABLE `scribal_font_type_owner` (
   CONSTRAINT `fk_font_owner_to_font` FOREIGN KEY (`scribal_font_type_id`) REFERENCES `scribal_font_type` (`scribal_font_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for scribe
--- ----------------------------
+
+
+# Export von Tabelle scribe
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `scribe`;
+
 CREATE TABLE `scribe` (
   `scribe_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `description` varchar(45) DEFAULT NULL,
@@ -682,10 +785,13 @@ CREATE TABLE `scribe` (
   PRIMARY KEY (`scribe_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for scribe_owner
--- ----------------------------
+
+
+# Export von Tabelle scribe_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `scribe_owner`;
+
 CREATE TABLE `scribe_owner` (
   `scribe_id` int(10) unsigned NOT NULL,
   `scroll_version_id` int(10) unsigned NOT NULL,
@@ -695,19 +801,25 @@ CREATE TABLE `scribe_owner` (
   CONSTRAINT `fk_scribe_owner_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for scroll
--- ----------------------------
+
+
+# Export von Tabelle scroll
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `scroll`;
+
 CREATE TABLE `scroll` (
   `scroll_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`scroll_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1654 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for scroll_data
--- ----------------------------
+
+
+# Export von Tabelle scroll_data
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `scroll_data`;
+
 CREATE TABLE `scroll_data` (
   `scroll_data_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT 'NULL' COMMENT 'Name for scroll entity.',
@@ -715,12 +827,15 @@ CREATE TABLE `scroll_data` (
   PRIMARY KEY (`scroll_data_id`),
   KEY `fk_scroll_to_master_scroll_idx` (`scroll_id`),
   CONSTRAINT `fk_scroll_to_master_scroll` FOREIGN KEY (`scroll_id`) REFERENCES `scroll` (`scroll_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1058 DEFAULT CHARSET=utf8 COMMENT='Description of a reconstructed scroll or combination.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Description of a reconstructed scroll or combination.';
 
--- ----------------------------
--- Table structure for scroll_data_owner
--- ----------------------------
+
+
+# Export von Tabelle scroll_data_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `scroll_data_owner`;
+
 CREATE TABLE `scroll_data_owner` (
   `scroll_data_id` int(10) unsigned NOT NULL,
   `scroll_version_id` int(10) unsigned NOT NULL,
@@ -730,10 +845,13 @@ CREATE TABLE `scroll_data_owner` (
   CONSTRAINT `fk_scroll_owner_to_scroll_data` FOREIGN KEY (`scroll_data_id`) REFERENCES `scroll_data` (`scroll_data_id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for scroll_to_col
--- ----------------------------
+
+
+# Export von Tabelle scroll_to_col
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `scroll_to_col`;
+
 CREATE TABLE `scroll_to_col` (
   `scroll_to_col_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `scroll_id` int(10) unsigned NOT NULL,
@@ -743,12 +861,15 @@ CREATE TABLE `scroll_to_col` (
   KEY `fk_scroll_to_column_to_column_idx` (`col_id`),
   CONSTRAINT `fk_scroll_to_column_to_column` FOREIGN KEY (`col_id`) REFERENCES `col` (`col_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_scroll_to_column_to_scroll` FOREIGN KEY (`scroll_id`) REFERENCES `scroll` (`scroll_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11177 DEFAULT CHARSET=utf8 COMMENT='Links an entry in the col table to a reconstructed scroll.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Links an entry in the col table to a reconstructed scroll.';
 
--- ----------------------------
--- Table structure for scroll_to_col_owner
--- ----------------------------
+
+
+# Export von Tabelle scroll_to_col_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `scroll_to_col_owner`;
+
 CREATE TABLE `scroll_to_col_owner` (
   `scroll_to_col_id` int(10) unsigned NOT NULL,
   `scroll_version_id` int(10) unsigned NOT NULL,
@@ -758,10 +879,13 @@ CREATE TABLE `scroll_to_col_owner` (
   CONSTRAINT `fk_stco_toscroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for scroll_version
--- ----------------------------
+
+
+# Export von Tabelle scroll_version
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `scroll_version`;
+
 CREATE TABLE `scroll_version` (
   `scroll_version_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` smallint(5) unsigned NOT NULL,
@@ -773,12 +897,15 @@ CREATE TABLE `scroll_version` (
   KEY `fk_scroll_version_tos_vg_idx` (`scroll_version_group_id`),
   CONSTRAINT `fk_scroll_version_to_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_scroll_version_tos_vg` FOREIGN KEY (`scroll_version_group_id`) REFERENCES `scroll_version_group` (`scroll_version_group_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1606 DEFAULT CHARSET=utf8 COMMENT='This table defines unique versions of a reconstructed scroll.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table defines unique versions of a reconstructed scroll.';
 
--- ----------------------------
--- Table structure for scroll_version_group
--- ----------------------------
+
+
+# Export von Tabelle scroll_version_group
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `scroll_version_group`;
+
 CREATE TABLE `scroll_version_group` (
   `scroll_version_group_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `scroll_id` int(10) unsigned DEFAULT NULL,
@@ -786,12 +913,15 @@ CREATE TABLE `scroll_version_group` (
   PRIMARY KEY (`scroll_version_group_id`),
   KEY `fk_sv_group_to_scroll_idx` (`scroll_id`),
   CONSTRAINT `fk_sv_group_to_scroll` FOREIGN KEY (`scroll_id`) REFERENCES `scroll` (`scroll_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1606 DEFAULT CHARSET=utf8 COMMENT='This table provides a unique group id for scrollversions and the possibilty to lock all members of the group';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table provides a unique group id for scrollversions and the possibilty to lock all members of the group';
 
--- ----------------------------
--- Table structure for scroll_version_group_admin
--- ----------------------------
+
+
+# Export von Tabelle scroll_version_group_admin
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `scroll_version_group_admin`;
+
 CREATE TABLE `scroll_version_group_admin` (
   `scroll_version_group_id` int(10) unsigned NOT NULL,
   `user_id` smallint(5) unsigned NOT NULL,
@@ -801,48 +931,25 @@ CREATE TABLE `scroll_version_group_admin` (
   CONSTRAINT `fk_sv_group_admin_to_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for sign
--- ----------------------------
+
+
+# Export von Tabelle sign
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `sign`;
+
 CREATE TABLE `sign` (
   `sign_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`sign_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1733943 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for sign_attribute
--- ----------------------------
-DROP TABLE IF EXISTS `sign_attribute`;
-CREATE TABLE `sign_attribute` (
-  `sign_attribute_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `sign_char_id` int(10) unsigned NOT NULL,
-  `attribute_value_id` int(10) unsigned NOT NULL,
-  `sequence` tinyint(4) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`sign_attribute_id`),
-  KEY `fk_attribute_to_sign_char_idx` (`sign_char_id`),
-  KEY `fk_attribute_to_attribute_value_idx` (`attribute_value_id`),
-  CONSTRAINT `fk_attribute_to_attribute_value` FOREIGN KEY (`attribute_value_id`) REFERENCES `attribute_value` (`attribute_value_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_attribute_to_sign_char` FOREIGN KEY (`sign_char_id`) REFERENCES `sign_char` (`sign_char_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4503661 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for sign_attribute_owner
--- ----------------------------
-DROP TABLE IF EXISTS `sign_attribute_owner`;
-CREATE TABLE `sign_attribute_owner` (
-  `sign_attribute_id` int(10) unsigned NOT NULL,
-  `scroll_version_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`sign_attribute_id`,`scroll_version_id`),
-  KEY `fk_sign_attr_owenr_to_sv_idx` (`scroll_version_id`),
-  CONSTRAINT `fk_sign_attr_owenr_to_sv` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_sign_attr_owner_to_sign_attr` FOREIGN KEY (`sign_attribute_id`) REFERENCES `sign_attribute` (`sign_attribute_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for sign_char
--- ----------------------------
+
+
+# Export von Tabelle sign_char
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `sign_char`;
+
 CREATE TABLE `sign_char` (
   `sign_char_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `sign_id` int(10) unsigned NOT NULL,
@@ -851,12 +958,50 @@ CREATE TABLE `sign_char` (
   PRIMARY KEY (`sign_char_id`),
   KEY `fk_sign_char_to_sign_idx` (`sign_id`),
   CONSTRAINT `fk_sign_char_to_sign` FOREIGN KEY (`sign_id`) REFERENCES `sign` (`sign_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1733925 DEFAULT CHARSET=utf8 COMMENT='This table describes signs on a manuscript.  Currently this includes both characters and spaces, it could perhaps also include other elements that one might want to define as a sign.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table describes signs on a manuscript.  Currently this includes both characters and spaces, it could perhaps also include other elements that one might want to define as a sign.';
 
--- ----------------------------
--- Table structure for sign_char_commentary
--- ----------------------------
+
+
+# Export von Tabelle sign_char_attribute
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `sign_char_attribute`;
+
+CREATE TABLE `sign_char_attribute` (
+  `sign_char_attribute_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `sign_char_id` int(10) unsigned NOT NULL,
+  `attribute_value_id` int(10) unsigned NOT NULL,
+  `sequence` tinyint(4) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`sign_char_attribute_id`),
+  KEY `fk_sign_char_attr_to_sign_char_idx` (`sign_char_id`),
+  KEY `fk_sign_char_attr_to_attr_value_idx` (`attribute_value_id`),
+  CONSTRAINT `fk_sign_char_attr_to_attr_value` FOREIGN KEY (`attribute_value_id`) REFERENCES `attribute_value` (`attribute_value_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sign_char_attr_to_sign_char` FOREIGN KEY (`sign_char_id`) REFERENCES `sign_char` (`sign_char_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Export von Tabelle sign_char_attribute_owner
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `sign_char_attribute_owner`;
+
+CREATE TABLE `sign_char_attribute_owner` (
+  `sign_char_attribute_id` int(10) unsigned NOT NULL,
+  `scroll_version_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`sign_char_attribute_id`,`scroll_version_id`),
+  KEY `fk_sign_attr_owenr_to_sv_idx` (`scroll_version_id`),
+  CONSTRAINT `fk_sign_attr_owenr_to_sv` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sign_char_attr_owner_to_sca` FOREIGN KEY (`sign_char_attribute_id`) REFERENCES `sign_char_attribute` (`sign_char_attribute_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Export von Tabelle sign_char_commentary
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `sign_char_commentary`;
+
 CREATE TABLE `sign_char_commentary` (
   `sign_char_commentary_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `sign_char_id` int(10) unsigned NOT NULL,
@@ -872,10 +1017,13 @@ CREATE TABLE `sign_char_commentary` (
   CONSTRAINT `fk_scc_to_sign_char` FOREIGN KEY (`sign_char_id`) REFERENCES `sign_char` (`sign_char_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for sign_char_roi
--- ----------------------------
+
+
+# Export von Tabelle sign_char_roi
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `sign_char_roi`;
+
 CREATE TABLE `sign_char_roi` (
   `sign_char_roi_id` int(10) unsigned NOT NULL DEFAULT 0,
   `sign_char_id` int(10) unsigned NOT NULL,
@@ -892,10 +1040,13 @@ CREATE TABLE `sign_char_roi` (
   CONSTRAINT `fk_sign_sign_roi_to_sign_char` FOREIGN KEY (`sign_char_id`) REFERENCES `sign_char` (`sign_char_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for sign_char_roi_owner
--- ----------------------------
+
+
+# Export von Tabelle sign_char_roi_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `sign_char_roi_owner`;
+
 CREATE TABLE `sign_char_roi_owner` (
   `sign_char_roi_id` int(10) unsigned NOT NULL DEFAULT 0,
   `scroll_version_id` int(10) unsigned NOT NULL,
@@ -905,10 +1056,13 @@ CREATE TABLE `sign_char_roi_owner` (
   CONSTRAINT `fk_sign_area_owner_to_sv` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for single_action
--- ----------------------------
+
+
+# Export von Tabelle single_action
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `single_action`;
+
 CREATE TABLE `single_action` (
   `single_action_id` bigint(19) unsigned NOT NULL AUTO_INCREMENT,
   `main_action_id` int(10) unsigned NOT NULL,
@@ -920,10 +1074,55 @@ CREATE TABLE `single_action` (
   CONSTRAINT `fk_single_action_to_main` FOREIGN KEY (`main_action_id`) REFERENCES `main_action` (`main_action_id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for sqe_session
--- ----------------------------
+
+
+# Export von Tabelle SQE_image
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `SQE_image`;
+
+CREATE TABLE `SQE_image` (
+  `sqe_image_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `image_urls_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'Link to image_urls table which contains the url of the iiif server that provides this image and the default suffix used to get images from that server.',
+  `filename` varchar(128) NOT NULL DEFAULT '''''' COMMENT 'Filename of the image, which matches exactly the filename of the image on the provider''s image server.',
+  `native_width` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'We store internally the pixel width of the full size image.',
+  `native_height` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'We store internally the pixel height of the full size image.',
+  `dpi` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'The DPI of the full size image (used to calculate relative scaling of images).',
+  `type` tinyint(1) unsigned NOT NULL DEFAULT 0 COMMENT 'Two values:\nColor = 0\nGrayscale = 1\nPerhaps remove in favor of “wavelength_start" and “wavelength_end”.',
+  `wavelength_start` smallint(5) unsigned NOT NULL DEFAULT 445 COMMENT 'Starting wavelength of image in nanometers.',
+  `wavelength_end` smallint(5) unsigned NOT NULL DEFAULT 704 COMMENT 'Ending wavelength of image in nanometers.',
+  `is_master` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Boolean determining if the image is a “master image”.  Since we have multiple images of each fragment, one image is designated as the master (generally the full color image), all others are non master images and will have a corresponding entry in “image_to_image_map” which provides and transforms (translate, scale, rotate) necessary to line the two images up with each other.',
+  `image_catalog_id` int(11) unsigned DEFAULT 0,
+  PRIMARY KEY (`sqe_image_id`),
+  UNIQUE KEY `url_UNIQUE` (`image_urls_id`,`filename`) USING BTREE,
+  KEY `fk_image_to_catalog` (`image_catalog_id`),
+  CONSTRAINT `fk_image_to_catalog` FOREIGN KEY (`image_catalog_id`) REFERENCES `image_catalog` (`image_catalog_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_image_to_url` FOREIGN KEY (`image_urls_id`) REFERENCES `image_urls` (`image_urls_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table defines an image.  It contains referencing data to access the image via iiif servers, it also stores metadata relating to the image itself, such as sizing, resolution, image color range, etc.  It also maintains a link to the institutional referencing system, and the referencing of the editio princeps (as provided by the imaging institution).';
+
+
+
+# Export von Tabelle SQE_image_to_edition_catalog
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `SQE_image_to_edition_catalog`;
+
+CREATE TABLE `SQE_image_to_edition_catalog` (
+  `sqe_image_id` int(11) unsigned NOT NULL,
+  `edition_catalog_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`sqe_image_id`,`edition_catalog_id`),
+  KEY `fk_sidtoeid_to_edition_catalog` (`edition_catalog_id`),
+  CONSTRAINT `fk_sidtoeid_to_edition_catalog` FOREIGN KEY (`edition_catalog_id`) REFERENCES `edition_catalog` (`edition_catalog_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_sidtoeid_to_sqe_image` FOREIGN KEY (`sqe_image_id`) REFERENCES `SQE_image` (`sqe_image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+# Export von Tabelle sqe_session
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `sqe_session`;
+
 CREATE TABLE `sqe_session` (
   `sqe_session_id` char(36) NOT NULL,
   `user_id` smallint(5) unsigned NOT NULL,
@@ -936,10 +1135,13 @@ CREATE TABLE `sqe_session` (
   CONSTRAINT `fk_sqe_sesseio_to_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Table structure for user
--- ----------------------------
+
+
+# Export von Tabelle user
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `user`;
+
 CREATE TABLE `user` (
   `user_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `user_name` varchar(30) DEFAULT 'NULL' COMMENT 'System username.',
@@ -953,12 +1155,15 @@ CREATE TABLE `user` (
   `last_scroll_version_id` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user` (`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='This table stores the data of all registered users,\nCreated by Martin 17/03/03';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table stores the data of all registered users,\nCreated by Martin 17/03/03';
 
--- ----------------------------
--- Table structure for user_comment
--- ----------------------------
+
+
+# Export von Tabelle user_comment
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `user_comment`;
+
 CREATE TABLE `user_comment` (
   `comment_id` int(10) NOT NULL AUTO_INCREMENT,
   `user_id` smallint(5) unsigned NOT NULL,
@@ -967,12 +1172,15 @@ CREATE TABLE `user_comment` (
   PRIMARY KEY (`comment_id`,`user_id`),
   KEY `fk_user_comment_to_user_idx` (`user_id`),
   CONSTRAINT `fk_user_comment_to_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='Created by Martin 17/03/03';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Created by Martin 17/03/03';
 
--- ----------------------------
--- Table structure for user_contributions
--- ----------------------------
+
+
+# Export von Tabelle user_contributions
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `user_contributions`;
+
 CREATE TABLE `user_contributions` (
   `contribution_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` smallint(5) DEFAULT NULL,
@@ -981,10 +1189,13 @@ CREATE TABLE `user_contributions` (
   PRIMARY KEY (`contribution_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Created by Martin 17/03/29';
 
--- ----------------------------
--- Table structure for user_sessions
--- ----------------------------
+
+
+# Export von Tabelle user_sessions
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `user_sessions`;
+
 CREATE TABLE `user_sessions` (
   `session_id` int(10) NOT NULL AUTO_INCREMENT,
   `user_id` smallint(5) unsigned NOT NULL,
@@ -995,22 +1206,28 @@ CREATE TABLE `user_sessions` (
   PRIMARY KEY (`session_id`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table stores a record of all user sessions.\nCreated by Martin 17/03/03';
 
--- ----------------------------
--- Table structure for word
--- ----------------------------
+
+
+# Export von Tabelle word
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `word`;
+
 CREATE TABLE `word` (
   `word_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier',
   `qwb_word_id` int(11) unsigned DEFAULT NULL COMMENT 'Old word identifier from QWB.',
   `commentary` text DEFAULT NULL,
   PRIMARY KEY (`word_id`),
   KEY `old_word_idx` (`qwb_word_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=380474 DEFAULT CHARSET=utf8 COMMENT='A collection of signs from a stream. Maintains link to original QWB word id.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='A collection of signs from a stream. Maintains link to original QWB word id.';
 
--- ----------------------------
--- Table structure for word_owner
--- ----------------------------
+
+
+# Export von Tabelle word_owner
+# ------------------------------------------------------------
+
 DROP TABLE IF EXISTS `word_owner`;
+
 CREATE TABLE `word_owner` (
   `word_id` int(10) unsigned NOT NULL,
   `scroll_version_id` int(10) unsigned NOT NULL,
@@ -1020,12 +1237,20 @@ CREATE TABLE `word_owner` (
   CONSTRAINT `fk_word_owner_to_word` FOREIGN KEY (`word_id`) REFERENCES `word` (`word_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Procedure structure for add_commentary
--- ----------------------------
-DROP PROCEDURE IF EXISTS `add_commentary`;
-delimiter ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `add_commentary`()
+
+
+
+--
+-- Dumping routines (PROCEDURE) for database 'SQE_DEV'
+--
+DELIMITER ;;
+
+# Dump of PROCEDURE add_commentary
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `add_commentary` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`%`*/ /*!50003 PROCEDURE `add_commentary`()
 BEGIN
 
     DECLARE v_finished INTEGER DEFAULT 0;
@@ -1059,16 +1284,15 @@ BEGIN
     CLOSE column_cursor;
 
 
-	END;
-;;
-delimiter ;
+	END */;;
 
--- ----------------------------
--- Procedure structure for cursor_proc
--- ----------------------------
-DROP PROCEDURE IF EXISTS `cursor_proc`;
-delimiter ;;
-CREATE DEFINER=`SQE`@`localhost` PROCEDURE `cursor_proc`()
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE cursor_proc
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `cursor_proc` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`SQE`@`localhost`*/ /*!50003 PROCEDURE `cursor_proc`()
 BEGIN
    DECLARE art_id INT UNSIGNED DEFAULT 0;
    
@@ -1092,16 +1316,15 @@ BEGIN
      END IF;
      INSERT IGNORE INTO artefact_owner (artefact_id, scroll_version_id) VALUES(art_id, 1);
    END LOOP artefact_loop;
- END;
-;;
-delimiter ;
+ END */;;
 
--- ----------------------------
--- Procedure structure for getCatalogAndEdition
--- ----------------------------
-DROP PROCEDURE IF EXISTS `getCatalogAndEdition`;
-delimiter ;;
-CREATE DEFINER=`SQE`@`localhost` PROCEDURE `getCatalogAndEdition`(param_plate VARCHAR(45), param_fragment VARCHAR(45), param_side TINYINT(1))
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE getCatalogAndEdition
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `getCatalogAndEdition` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`SQE`@`localhost`*/ /*!50003 PROCEDURE `getCatalogAndEdition`(param_plate VARCHAR(45), param_fragment VARCHAR(45), param_side TINYINT(1))
     DETERMINISTIC
     SQL SECURITY INVOKER
 select image_catalog.image_catalog_id, edition_catalog.edition_catalog_id 
@@ -1109,93 +1332,86 @@ from image_catalog
 left join image_to_edition_catalog USING(image_catalog_id) 
 left join edition_catalog USING(edition_catalog_id)
 where image_catalog.catalog_number_1 = param_plate AND image_catalog.catalog_number_2 = param_fragment 
-AND image_catalog.catalog_side = param_side;
-;;
-delimiter ;
+AND image_catalog.catalog_side = param_side */;;
 
--- ----------------------------
--- Procedure structure for getMasterImageListings
--- ----------------------------
-DROP PROCEDURE IF EXISTS `getMasterImageListings`;
-delimiter ;;
-CREATE DEFINER=`SQE`@`localhost` PROCEDURE `getMasterImageListings`()
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE getMasterImageListings
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `getMasterImageListings` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`SQE`@`localhost`*/ /*!50003 PROCEDURE `getMasterImageListings`()
     DETERMINISTIC
     SQL SECURITY INVOKER
 select edition_catalog.composition, image_catalog.institution, image_catalog.catalog_number_1, image_catalog.catalog_number_2,  edition_catalog.edition_name, edition_catalog.edition_volume, edition_catalog.edition_location_1, edition_catalog.edition_location_2, SQE_image.sqe_image_id
 from SQE_image 
 left join image_catalog USING(image_catalog_id)
 left join edition_catalog USING(edition_catalog_id)
-where SQE_image.is_master=1 AND image_catalog.catalog_side=0 order by edition_catalog.composition;
-;;
-delimiter ;
+where SQE_image.is_master=1 AND image_catalog.catalog_side=0 order by edition_catalog.composition */;;
 
--- ----------------------------
--- Procedure structure for getScrollArtefacts
--- ----------------------------
-DROP PROCEDURE IF EXISTS `getScrollArtefacts`;
-delimiter ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getScrollArtefacts`(scroll_id VARCHAR(128), side TINYINT)
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE getScrollArtefacts
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `getScrollArtefacts` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `getScrollArtefacts`(scroll_id VARCHAR(128), side TINYINT)
     DETERMINISTIC
     SQL SECURITY INVOKER
-SELECT distinct artefact.artefact_id as id, ST_AsText(ST_Envelope(artefact.region_in_master_image)) as rect, ST_AsText(artefact.region_in_master_image) as poly, ST_AsText(artefact.position_in_scroll) as pos, image_urls.url as url, image_urls.suffix as suffix, SQE_image.filename as filename, SQE_image.dpi as dpi from artefact inner join SQE_image USING(sqe_image_id) inner join image_urls USING(image_urls_id) inner join image_to_edition_catalog USING(image_catalog_id) inner join edition_catalog_to_discrete_reference USING(edition_catalog_id) inner join discrete_canonical_reference USING(discrete_canonical_reference_id) inner join scroll USING(scroll_id) inner join edition_catalog USING(edition_catalog_id) where scroll.scroll_id=scroll_id and edition_catalog.edition_side=side;
-;;
-delimiter ;
+SELECT distinct artefact.artefact_id as id, ST_AsText(ST_Envelope(artefact.region_in_master_image)) as rect, ST_AsText(artefact.region_in_master_image) as poly, ST_AsText(artefact.position_in_scroll) as pos, image_urls.url as url, image_urls.suffix as suffix, SQE_image.filename as filename, SQE_image.dpi as dpi from artefact inner join SQE_image USING(sqe_image_id) inner join image_urls USING(image_urls_id) inner join image_to_edition_catalog USING(image_catalog_id) inner join edition_catalog_to_discrete_reference USING(edition_catalog_id) inner join discrete_canonical_reference USING(discrete_canonical_reference_id) inner join scroll USING(scroll_id) inner join edition_catalog USING(edition_catalog_id) where scroll.scroll_id=scroll_id and edition_catalog.edition_side=side */;;
 
--- ----------------------------
--- Procedure structure for getScrollDimensions
--- ----------------------------
-DROP PROCEDURE IF EXISTS `getScrollDimensions`;
-delimiter ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `getScrollDimensions`(scroll_id_num int unsigned, version_id int unsigned)
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE getScrollDimensions
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `getScrollDimensions` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`%`*/ /*!50003 PROCEDURE `getScrollDimensions`(scroll_id_num int unsigned, version_id int unsigned)
     DETERMINISTIC
 select artefact_id,
 MAX(JSON_EXTRACT(transform_matrix, '$.matrix[0][2]') + ((ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 2)) - ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 1))) * (1215 / SQE_image.dpi))) as max_x,
-MAX(JSON_EXTRACT(transform_matrix, '$.matrix[1][2]') + ((ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 3)) - ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 1))) * (1215 / SQE_image.dpi))) as max_y from artefact_position join artefact_position_owner using(artefact_position_id) join artefact_shape using(artefact_id) join artefact_shape_owner using(artefact_shape_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and artefact_shape_owner.scroll_version_id = version_id and image_catalog.catalog_side=0;
-;;
-delimiter ;
+MAX(JSON_EXTRACT(transform_matrix, '$.matrix[1][2]') + ((ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 3)) - ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 1))) * (1215 / SQE_image.dpi))) as max_y from artefact_position join artefact_position_owner using(artefact_position_id) join artefact_shape using(artefact_id) join artefact_shape_owner using(artefact_shape_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and artefact_shape_owner.scroll_version_id = version_id and image_catalog.catalog_side=0 */;;
 
--- ----------------------------
--- Procedure structure for getScrollHeight
--- ----------------------------
-DROP PROCEDURE IF EXISTS `getScrollHeight`;
-delimiter ;;
-CREATE DEFINER=`bronson`@`localhost` PROCEDURE `getScrollHeight`(scroll_id_num int unsigned, version_id int unsigned)
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE getScrollHeight
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `getScrollHeight` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`bronson`@`localhost`*/ /*!50003 PROCEDURE `getScrollHeight`(scroll_id_num int unsigned, version_id int unsigned)
     DETERMINISTIC
     SQL SECURITY INVOKER
-select artefact_id, MAX(JSON_EXTRACT(transform_matrix, '$.matrix[1][2]') + ((ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 3)) - ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 1))) * (1215 / SQE_image.dpi))) as max_y from artefact_position join artefact_position_owner using(artefact_position_id) join artefact_shape using(artefact_id) join artefact_shape_owner using(artefact_shape_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and artefact_shape_owner.scroll_version_id = version_id and image_catalog.catalog_side=0;
-;;
-delimiter ;
+select artefact_id, MAX(JSON_EXTRACT(transform_matrix, '$.matrix[1][2]') + ((ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 3)) - ST_Y(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 1))) * (1215 / SQE_image.dpi))) as max_y from artefact_position join artefact_position_owner using(artefact_position_id) join artefact_shape using(artefact_id) join artefact_shape_owner using(artefact_shape_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and artefact_shape_owner.scroll_version_id = version_id and image_catalog.catalog_side=0 */;;
 
--- ----------------------------
--- Procedure structure for getScrollVersionArtefacts
--- ----------------------------
-DROP PROCEDURE IF EXISTS `getScrollVersionArtefacts`;
-delimiter ;;
-CREATE DEFINER=`bronson`@`localhost` PROCEDURE `getScrollVersionArtefacts`(scroll_id_num int unsigned, version_id int unsigned)
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE getScrollVersionArtefacts
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `getScrollVersionArtefacts` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`bronson`@`localhost`*/ /*!50003 PROCEDURE `getScrollVersionArtefacts`(scroll_id_num int unsigned, version_id int unsigned)
     DETERMINISTIC
     SQL SECURITY INVOKER
-SELECT distinct artefact.artefact_id as id, ST_AsText(ST_Envelope(artefact.region_in_master_image)) as rect, ST_AsText(artefact.region_in_master_image) as poly, ST_AsText(artefact.position_in_scroll) as pos, image_urls.url as url, image_urls.suffix as suffix, SQE_image.filename as filename, SQE_image.dpi as dpi, artefact.rotation as rotation from artefact_owner join artefact using(artefact_id) join scroll_version using(scroll_version_id) inner join SQE_image USING(sqe_image_id) inner join image_urls USING(image_urls_id) inner join image_catalog using(image_catalog_id) where artefact.scroll_id=scroll_id_num and artefact_owner.scroll_version_id = version_id and image_catalog.catalog_side=0;
-;;
-delimiter ;
+SELECT distinct artefact.artefact_id as id, ST_AsText(ST_Envelope(artefact.region_in_master_image)) as rect, ST_AsText(artefact.region_in_master_image) as poly, ST_AsText(artefact.position_in_scroll) as pos, image_urls.url as url, image_urls.suffix as suffix, SQE_image.filename as filename, SQE_image.dpi as dpi, artefact.rotation as rotation from artefact_owner join artefact using(artefact_id) join scroll_version using(scroll_version_id) inner join SQE_image USING(sqe_image_id) inner join image_urls USING(image_urls_id) inner join image_catalog using(image_catalog_id) where artefact.scroll_id=scroll_id_num and artefact_owner.scroll_version_id = version_id and image_catalog.catalog_side=0 */;;
 
--- ----------------------------
--- Procedure structure for getScrollWidth
--- ----------------------------
-DROP PROCEDURE IF EXISTS `getScrollWidth`;
-delimiter ;;
-CREATE DEFINER=`bronson`@`localhost` PROCEDURE `getScrollWidth`(scroll_id_num int unsigned, version_id int unsigned)
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE getScrollWidth
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `getScrollWidth` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`bronson`@`localhost`*/ /*!50003 PROCEDURE `getScrollWidth`(scroll_id_num int unsigned, version_id int unsigned)
     DETERMINISTIC
     SQL SECURITY INVOKER
-select artefact_id, MAX(JSON_EXTRACT(transform_matrix, '$.matrix[0][2]') + ((ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 2)) - ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 1))) * (1215 / SQE_image.dpi))) as max_x from artefact_position join artefact_position_owner using(artefact_position_id) join artefact_shape using(artefact_id) join artefact_shape_owner using(artefact_shape_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and artefact_shape_owner.scroll_version_id = version_id and image_catalog.catalog_side=0;
-;;
-delimiter ;
+select artefact_id, MAX(JSON_EXTRACT(transform_matrix, '$.matrix[0][2]') + ((ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 2)) - ST_X(ST_PointN(ST_ExteriorRing(ST_ENVELOPE(region_in_sqe_image)), 1))) * (1215 / SQE_image.dpi))) as max_x from artefact_position join artefact_position_owner using(artefact_position_id) join artefact_shape using(artefact_id) join artefact_shape_owner using(artefact_shape_id) join SQE_image USING(sqe_image_id) join image_catalog using(image_catalog_id) where artefact_position.scroll_id=scroll_id_num and artefact_position_owner.scroll_version_id = version_id and artefact_shape_owner.scroll_version_id = version_id and image_catalog.catalog_side=0 */;;
 
--- ----------------------------
--- Procedure structure for get_fragment
--- ----------------------------
-DROP PROCEDURE IF EXISTS `get_fragment`;
-delimiter ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_fragment`(
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE get_fragment
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `get_fragment` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `get_fragment`(
 								IN scroll_id INTEGER,
 								INOUT column_name VARCHAR(45),
 								OUT column_count INTEGER,
@@ -1219,16 +1435,15 @@ BEGIN
 		SET full_output = '{"ERROR_CODE":5, "ERROR_TEXT":"Fragment not found"}';
 	END IF;
 
-END;
-;;
-delimiter ;
+END */;;
 
--- ----------------------------
--- Procedure structure for get_fragment_text
--- ----------------------------
-DROP PROCEDURE IF EXISTS `get_fragment_text`;
-delimiter ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_fragment_text`(
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE get_fragment_text
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `get_fragment_text` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `get_fragment_text`(
 						IN scroll_name VARCHAR(45),
 						IN column_name VARCHAR(45)
 					)
@@ -1311,16 +1526,15 @@ get_fragment_text:BEGIN
 
 	SET full_output = CONCAT(SUBSTRING(full_output, 1, CHAR_LENGTH(full_output)-1),']}]}');
 	SELECT full_output;
-END;
-;;
-delimiter ;
+END */;;
 
--- ----------------------------
--- Procedure structure for get_line_text
--- ----------------------------
-DROP PROCEDURE IF EXISTS `get_line_text`;
-delimiter ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_line_text`(
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE get_line_text
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `get_line_text` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `get_line_text`(
 						IN scroll_name VARCHAR(45),
 						IN column_name VARCHAR(45),
 						IN line_name   VARCHAR(45)
@@ -1375,16 +1589,15 @@ get_line_text:BEGIN
 		
 	SELECT CONCAT(full_output, ']}]}]}');
 
-END;
-;;
-delimiter ;
+END */;;
 
--- ----------------------------
--- Procedure structure for get_line_text_html
--- ----------------------------
-DROP PROCEDURE IF EXISTS `get_line_text_html`;
-delimiter ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_line_text_html`(
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE get_line_text_html
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `get_line_text_html` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `get_line_text_html`(
 						IN scroll_name VARCHAR(45),
 						IN column_name VARCHAR(45),
 						IN line_name   VARCHAR(45)
@@ -1437,16 +1650,15 @@ get_line_text:BEGIN
 		
 	SELECT CONCAT(full_output, ']}]}]}');
 
-END;
-;;
-delimiter ;
+END */;;
 
--- ----------------------------
--- Procedure structure for get_scroll
--- ----------------------------
-DROP PROCEDURE IF EXISTS `get_scroll`;
-delimiter ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_scroll`(
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE get_scroll
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `get_scroll` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `get_scroll`(
 								INOUT scroll_name	VARCHAR(50),
 								OUT scroll_id INTEGER,
 								INOUT full_output LONGTEXT
@@ -1461,16 +1673,15 @@ BEGIN
 	IF scroll_id IS NULL THEN
 		SET full_output = '{"ERROR_CODE":4, "ERROR_TEXT":"Scroll not found"}';
 	END IF;
-END;
-;;
-delimiter ;
+END */;;
 
--- ----------------------------
--- Procedure structure for get_sign_json
--- ----------------------------
-DROP PROCEDURE IF EXISTS `get_sign_json`;
-delimiter ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_sign_json`(
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE get_sign_json
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `get_sign_json` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `get_sign_json`(
 						IN 		next_id_var INTEGER	,
 						INOUT full_output LONGTEXT
 						)
@@ -1511,16 +1722,15 @@ BEGIN
 	END WHILE;
 	DEALLOCATE PREPARE stm;
 	SET full_output = concat(full_output, SUBSTRING(@output_text, 1, CHAR_LENGTH(@output_text)-1));
-END;
-;;
-delimiter ;
+END */;;
 
--- ----------------------------
--- Procedure structure for nyewe2w234556
--- ----------------------------
-DROP PROCEDURE IF EXISTS `nyewe2w234556`;
-delimiter ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `nyewe2w234556`(
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE nyewe2w234556
+# ------------------------------------------------------------
+
+/*!50003 DROP PROCEDURE IF EXISTS `nyewe2w234556` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `nyewe2w234556`(
 						IN 		next_id_var INTEGER	,
 						INOUT full_output LONGTEXT
 						)
@@ -1570,47 +1780,15 @@ sign.sign_id,', ',
 	END WHILE;
 	DEALLOCATE PREPARE stm;
 	SET full_output = concat(full_output, SUBSTRING(@output_text, 1, CHAR_LENGTH(@output_text)-1));
-END;
-;;
-delimiter ;
+END */;;
 
--- ----------------------------
--- Function structure for set_to_json_array
--- ----------------------------
-DROP FUNCTION IF EXISTS `set_to_json_array`;
-delimiter ;;
-CREATE DEFINER=`root`@`localhost` FUNCTION `set_to_json_array`(my_set VARCHAR(250)) RETURNS varchar(250) CHARSET utf8
-    DETERMINISTIC
-BEGIN
-	 IF my_set IS NOT NULL AND my_set NOT LIKE '' THEN
-				RETURN CONCAT('["', REPLACE(my_set,',','","'), '"]');
-				ELSE
-				RETURN '[]';
-	END IF;
-END;
-;;
-delimiter ;
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of PROCEDURE update_comps
+# ------------------------------------------------------------
 
--- ----------------------------
--- Function structure for SPLIT_STRING
--- ----------------------------
-DROP FUNCTION IF EXISTS `SPLIT_STRING`;
-delimiter ;;
-CREATE DEFINER=`root`@`localhost` FUNCTION `SPLIT_STRING`(x VARCHAR(255), delim VARCHAR(12), pos INT) RETURNS varchar(255) CHARSET utf8
-    DETERMINISTIC
-    SQL SECURITY INVOKER
-RETURN REPLACE(SUBSTRING(SUBSTRING_INDEX(x, delim, pos),
-       LENGTH(SUBSTRING_INDEX(x, delim, pos -1)) + 1),
-       delim, '');
-;;
-delimiter ;
-
--- ----------------------------
--- Procedure structure for update_comps
--- ----------------------------
-DROP PROCEDURE IF EXISTS `update_comps`;
-delimiter ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `update_comps`()
+/*!50003 DROP PROCEDURE IF EXISTS `update_comps` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`%`*/ /*!50003 PROCEDURE `update_comps`()
 BEGIN
 DECLARE comp VARCHAR(128);
 DECLARE done INT DEFAULT 0;
@@ -1633,8 +1811,50 @@ read_loop: LOOP
  
 END LOOP;
 CLOSE cur; 
-END;
-;;
-delimiter ;
+END */;;
 
-SET FOREIGN_KEY_CHECKS = 1;
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+DELIMITER ;
+
+--
+-- Dumping routines (FUNCTION) for database 'SQE_DEV'
+--
+DELIMITER ;;
+
+# Dump of FUNCTION set_to_json_array
+# ------------------------------------------------------------
+
+/*!50003 DROP FUNCTION IF EXISTS `set_to_json_array` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `set_to_json_array`(my_set VARCHAR(250)) RETURNS varchar(250) CHARSET utf8
+    DETERMINISTIC
+BEGIN
+	 IF my_set IS NOT NULL AND my_set NOT LIKE '' THEN
+				RETURN CONCAT('["', REPLACE(my_set,',','","'), '"]');
+				ELSE
+				RETURN '[]';
+	END IF;
+END */;;
+
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+# Dump of FUNCTION SPLIT_STRING
+# ------------------------------------------------------------
+
+/*!50003 DROP FUNCTION IF EXISTS `SPLIT_STRING` */;;
+/*!50003 SET SESSION SQL_MODE="STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"*/;;
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `SPLIT_STRING`(x VARCHAR(255), delim VARCHAR(12), pos INT) RETURNS varchar(255) CHARSET utf8
+    DETERMINISTIC
+    SQL SECURITY INVOKER
+RETURN REPLACE(SUBSTRING(SUBSTRING_INDEX(x, delim, pos),
+       LENGTH(SUBSTRING_INDEX(x, delim, pos -1)) + 1),
+       delim, '') */;;
+
+/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;;
+DELIMITER ;
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
