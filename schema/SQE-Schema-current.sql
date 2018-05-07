@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.2.11-MariaDB-10.2.11+maria~jessie)
 # Datenbank: SQE_DEV
-# Erstellt am: 2018-05-06 20:16:45 +0000
+# Erstellt am: 2018-05-07 16:57:31 +0000
 # ************************************************************
 
 
@@ -986,15 +986,28 @@ CREATE TABLE `sign_char_commentary` (
   `sign_char_commentary_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `sign_char_id` int(10) unsigned NOT NULL,
   `attribute_id` int(10) unsigned DEFAULT NULL,
-  `scroll_version_id` int(10) unsigned NOT NULL,
   `commentary` longtext NOT NULL DEFAULT '',
   PRIMARY KEY (`sign_char_commentary_id`),
-  UNIQUE KEY `unique` (`sign_char_id`,`scroll_version_id`,`attribute_id`),
-  KEY `fk_scc_to_scroll_version_idx` (`scroll_version_id`),
   KEY `fk_scc_to_attribute_idx` (`attribute_id`),
+  KEY `sign_char_id` (`sign_char_id`),
   CONSTRAINT `fk_scc_to_attribute` FOREIGN KEY (`attribute_id`) REFERENCES `attribute` (`attribute_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_scc_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_scc_to_sign_char` FOREIGN KEY (`sign_char_id`) REFERENCES `sign_char` (`sign_char_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Export von Tabelle sign_char_commentary_owner
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `sign_char_commentary_owner`;
+
+CREATE TABLE `sign_char_commentary_owner` (
+  `sign_char_commentary_id` int(10) unsigned NOT NULL,
+  `scroll_version_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`sign_char_commentary_id`,`scroll_version_id`),
+  KEY `fk_scc_owner_to_scrollversion_idx` (`scroll_version_id`),
+  CONSTRAINT `fk_scc_onwer_to_scc` FOREIGN KEY (`sign_char_commentary_id`) REFERENCES `sign_char_commentary` (`sign_char_commentary_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_scc_owner_to_scrollversion` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
