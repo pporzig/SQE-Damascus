@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.2.11-MariaDB-10.2.11+maria~jessie)
 # Datenbank: SQE_DEV
-# Erstellt am: 2018-05-07 16:57:31 +0000
+# Erstellt am: 2018-05-09 17:13:25 +0000
 # ************************************************************
 
 
@@ -704,7 +704,7 @@ DROP TABLE IF EXISTS `roi_position`;
 
 CREATE TABLE `roi_position` (
   `roi_position_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `transform_matrix` longtext DEFAULT NULL,
+  `transform_matrix` longtext DEFAULT '{"matrix":[[1,0,0],[0,1,0]]}',
   PRIMARY KEY (`roi_position_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -717,7 +717,7 @@ DROP TABLE IF EXISTS `roi_shape`;
 
 CREATE TABLE `roi_shape` (
   `roi_shape_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `path` multipolygon DEFAULT NULL,
+  `path` polygon DEFAULT NULL,
   PRIMARY KEY (`roi_shape_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1018,13 +1018,14 @@ CREATE TABLE `sign_char_commentary_owner` (
 DROP TABLE IF EXISTS `sign_char_roi`;
 
 CREATE TABLE `sign_char_roi` (
-  `sign_char_roi_id` int(10) unsigned NOT NULL DEFAULT 0,
+  `sign_char_roi_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `sign_char_id` int(10) unsigned NOT NULL,
   `roi_shape_id` int(10) unsigned NOT NULL,
   `roi_position_id` int(10) unsigned NOT NULL,
   `values_set` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `exceptional` tinyint(3) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`sign_char_roi_id`),
+  UNIQUE KEY `char_shape_position` (`sign_char_id`,`roi_shape_id`,`roi_position_id`),
   KEY `fk_sign_area_to_sign_char_idx` (`sign_char_id`),
   KEY `fk_sign_area_to_area_idx` (`roi_shape_id`),
   KEY `fk_sign_area_to_area_position_idx` (`roi_position_id`),
