@@ -10,7 +10,7 @@ database="$DATABASE"
 set -- "${POSITIONAL[@]}" # restore positional parameters
 
 if [ -z "$database" ]; then
-   database="SQE_DEV"
+   database="SQE_Database"
 fi
 
 if [ -z "$host" ]; then
