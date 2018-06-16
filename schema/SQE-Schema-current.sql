@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.2.11-MariaDB-10.2.11+maria~jessie)
 # Datenbank: SQE_DEV
-# Erstellt am: 2018-05-09 17:13:25 +0000
+# Erstellt am: 2018-06-16 17:09:50 +0000
 # ************************************************************
 
 
@@ -75,13 +75,7 @@ DROP TABLE IF EXISTS `artefact`;
 
 CREATE TABLE `artefact` (
   `artefact_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `region_in_master_image` polygon DEFAULT NULL COMMENT 'This is the exact polygon of the artefact’s location within the master image’s coordinate system.',
-  `date_of_adding` timestamp NOT NULL DEFAULT current_timestamp(),
-  `commentary` text DEFAULT NULL,
-  `sqe_image_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'This points to the master image (see SQE_image table) in which this artefact is found.',
-  PRIMARY KEY (`artefact_id`,`sqe_image_id`),
-  KEY `fk_artefact_to_image_idx` (`sqe_image_id`),
-  CONSTRAINT `fk_artefact_to_image` FOREIGN KEY (`sqe_image_id`) REFERENCES `SQE_image` (`sqe_image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`artefact_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
 
 
@@ -95,7 +89,6 @@ CREATE TABLE `artefact_data` (
   `artefact_data_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `artefact_id` int(10) unsigned NOT NULL,
   `name` text NOT NULL,
-  `commentary` text DEFAULT NULL,
   PRIMARY KEY (`artefact_data_id`),
   KEY `fk_artefact_data_to_artefact` (`artefact_id`),
   CONSTRAINT `fk_artefact_data_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -129,14 +122,9 @@ CREATE TABLE `artefact_position` (
   `artefact_id` int(10) unsigned NOT NULL,
   `transform_matrix` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '{matrix: [[1,0,0],[0,1,0]]}' COMMENT 'This is a transform matrix that will convert the artefact polygon from the coordinate system on the master_image to its desired location within the scroll''s coordinate system.',
   `z_index` tinyint(4) DEFAULT NULL COMMENT 'This value can move artefacts up or down in relation to other artefacts in the scroll.',
-  `scroll_id` int(10) unsigned DEFAULT 0,
-  `commentary` text DEFAULT NULL,
-  `date_of_adding` datetime DEFAULT current_timestamp(),
   PRIMARY KEY (`artefact_position_id`),
   KEY `fk_artefact_position_to_artefact` (`artefact_id`),
-  KEY `fk_artefact_position_to_sign_id` (`scroll_id`),
-  CONSTRAINT `fk_artefact_position_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_artefact_position_to_sign_id` FOREIGN KEY (`scroll_id`) REFERENCES `scroll` (`scroll_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_artefact_position_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table defines the location and rotation of an artefact within the scroll.';
 
 
@@ -165,15 +153,13 @@ DROP TABLE IF EXISTS `artefact_shape`;
 CREATE TABLE `artefact_shape` (
   `artefact_shape_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `artefact_id` int(11) unsigned NOT NULL DEFAULT 0,
-  `sqe_image_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'This points to the master image (see SQE_image table) in which this artefact is found.',
+  `id_of_sqe_image` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'This points to the master image (see SQE_image table) in which this artefact is found.',
   `region_in_sqe_image` polygon DEFAULT NULL COMMENT 'This is the exact polygon of the artefact’s location within the master image’s coordinate system.',
-  `date_of_adding` timestamp NOT NULL DEFAULT current_timestamp(),
-  `commentary` text DEFAULT NULL,
   PRIMARY KEY (`artefact_shape_id`),
-  KEY `fk_artefact_shape_to_sqe_image_idx` (`sqe_image_id`),
+  KEY `fk_artefact_shape_to_sqe_image_idx` (`id_of_sqe_image`),
   KEY `fk_artefact_shape_to_artefact` (`artefact_id`),
   CONSTRAINT `fk_artefact_shape_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_artefact_shape_to_sqe_image` FOREIGN KEY (`sqe_image_id`) REFERENCES `SQE_image` (`sqe_image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_artefact_shape_to_sqe_image` FOREIGN KEY (`id_of_sqe_image`) REFERENCES `SQE_image` (`sqe_image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
 
 

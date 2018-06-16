@@ -62,7 +62,7 @@ for table in non_owner_tables:
 # Custom commands for tables with geometry data:
 # artefact, artefact_position, external_font_glyph, image_to_image_map
 print('Exporting table: artefact_shape')
-query4 = 'SELECT artefact_shape_id, artefact_id, sqe_image_id, ST_ASTEXT(artefact_shape.region_in_sqe_image), date_of_adding, commentary ' \
+query4 = 'SELECT artefact_shape_id, artefact_id, id_of_sqe_image, ST_ASTEXT(artefact_shape.region_in_sqe_image) ' \
         'INTO OUTFILE "' + path + 'geom_tables/artefact_shape.sql" ' \
         'FROM artefact_shape ' \
         'JOIN artefact_shape_owner USING(artefact_shape_id) ' \
