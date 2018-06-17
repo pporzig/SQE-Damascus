@@ -115,7 +115,7 @@ printf "\rLoading table with geometry: artefact_shape\n"
 mysql --host=${host} --user=${user} --password=${password} --local-infile ${database} -e "SET FOREIGN_KEY_CHECKS=0;
 LOAD DATA LOCAL INFILE
 '${cwd}/geom_tables/artefact_shape.sql'
-INTO TABLE artefact_shape (artefact_shape_id, artefact_id, id_of_sqe_image, @var1, commentary)
+INTO TABLE artefact_shape (artefact_shape_id, artefact_id, id_of_sqe_image, @var1)
 SET region_in_sqe_image = ST_GEOMFROMTEXT(@var1);
 SET FOREIGN_KEY_CHECKS=1;" &
 pid=$! # Process Id of the previous running command
