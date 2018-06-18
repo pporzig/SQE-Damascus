@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.2.11-MariaDB-10.2.11+maria~jessie)
 # Datenbank: SQE_DEV
-# Erstellt am: 2018-06-16 17:09:50 +0000
+# Erstellt am: 2018-06-18 15:09:10 +0000
 # ************************************************************
 
 
@@ -554,8 +554,8 @@ DROP TABLE IF EXISTS `line_data`;
 
 CREATE TABLE `line_data` (
   `line_data_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT 'NULL' COMMENT 'Name of line (should be unique in comparison to other lines in column).',
   `line_id` int(10) unsigned NOT NULL,
+  `name` varchar(45) DEFAULT 'NULL' COMMENT 'Name of line (should be unique in comparison to other lines in column).',
   PRIMARY KEY (`line_data_id`,`line_id`),
   KEY `fk_line_data_to_line_idx` (`line_id`),
   CONSTRAINT `fk_line_data_to_line` FOREIGN KEY (`line_id`) REFERENCES `line` (`line_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -788,8 +788,8 @@ DROP TABLE IF EXISTS `scroll_data`;
 
 CREATE TABLE `scroll_data` (
   `scroll_data_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT 'NULL' COMMENT 'Name for scroll entity.',
   `scroll_id` int(10) unsigned NOT NULL,
+  `name` varchar(45) DEFAULT 'NULL' COMMENT 'Name for scroll entity.',
   PRIMARY KEY (`scroll_data_id`),
   KEY `fk_scroll_to_master_scroll_idx` (`scroll_id`),
   CONSTRAINT `fk_scroll_to_master_scroll` FOREIGN KEY (`scroll_id`) REFERENCES `scroll` (`scroll_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
