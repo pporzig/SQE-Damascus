@@ -788,8 +788,8 @@ DROP TABLE IF EXISTS `scroll_data`;
 
 CREATE TABLE `scroll_data` (
   `scroll_data_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `scroll_id` int(10) unsigned NOT NULL,
   `name` varchar(45) DEFAULT 'NULL' COMMENT 'Name for scroll entity.',
+  `scroll_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`scroll_data_id`),
   KEY `fk_scroll_to_master_scroll_idx` (`scroll_id`),
   CONSTRAINT `fk_scroll_to_master_scroll` FOREIGN KEY (`scroll_id`) REFERENCES `scroll` (`scroll_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
