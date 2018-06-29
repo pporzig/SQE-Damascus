@@ -554,8 +554,8 @@ DROP TABLE IF EXISTS `line_data`;
 
 CREATE TABLE `line_data` (
   `line_data_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `line_id` int(10) unsigned NOT NULL,
   `name` varchar(45) DEFAULT 'NULL' COMMENT 'Name of line (should be unique in comparison to other lines in column).',
+  `line_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`line_data_id`,`line_id`),
   KEY `fk_line_data_to_line_idx` (`line_id`),
   CONSTRAINT `fk_line_data_to_line` FOREIGN KEY (`line_id`) REFERENCES `line` (`line_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
