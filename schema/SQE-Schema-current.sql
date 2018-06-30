@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.2.11-MariaDB-10.2.11+maria~jessie)
 # Datenbank: SQE_DEV
-# Erstellt am: 2018-06-18 15:09:10 +0000
+# Erstellt am: 2018-06-30 16:31:51 +0000
 # ************************************************************
 
 
@@ -541,7 +541,7 @@ CREATE TABLE `kerning_of_char` (
 DROP TABLE IF EXISTS `line`;
 
 CREATE TABLE `line` (
-  `line_id` int(10) unsigned NOT NULL,
+  `line_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`line_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
