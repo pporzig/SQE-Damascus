@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.2.11-MariaDB-10.2.11+maria~jessie)
 # Datenbank: SQE_DEV
-# Erstellt am: 2018-06-30 16:31:51 +0000
+# Erstellt am: 2018-07-01 10:06:50 +0000
 # ************************************************************
 
 
@@ -319,6 +319,38 @@ CREATE TABLE `col_data_owner` (
   KEY `fk_col_data_owner_to_scroll_version_idx` (`scroll_version_id`),
   CONSTRAINT `fk_col_data_owner_to_col_data` FOREIGN KEY (`col_data_id`) REFERENCES `col_data` (`col_data_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_col_data_owner_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Export von Tabelle col_sequence
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `col_sequence`;
+
+CREATE TABLE `col_sequence` (
+  `col_sequence_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `col_id` int(10) unsigned NOT NULL,
+  `position` smallint(5) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`col_sequence_id`),
+  KEY `fk_cs_to_col_idx` (`col_id`),
+  CONSTRAINT `fk_cs_to_col` FOREIGN KEY (`col_id`) REFERENCES `col` (`col_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Export von Tabelle col_sequence_owner
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `col_sequence_owner`;
+
+CREATE TABLE `col_sequence_owner` (
+  `col_sequence_id` int(10) unsigned NOT NULL,
+  `scroll_version_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`col_sequence_id`,`scroll_version_id`),
+  KEY `fk_cso_to_scroll_version_idx` (`scroll_version_id`),
+  CONSTRAINT `fk_cso_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `ft_cs_owner_tocs` FOREIGN KEY (`col_sequence_id`) REFERENCES `col_sequence` (`col_sequence_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
