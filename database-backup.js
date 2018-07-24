@@ -30,7 +30,6 @@ if (cmd.status !== 0) {
   console.log(chalk.red('✗ Failed to backup the schema from SQE_Database Docker.'))
   process.exit(1)
 } else {
-  console.log('saving to ' + schemaTempBackupPath + schemaBackupName)
   fs.writeFile(schemaTempBackupPath + schemaBackupName, cmd.stdout, (err) => {
     if(err) {
         return console.log(chalk.red(err))
