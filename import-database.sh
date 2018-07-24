@@ -66,9 +66,10 @@ echo "Loading data into database"
 for file in /tmp/tables/*.sql; do
     table=${file%.sql}
     columns=$(head -n 1 "$cwd/$file")
+    columns=&{columns//¥/,}
     printf "\rLoading table: ${table##*/}\n"
     queryString="SET FOREIGN_KEY_CHECKS=0;
-    LOAD DATA LOCAL INFILE '$file' INTO TABLE ${table##*/} FIELDS TERMINATED BY '\t' IGNORE 1 LINES ($columns)"
+    LOAD DATA LOCAL INFILE '$file' INTO TABLE ${table##*/} FIELDS TERMINATED BY '¥' IGNORE 1 LINES ($columns)"
     IFS=',' read -r -a columnList <<< "$columns"
     foundColumns=0
     for column in "${columnList[@]}"; do

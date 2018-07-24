@@ -153,9 +153,9 @@ const saveDefaultTable = (pool, table, repeatCount) => {
                     return col[Object.keys(col)[0]] === 'polygon' || col[Object.keys(col)[0]] === 'multipolygon' ? 
                       '@' + Object.keys(col)[0] :
                       Object.keys(col)[0]
-                  }).join('\t') + '\n')
+                  }).join('¥') + '\n')
                   rows.forEach((row) => { 
-                    file.write(Object.values(row).join('\t') + '\n') 
+                    file.write(Object.values(row).join('¥') + '\n') 
                   })
                   file.end()
                   allFiles.push(table + '.sql')
@@ -242,9 +242,9 @@ const saveOwnerTable = (pool, table, repeatCount) => {
                     return col[Object.keys(col)[0]] === 'polygon' || col[Object.keys(col)[0]] === 'multipolygon' ? 
                       '@' + Object.keys(col)[0] :
                       Object.keys(col)[0]
-                  }).join('\t') + '\n')
+                  }).join('¥') + '\n')
                   rows.forEach((row) => { 
-                    file.write(Object.values(row).join('\t') + '\n') 
+                    file.write(Object.values(row).join('¥') + '\n') 
                   })
                   file.end()
                   allFiles.push(table + '.sql')
@@ -289,9 +289,9 @@ const saveOwnerTable = (pool, table, repeatCount) => {
                       return col[Object.keys(col)[0]] === 'polygon' || col[Object.keys(col)[0]] === 'multipolygon' ? 
                         '@' + Object.keys(col)[0] :
                         Object.keys(col)[0]
-                    }).join('\t') + '\n')
+                    }).join('¥') + '\n')
                     rows.forEach((row) => { 
-                      file.write(Object.values(row).join('\t') + '\n') 
+                      file.write(Object.values(row).join('¥') + '\n') 
                     })
                     file.end()
                     allFiles.push(ownedTable + '.sql')
