@@ -204,12 +204,12 @@ CREATE TABLE `artefact_shape` (
   `artefact_id` int(11) unsigned NOT NULL DEFAULT 0,
   `id_of_sqe_image` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'This points to the master image (see SQE_image table) in which this artefact is found.',
   `region_in_sqe_image` polygon DEFAULT NULL COMMENT 'This is the exact polygon of the artefact’s location within the master image’s coordinate system.',
-  PRIMARY KEY (`artefact_shape_id`),
-  KEY `fk_artefact_shape_to_sqe_image_idx` (`id_of_sqe_image`),
-  KEY `fk_artefact_shape_to_artefact` (`artefact_id`),
+  PRIMARY KEY (`artefact_shape_id`) USING BTREE,
+  KEY `fk_artefact_shape_to_sqe_image_idx` (`id_of_sqe_image`) USING BTREE,
+  KEY `fk_artefact_shape_to_artefact` (`artefact_id`) USING BTREE,
   CONSTRAINT `fk_artefact_shape_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_artefact_shape_to_sqe_image` FOREIGN KEY (`id_of_sqe_image`) REFERENCES `SQE_image` (`sqe_image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3262 DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
+) ENGINE=InnoDB AUTO_INCREMENT=3269 DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -503,9 +503,9 @@ CREATE TABLE `external_font_glyph` (
   `path` multipolygon NOT NULL,
   `width` smallint(6) unsigned DEFAULT NULL,
   `height` smallint(5) unsigned DEFAULT NULL,
-  PRIMARY KEY (`external_font_glyph_id`),
+  PRIMARY KEY (`external_font_glyph_id`) USING BTREE,
   UNIQUE KEY `char_idx` (`unicode_char`) USING BTREE,
-  KEY `fk_efg_to_external_font_idx` (`external_font_id`),
+  KEY `fk_efg_to_external_font_idx` (`external_font_id`) USING BTREE,
   CONSTRAINT `fk_efg_to_external_font` FOREIGN KEY (`external_font_id`) REFERENCES `external_font` (`external_font_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2371 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
