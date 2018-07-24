@@ -2,8 +2,7 @@ FROM mariadb:10.2.11
 
 RUN mkdir -p /tmp/tables /tmp/schema
 
-ENV MYSQL_DATABASE=SQE_DEV \
-    MYSQL_ROOT_PASSWORD=none
+ENV MYSQL_ROOT_PASSWORD=none
 
 ADD ./import-database.sh /tmp
 ADD ./tables /tmp/tables

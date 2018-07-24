@@ -68,7 +68,7 @@ for file in /tmp/tables/*.sql; do
     columns=$(head -n 1 "$cwd/$file")
     printf "\rLoading table: ${table##*/}\n"
     queryString="SET FOREIGN_KEY_CHECKS=0;
-    LOAD DATA LOCAL INFILE '$file' INTO TABLE ${table##*/} CHARACTER SET UTF8 FIELDS TERMINATED BY ',' IGNORE 1 LINES ($columns)"
+    LOAD DATA LOCAL INFILE '$file' INTO TABLE ${table##*/} FIELDS TERMINATED BY ',' IGNORE 1 LINES ($columns)"
     IFS=',' read -r -a columnList <<< "$columns"
     foundColumns=0
     for column in "${columnList[@]}"; do
