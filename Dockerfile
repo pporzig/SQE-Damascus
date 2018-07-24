@@ -1,4 +1,4 @@
-FROM mariadb:10.2.11
+FROM mariadb:10.2.14
 
 RUN mkdir -p /tmp/tables /tmp/schema
 
