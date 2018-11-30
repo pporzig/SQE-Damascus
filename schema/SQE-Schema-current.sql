@@ -39,7 +39,7 @@ CREATE TABLE `SQE_image` (
   KEY `fk_image_to_catalog` (`image_catalog_id`),
   CONSTRAINT `fk_image_to_catalog` FOREIGN KEY (`image_catalog_id`) REFERENCES `image_catalog` (`image_catalog_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_image_to_url` FOREIGN KEY (`image_urls_id`) REFERENCES `image_urls` (`image_urls_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=38808 DEFAULT CHARSET=utf8 COMMENT='This table defines an image.  It contains referencing data to access the image via iiif servers, it also stores metadata relating to the image itself, such as sizing, resolution, image color range, etc.  It also maintains a link to the institutional referencing system, and the referencing of the editio princeps (as provided by the imaging institution).';
+) ENGINE=InnoDB AUTO_INCREMENT=107841 DEFAULT CHARSET=utf8 COMMENT='This table defines an image.  It contains referencing data to access the image via iiif servers, it also stores metadata relating to the image itself, such as sizing, resolution, image color range, etc.  It also maintains a link to the institutional referencing system, and the referencing of the editio princeps (as provided by the imaging institution).';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ DROP TABLE IF EXISTS `artefact`;
 CREATE TABLE `artefact` (
   `artefact_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`artefact_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3290 DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
+) ENGINE=InnoDB AUTO_INCREMENT=12464 DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +137,7 @@ CREATE TABLE `artefact_data` (
   PRIMARY KEY (`artefact_data_id`),
   KEY `fk_artefact_data_to_artefact` (`artefact_id`),
   CONSTRAINT `fk_artefact_data_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1998 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12464 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +172,7 @@ CREATE TABLE `artefact_position` (
   PRIMARY KEY (`artefact_position_id`),
   KEY `fk_artefact_position_to_artefact` (`artefact_id`),
   CONSTRAINT `fk_artefact_position_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1998 DEFAULT CHARSET=utf8 COMMENT='This table defines the location and rotation of an artefact within the scroll.';
+) ENGINE=InnoDB AUTO_INCREMENT=6236 DEFAULT CHARSET=utf8 COMMENT='This table defines the location and rotation of an artefact within the scroll.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,7 +189,7 @@ CREATE TABLE `artefact_position_owner` (
   KEY `fk_artefact_position_owner_to_scroll_version` (`scroll_version_id`),
   CONSTRAINT `fk_artefact_position_owner_to_artefact` FOREIGN KEY (`artefact_position_id`) REFERENCES `artefact_position` (`artefact_position_id`),
   CONSTRAINT `fk_artefact_position_owner_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1998 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6236 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,7 +209,7 @@ CREATE TABLE `artefact_shape` (
   KEY `fk_artefact_shape_to_artefact` (`artefact_id`) USING BTREE,
   CONSTRAINT `fk_artefact_shape_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_artefact_shape_to_sqe_image` FOREIGN KEY (`id_of_sqe_image`) REFERENCES `SQE_image` (`sqe_image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3269 DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
+) ENGINE=InnoDB AUTO_INCREMENT=12464 DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -741,56 +741,6 @@ CREATE TABLE `main_action` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `parallel_group`
---
-
-DROP TABLE IF EXISTS `parallel_group`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `parallel_group` (
-  `parallel_group_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`parallel_group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `parallel_word`
---
-
-DROP TABLE IF EXISTS `parallel_word`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `parallel_word` (
-  `parallel_word_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `word_id` int(10) unsigned NOT NULL,
-  `parallel_group_id` int(10) unsigned NOT NULL,
-  `sub_group` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  PRIMARY KEY (`parallel_word_id`),
-  KEY `fk_par_word_to_group_idx` (`parallel_group_id`),
-  KEY `fk_par_owrd_to_word_idx` (`word_id`),
-  CONSTRAINT `fk_par_owrd_to_word` FOREIGN KEY (`word_id`) REFERENCES `word` (`word_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_par_word_to_group` FOREIGN KEY (`parallel_group_id`) REFERENCES `parallel_group` (`parallel_group_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `parallel_word_owner`
---
-
-DROP TABLE IF EXISTS `parallel_word_owner`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `parallel_word_owner` (
-  `parallel_word_id` int(10) unsigned NOT NULL,
-  `scroll_version_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`parallel_word_id`,`scroll_version_id`),
-  KEY `fk_par_word_owner_to_sc_idx` (`scroll_version_id`),
-  CONSTRAINT `fk_par_word_owner_to_par_word` FOREIGN KEY (`parallel_word_id`) REFERENCES `parallel_word` (`parallel_word_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_par_word_owner_to_sc` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `position_in_stream`
 --
 
@@ -844,116 +794,6 @@ CREATE TABLE `position_in_stream_to_word_rel` (
   CONSTRAINT `fk_rel_position_in_stream` FOREIGN KEY (`position_in_stream_id`) REFERENCES `position_in_stream` (`position_in_stream_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_rel_to_word` FOREIGN KEY (`word_id`) REFERENCES `word` (`word_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Links individual signs to words, which are then linked to data in the QWB database.';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `qwb_biblio`
---
-
-DROP TABLE IF EXISTS `qwb_biblio`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `qwb_biblio` (
-  `qwb_biblio_id` int(10) unsigned NOT NULL,
-  `biblio_short` varchar(255) NOT NULL,
-  `biblio_long` text NOT NULL,
-  PRIMARY KEY (`qwb_biblio_id`),
-  UNIQUE KEY `qwb_biblio_id_UNIQUE` (`qwb_biblio_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `qwb_ref`
---
-
-DROP TABLE IF EXISTS `qwb_ref`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `qwb_ref` (
-  `qwb_ref_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ref_text` varchar(255) DEFAULT NULL,
-  `book_position` smallint(5) unsigned NOT NULL DEFAULT 0,
-  PRIMARY KEY (`qwb_ref_id`),
-  UNIQUE KEY `ref_text` (`ref_text`)
-) ENGINE=InnoDB AUTO_INCREMENT=169015 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `qwb_variant`
---
-
-DROP TABLE IF EXISTS `qwb_variant`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `qwb_variant` (
-  `qwb_variant_id` int(10) unsigned NOT NULL,
-  `qwd_word_id` int(10) unsigned NOT NULL,
-  `text` varchar(83) DEFAULT NULL,
-  `lemma` varchar(35) DEFAULT NULL,
-  `grammar` varchar(33) DEFAULT NULL,
-  `meaning` varchar(50) DEFAULT NULL,
-  `type` enum('variant','missing','addition') DEFAULT NULL,
-  `commentary` text DEFAULT NULL,
-  `qwb_biblio_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`qwb_variant_id`),
-  KEY `fk_qwb_var_to_qwb_biblio_idx` (`qwb_biblio_id`),
-  KEY `fk_qwb_var_to_qwb_data_idx` (`qwd_word_id`),
-  CONSTRAINT `fk_qwb_var_to_qwb_biblio` FOREIGN KEY (`qwb_biblio_id`) REFERENCES `qwb_biblio` (`qwb_biblio_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_qwb_var_to_qwb_data` FOREIGN KEY (`qwd_word_id`) REFERENCES `qwb_word_data` (`qwb_word_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `qwb_variant_owner`
---
-
-DROP TABLE IF EXISTS `qwb_variant_owner`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `qwb_variant_owner` (
-  `qwb_variant_id` int(10) unsigned NOT NULL,
-  `scroll_version_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`qwb_variant_id`,`scroll_version_id`),
-  KEY `fk_qwb_var_owner_to_sc_idx` (`scroll_version_id`),
-  CONSTRAINT `fk_qwb_var_owner_to_sc` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_qwb_var_owner_to_var` FOREIGN KEY (`qwb_variant_id`) REFERENCES `qwb_variant` (`qwb_variant_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `qwb_word_data`
---
-
-DROP TABLE IF EXISTS `qwb_word_data`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `qwb_word_data` (
-  `qwb_word_data_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `qwb_word_id` int(10) unsigned NOT NULL,
-  `text` varchar(33) DEFAULT NULL,
-  `position` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `qwb_ref_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`qwb_word_data_id`),
-  KEY `fk_qwb_word_data_to_ref_idx` (`qwb_ref_id`),
-  CONSTRAINT `fk_qwb_word_data_to_ref` FOREIGN KEY (`qwb_ref_id`) REFERENCES `qwb_ref` (`qwb_ref_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=785126 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `qwb_word_data_owner`
---
-
-DROP TABLE IF EXISTS `qwb_word_data_owner`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `qwb_word_data_owner` (
-  `qwb_word_data_id` int(10) unsigned NOT NULL,
-  `scroll_version_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`qwb_word_data_id`,`scroll_version_id`),
-  KEY `fk_qwb_data_owner_to_sc_idx` (`scroll_version_id`),
-  CONSTRAINT `fk_qwb_data_owner_to_data` FOREIGN KEY (`qwb_word_data_id`) REFERENCES `qwb_word_data` (`qwb_word_data_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_qwb_data_owner_to_sc` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1058,7 +898,7 @@ DROP TABLE IF EXISTS `scroll`;
 CREATE TABLE `scroll` (
   `scroll_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`scroll_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1655 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1654 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1149,7 +989,7 @@ CREATE TABLE `scroll_version` (
   KEY `fk_scroll_version_tos_vg_idx` (`scroll_version_group_id`),
   CONSTRAINT `fk_scroll_version_to_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_scroll_version_tos_vg` FOREIGN KEY (`scroll_version_group_id`) REFERENCES `scroll_version_group` (`scroll_version_group_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1607 DEFAULT CHARSET=utf8 COMMENT='This table defines unique versions of a reconstructed scroll.';
+) ENGINE=InnoDB AUTO_INCREMENT=1606 DEFAULT CHARSET=utf8 COMMENT='This table defines unique versions of a reconstructed scroll.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1166,7 +1006,7 @@ CREATE TABLE `scroll_version_group` (
   PRIMARY KEY (`scroll_version_group_id`),
   KEY `fk_sv_group_to_scroll_idx` (`scroll_id`),
   CONSTRAINT `fk_sv_group_to_scroll` FOREIGN KEY (`scroll_id`) REFERENCES `scroll` (`scroll_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1647 DEFAULT CHARSET=utf8 COMMENT='This table provides a unique group id for scrollversions and the possibilty to lock all members of the group';
+) ENGINE=InnoDB AUTO_INCREMENT=1646 DEFAULT CHARSET=utf8 COMMENT='This table provides a unique group id for scrollversions and the possibilty to lock all members of the group';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1459,8 +1299,7 @@ CREATE TABLE `word` (
   `qwb_word_id` int(11) unsigned DEFAULT NULL COMMENT 'Old word identifier from QWB.',
   `commentary` text DEFAULT NULL,
   PRIMARY KEY (`word_id`),
-  KEY `old_word_idx` (`qwb_word_id`),
-  CONSTRAINT `fk_word_to_qwb_word_data` FOREIGN KEY (`qwb_word_id`) REFERENCES `qwb_word_data` (`qwb_word_data_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `old_word_idx` (`qwb_word_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=380474 DEFAULT CHARSET=utf8 COMMENT='A collection of signs from a stream. Maintains link to original QWB word id.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
