@@ -619,6 +619,7 @@ CREATE TABLE `image_urls` (
   `image_urls_id` int(11) unsigned NOT NULL DEFAULT 0,
   `url` varchar(128) NOT NULL COMMENT 'Address to iiif compliant server.',
   `suffix` varchar(128) NOT NULL DEFAULT '''''default.jpg''''' COMMENT 'Use this only if you need to set a specific suffix due to the server not properly supporting the standard “default.jpg”.',
+  `proxy` varchar(128) NOT NULL DEFAULT '' COMMENT 'The proxy server used to sanitie the image for CORS(*) and SSL.',
   PRIMARY KEY (`image_urls_id`,`url`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='URL’s for the iiif image servers providing our images.';
 /*!40101 SET character_set_client = @saved_cs_client */;
