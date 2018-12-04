@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.2.14-MariaDB, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.16  Distrib 10.2.11-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: SQE_DEV
 -- ------------------------------------------------------
--- Server version	10.2.14-MariaDB-10.2.14+maria~jessie
+-- Server version	10.2.11-MariaDB-10.2.11+maria~jessie
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -120,7 +120,7 @@ DROP TABLE IF EXISTS `artefact`;
 CREATE TABLE `artefact` (
   `artefact_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`artefact_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12464 DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
+) ENGINE=InnoDB AUTO_INCREMENT=12455 DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +137,7 @@ CREATE TABLE `artefact_data` (
   PRIMARY KEY (`artefact_data_id`),
   KEY `fk_artefact_data_to_artefact` (`artefact_id`),
   CONSTRAINT `fk_artefact_data_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12464 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12455 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +172,7 @@ CREATE TABLE `artefact_position` (
   PRIMARY KEY (`artefact_position_id`),
   KEY `fk_artefact_position_to_artefact` (`artefact_id`),
   CONSTRAINT `fk_artefact_position_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6236 DEFAULT CHARSET=utf8 COMMENT='This table defines the location and rotation of an artefact within the scroll.';
+) ENGINE=InnoDB AUTO_INCREMENT=6232 DEFAULT CHARSET=utf8 COMMENT='This table defines the location and rotation of an artefact within the scroll.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,7 +189,7 @@ CREATE TABLE `artefact_position_owner` (
   KEY `fk_artefact_position_owner_to_scroll_version` (`scroll_version_id`),
   CONSTRAINT `fk_artefact_position_owner_to_artefact` FOREIGN KEY (`artefact_position_id`) REFERENCES `artefact_position` (`artefact_position_id`),
   CONSTRAINT `fk_artefact_position_owner_to_scroll_version` FOREIGN KEY (`scroll_version_id`) REFERENCES `scroll_version` (`scroll_version_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6236 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6232 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -209,7 +209,7 @@ CREATE TABLE `artefact_shape` (
   KEY `fk_artefact_shape_to_artefact` (`artefact_id`) USING BTREE,
   CONSTRAINT `fk_artefact_shape_to_artefact` FOREIGN KEY (`artefact_id`) REFERENCES `artefact` (`artefact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_artefact_shape_to_sqe_image` FOREIGN KEY (`id_of_sqe_image`) REFERENCES `SQE_image` (`sqe_image_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12464 DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
+) ENGINE=InnoDB AUTO_INCREMENT=12455 DEFAULT CHARSET=utf8 COMMENT='Every scroll combination is made up from artefacts.  The artefact is a polygon region of an image which the editor deems to constitute a coherent piece of material (different editors may come to different conclusions on what makes up an artefact).  This may correspond to what the editors of an editio princeps have designated a “fragment”, but often may not, since the columns and fragments in those publications are often made up of joins of various types.  Joined fragments should not, as a rule, be defined as a single artefact with the SQE system.  Rather, each component of a join should be a separate artefact, and those artefacts can then be positioned properly with each other via the artefact_position table.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
