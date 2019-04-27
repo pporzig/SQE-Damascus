@@ -1,0 +1,2712 @@
+{
+  "11Q1\t-1039\t1\tRB96 pl.II:J+": [
+    {
+      "manuscript": "11Q1",
+      "plate": "-1039",
+      "fragment": "1",
+      "edition": "RB",
+      "volume": "96",
+      "ed_plate": "II",
+      "ed_fragment": "J+"
+    }
+  ],
+  "11Q1\t-1039\t3\tRB96 pl.II:H+": [
+    {
+      "manuscript": "11Q1",
+      "plate": "-1039",
+      "fragment": "3",
+      "edition": "RB",
+      "volume": "96",
+      "ed_plate": "II",
+      "ed_fragment": "H+"
+    }
+  ],
+  "11Q1\t-567\t14\tRB96 pl.I:A+": [
+    {
+      "manuscript": "11Q1",
+      "plate": "-567",
+      "fragment": "14",
+      "edition": "RB",
+      "volume": "96",
+      "ed_plate": "I",
+      "ed_fragment": "A+"
+    }
+  ],
+  "11Q1\t-567\t15\tRB96 pl.I:F+": [
+    {
+      "manuscript": "11Q1",
+      "plate": "-567",
+      "fragment": "15",
+      "edition": "RB",
+      "volume": "96",
+      "ed_plate": "I",
+      "ed_fragment": "F+"
+    }
+  ],
+  "11Q1\t-567\t16\tRB96 pl.I:F+": [
+    {
+      "manuscript": "11Q1",
+      "plate": "-567",
+      "fragment": "16",
+      "edition": "RB",
+      "volume": "96",
+      "ed_plate": "I",
+      "ed_fragment": "F+"
+    }
+  ],
+  "4Q167\t-354\t16\tDJD5 pl.XI:15+33+pl.XII:2": [
+    {
+      "manuscript": "4Q167",
+      "plate": "-354",
+      "fragment": "16",
+      "edition": "DJD",
+      "volume": "5",
+      "ed_plate": "XI",
+      "ed_fragment": "15+33+pl.XII:2"
+    }
+  ],
+  "4Q176\t-293\t26\tDJD5 pl. XXIII:47": [
+    {
+      "manuscript": "4Q176",
+      "plate": "-293",
+      "fragment": "26",
+      "edition": "DJD",
+      "volume": "5",
+      "ed_plate": " XXIII",
+      "ed_fragment": "47"
+    }
+  ],
+  "4Q186\t-109\t7\tDJD V pl. XXXI:3": [
+    {
+      "manuscript": "4Q186",
+      "plate": "-109",
+      "fragment": "7",
+      "edition": "DJD",
+      "volume": null,
+      "ed_plate": " XXXI",
+      "ed_fragment": "3"
+    }
+  ],
+  "4Q186\t-109\t8\tDJD V pl. XXXI:3": [
+    {
+      "manuscript": "4Q186",
+      "plate": "-109",
+      "fragment": "8",
+      "edition": "DJD",
+      "volume": null,
+      "ed_plate": " XXXI",
+      "ed_fragment": "3"
+    }
+  ],
+  "4Q214\t-370\t2\tDJD22 pl.IV:5-6": [
+    {
+      "manuscript": "4Q214",
+      "plate": "-370",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "22",
+      "ed_plate": "IV",
+      "ed_fragment": "5-6"
+    }
+  ],
+  "4Q214\t-370\t3\tDJD22 pl.IV:1-3": [
+    {
+      "manuscript": "4Q214",
+      "plate": "-370",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "22",
+      "ed_plate": "IV",
+      "ed_fragment": "1-3"
+    }
+  ],
+  "4Q214\t-370\t5\tDJD22 pl.IV:2-3": [
+    {
+      "manuscript": "4Q214",
+      "plate": "-370",
+      "fragment": "5",
+      "edition": "DJD",
+      "volume": "22",
+      "ed_plate": "IV",
+      "ed_fragment": "2-3"
+    }
+  ],
+  "4Q215\t-368\t1\tDJD22 pl.V:1-3": [
+    {
+      "manuscript": "4Q215",
+      "plate": "-368",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "22",
+      "ed_plate": "V",
+      "ed_fragment": "1-3"
+    }
+  ],
+  "4Q22\t(661/1)\t1\tDJD9 pl.XI:col.VIII": [
+    {
+      "manuscript": "4Q22",
+      "plate": "(661/1)",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "9",
+      "ed_plate": "XI",
+      "ed_fragment": "col.VIII"
+    }
+  ],
+  "4Q259\t-683\t1\tDJD26 pl. XVI:4a": [
+    {
+      "manuscript": "4Q259",
+      "plate": "-683",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "26",
+      "ed_plate": " XVI",
+      "ed_fragment": "4a"
+    }
+  ],
+  "4Q259\t-683\t2\tDJD26 pl. XVI:4a": [
+    {
+      "manuscript": "4Q259",
+      "plate": "-683",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "26",
+      "ed_plate": " XVI",
+      "ed_fragment": "4a"
+    }
+  ],
+  "4Q259\t-683\t3\tDJD26 pl. XVI:4a": [
+    {
+      "manuscript": "4Q259",
+      "plate": "-683",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "26",
+      "ed_plate": " XVI",
+      "ed_fragment": "4a"
+    }
+  ],
+  "4Q259\t-683\t4\tDJD26 pl. XVI:4c": [
+    {
+      "manuscript": "4Q259",
+      "plate": "-683",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "26",
+      "ed_plate": " XVI",
+      "ed_fragment": "4c"
+    }
+  ],
+  "4Q259\t-683\t5\tDJD26 pl. XVI:4b": [
+    {
+      "manuscript": "4Q259",
+      "plate": "-683",
+      "fragment": "5",
+      "edition": "DJD",
+      "volume": "26",
+      "ed_plate": " XVI",
+      "ed_fragment": "4b"
+    }
+  ],
+  "4Q266\t-202\t6\tDJD18 pl.XIII:10 ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-202",
+      "fragment": "6",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XIII",
+      "ed_fragment": "10 ii"
+    }
+  ],
+  "4Q266\t-680\t1\tDJD18 pl.VI:5 i a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-680",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VI",
+      "ed_fragment": "5 i a"
+    }
+  ],
+  "4Q266\t-680\t3\tDJD18 pl.V:4 d": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-680",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "V",
+      "ed_fragment": "4 d"
+    }
+  ],
+  "4Q266\t-680\t4\tDJD18 pl.V:4 b": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-680",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "V",
+      "ed_fragment": "4 b"
+    }
+  ],
+  "4Q266\t-680\t5\tDJD18 pl.XI:9 iii f": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-680",
+      "fragment": "5",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XI",
+      "ed_fragment": "9 iii f"
+    }
+  ],
+  "4Q266\t-680\t6\tDJD18 pl.VI:5 i c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-680",
+      "fragment": "6",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VI",
+      "ed_fragment": "5 i c"
+    }
+  ],
+  "4Q266\t-680\t8\tDJD18 pl.VI:5 i d": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-680",
+      "fragment": "8",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VI",
+      "ed_fragment": "5 i d"
+    }
+  ],
+  "4Q266\t-680\t9\tDJD18 pl.VI:5 ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-680",
+      "fragment": "9",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VI",
+      "ed_fragment": "5 ii"
+    }
+  ],
+  "4Q266\t-680\t10\tDJD18 pl.VI:5 i b": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-680",
+      "fragment": "10",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VI",
+      "ed_fragment": "5 i b"
+    }
+  ],
+  "4Q266\t-686\t1\tDJD18 pl.X:8 ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-686",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "X",
+      "ed_fragment": "8 ii"
+    }
+  ],
+  "4Q266\t-686\t2\tDJD18 pl.X:8 i-ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-686",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "X",
+      "ed_fragment": "8 i-ii"
+    }
+  ],
+  "4Q266\t-686\t3\tDJD18 pl.X:8 ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-686",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "X",
+      "ed_fragment": "8 ii"
+    }
+  ],
+  "4Q266\t-686\t4\tDJD18 pl.X:8 iii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-686",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "X",
+      "ed_fragment": "8 iii"
+    }
+  ],
+  "4Q266\t-686\t5\tDJD18 pl.X:8 iii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-686",
+      "fragment": "5",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "X",
+      "ed_fragment": "8 iii"
+    }
+  ],
+  "4Q266\t-686\t6\tDJD18 pl.X:8 iii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-686",
+      "fragment": "6",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "X",
+      "ed_fragment": "8 iii"
+    }
+  ],
+  "4Q266\t-686\t8\tDJD18 pl.X:8 iii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-686",
+      "fragment": "8",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "X",
+      "ed_fragment": "8 iii"
+    }
+  ],
+  "4Q266\t-687\t1\tDJD18 pl.XI:9 i d": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-687",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XI",
+      "ed_fragment": "9 i d"
+    }
+  ],
+  "4Q266\t-687\t2\tDJD18 pl.XI:9 iii a+b+c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-687",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XI",
+      "ed_fragment": "9 iii a+b+c"
+    }
+  ],
+  "4Q266\t-687\t3\tDJD18 pl.XI:9 ii a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-687",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XI",
+      "ed_fragment": "9 ii a"
+    }
+  ],
+  "4Q266\t-687\t4\tDJD18 pl.XI:9 ii b": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-687",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XI",
+      "ed_fragment": "9 ii b"
+    }
+  ],
+  "4Q266\t-687\t5\tDJD18 pl.XI:9 iii d": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-687",
+      "fragment": "5",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XI",
+      "ed_fragment": "9 iii d"
+    }
+  ],
+  "4Q266\t-689\t4\tDJD18 pl.VII:6 i e": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VII",
+      "ed_fragment": "6 i e"
+    }
+  ],
+  "4Q266\t-689\t6\tDJD18 pl.II:2 ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "6",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "II",
+      "ed_fragment": "2 ii"
+    }
+  ],
+  "4Q266\t-689\t12\tDJD18 pl.VII:6 i c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "12",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VII",
+      "ed_fragment": "6 i c"
+    }
+  ],
+  "4Q266\t-689\t18\tDJD18 pl.VII:6 ii a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "18",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VII",
+      "ed_fragment": "6 ii a"
+    }
+  ],
+  "4Q266\t-689\t19\tDJD18 pl.IX:7 i b": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "19",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IX",
+      "ed_fragment": "7 i b"
+    }
+  ],
+  "4Q266\t-689\t32\tDJD18 pl.XVI:I:1f": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "32",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XVI",
+      "ed_fragment": "I:1f"
+    }
+  ],
+  "4Q266\t-689\t35\tDJD18 pl.III:3 i d": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "35",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "III",
+      "ed_fragment": "3 i d"
+    }
+  ],
+  "4Q266\t-689\t38\tDJD18 pl.II:2 iii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "38",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "II",
+      "ed_fragment": "2 iii"
+    }
+  ],
+  "4Q266\t-689\t48\tDJD18 pl.III:3 i a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "48",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "III",
+      "ed_fragment": "3 i a"
+    }
+  ],
+  "4Q266\t-689\t49\tDJD18 pl.III:3 i b": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "49",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "III",
+      "ed_fragment": "3 i b"
+    }
+  ],
+  "4Q266\t-689\t51\tDJD18 pl.VII:6 i b": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "51",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VII",
+      "ed_fragment": "6 i b"
+    }
+  ],
+  "4Q266\t-689\t54\tDJD18 pl.II:2 iii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "54",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "II",
+      "ed_fragment": "2 iii"
+    }
+  ],
+  "4Q266\t-689\t55\tDJD18 pl.III:3 ii e": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "55",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "III",
+      "ed_fragment": "3 ii e"
+    }
+  ],
+  "4Q266\t-689\t64\tDJD18 pl.XI:9 i b": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "64",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XI",
+      "ed_fragment": "9 i b"
+    }
+  ],
+  "4Q266\t-689\t65\tDJD18 pl.XI:9 i c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "65",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XI",
+      "ed_fragment": "9 i c"
+    }
+  ],
+  "4Q266\t-689\t66\tDJD18 pl.IX:7 iii c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "66",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IX",
+      "ed_fragment": "7 iii c"
+    }
+  ],
+  "4Q266\t-689\t68\tDJD18 pl.XI:9 i a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "68",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XI",
+      "ed_fragment": "9 i a"
+    }
+  ],
+  "4Q266\t-689\t73\tDJD18 pl.IV:3 iii a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "73",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IV",
+      "ed_fragment": "3 iii a"
+    }
+  ],
+  "4Q266\t-689\t75\tDJD18 pl.IX:7 ii a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "75",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IX",
+      "ed_fragment": "7 ii a"
+    }
+  ],
+  "4Q266\t-689\t76\tDJD18 pl.XI:9 ii c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "76",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XI",
+      "ed_fragment": "9 ii c"
+    }
+  ],
+  "4Q266\t-689\t86\tDJD18 pl.VII:6 i d": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "86",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VII",
+      "ed_fragment": "6 i d"
+    }
+  ],
+  "4Q266\t-689\t90\tDJD18 pl.IV:3 iii a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "90",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IV",
+      "ed_fragment": "3 iii a"
+    }
+  ],
+  "4Q266\t-689\t93\tDJD18 pl.XI:9 iii e": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-689",
+      "fragment": "93",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XI",
+      "ed_fragment": "9 iii e"
+    }
+  ],
+  "4Q266\t-699\t1\tDJD18 pl.III:3 ii a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "III",
+      "ed_fragment": "3 ii a"
+    }
+  ],
+  "4Q266\t-699\t2\tDJD18 pl.III:3 ii b": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "III",
+      "ed_fragment": "3 ii b"
+    }
+  ],
+  "4Q266\t-699\t3\tDJD18 pl.III:3 i c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "III",
+      "ed_fragment": "3 i c"
+    }
+  ],
+  "4Q266\t-699\t4\tDJD18 pl.III:3 ii b": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "III",
+      "ed_fragment": "3 ii b"
+    }
+  ],
+  "4Q266\t-699\t5\tDJD18 pl.III:3 ii c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "5",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "III",
+      "ed_fragment": "3 ii c"
+    }
+  ],
+  "4Q266\t-699\t6\tDJD18 pl.III:3 ii d": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "6",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "III",
+      "ed_fragment": "3 ii d"
+    }
+  ],
+  "4Q266\t-699\t7\tDJD18 pl.XI:9 iii g": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "7",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XI",
+      "ed_fragment": "9 iii g"
+    }
+  ],
+  "4Q266\t-699\t8\tDJD18 pl.IV:3 iii c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "8",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IV",
+      "ed_fragment": "3 iii c"
+    }
+  ],
+  "4Q266\t-699\t9\tDJD18 pl.IV:3 iii c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "9",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IV",
+      "ed_fragment": "3 iii c"
+    }
+  ],
+  "4Q266\t-699\t10\tDJD18 pl.IV:3 iii c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "10",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IV",
+      "ed_fragment": "3 iii c"
+    }
+  ],
+  "4Q266\t-699\t11\tDJD18 pl.IV:3 iii c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "11",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IV",
+      "ed_fragment": "3 iii c"
+    }
+  ],
+  "4Q266\t-699\t12\tDJD18 pl.IV:3 iii c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "12",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IV",
+      "ed_fragment": "3 iii c"
+    }
+  ],
+  "4Q266\t-699\t13\tDJD18 pl.IV:3 iii c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "13",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IV",
+      "ed_fragment": "3 iii c"
+    }
+  ],
+  "4Q266\t-699\t14\tDJD18 pl.IV:3 iv a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "14",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IV",
+      "ed_fragment": "3 iv a"
+    }
+  ],
+  "4Q266\t-699\t15\tDJD18 pl.IV:3 iv b": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-699",
+      "fragment": "15",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IV",
+      "ed_fragment": "3 iv b"
+    }
+  ],
+  "4Q266\t-700\t1\tDJD18 pl.VIII:6 iii b": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-700",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VIII",
+      "ed_fragment": "6 iii b"
+    }
+  ],
+  "4Q266\t-700\t2\tDJD18 pl.VIII:6 iv (right)": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-700",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VIII",
+      "ed_fragment": "6 iv",
+      "comment": "(right)"
+    }
+  ],
+  "4Q266\t-700\t3\tDJD18 pl.VIII:6 iv (left)": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-700",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VIII",
+      "ed_fragment": "6 iv",
+      "comment": "(left)"
+    }
+  ],
+  "4Q266\t-700\t4\tDJD18 pl.VIII:6 iv a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-700",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VIII",
+      "ed_fragment": "6 iv a"
+    }
+  ],
+  "4Q266\t-700\t9\tDJD18 pl.IX:7 ii b": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-700",
+      "fragment": "9",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IX",
+      "ed_fragment": "7 ii b"
+    }
+  ],
+  "4Q266\t-700\t11\tDJD18 pl.VII:6 i a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-700",
+      "fragment": "11",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VII",
+      "ed_fragment": "6 i a"
+    }
+  ],
+  "4Q266\t-700\t12\tDJD18 pl.IX:7 iii c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-700",
+      "fragment": "12",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IX",
+      "ed_fragment": "7 iii c"
+    }
+  ],
+  "4Q266\t-700\t13\tDJD18 pl.IX:7 iii d": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-700",
+      "fragment": "13",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IX",
+      "ed_fragment": "7 iii d"
+    }
+  ],
+  "4Q266\t-700\t14\tDJD18 pl.IX:7 iii a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-700",
+      "fragment": "14",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IX",
+      "ed_fragment": "7 iii a"
+    }
+  ],
+  "4Q266\t-701\t1\tDJD18 pl.II:2 i-ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-701",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "II",
+      "ed_fragment": "2 i-ii"
+    }
+  ],
+  "4Q266\t-701\t2\tDJD18 pl.II:2 i": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-701",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "II",
+      "ed_fragment": "2 i"
+    }
+  ],
+  "4Q266\t-701\t3\tDJD18 pl.II:2 i": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-701",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "II",
+      "ed_fragment": "2 i"
+    }
+  ],
+  "4Q266\t-701\t4\tDJD18 pl.II:2 i": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-701",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "II",
+      "ed_fragment": "2 i"
+    }
+  ],
+  "4Q266\t-701\t5\tDJD18 pl.II:2 ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-701",
+      "fragment": "5",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "II",
+      "ed_fragment": "2 ii"
+    }
+  ],
+  "4Q266\t-701\t6\tDJD18 pl.II:2 ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-701",
+      "fragment": "6",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "II",
+      "ed_fragment": "2 ii"
+    }
+  ],
+  "4Q266\t-704\t1\tDJD18 pl.IX:7 i a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-704",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "IX",
+      "ed_fragment": "7 i a"
+    }
+  ],
+  "4Q266\t-704\t2\tDJD18 pl.VII:6 i c": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-704",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VII",
+      "ed_fragment": "6 i c"
+    }
+  ],
+  "4Q266\t-704\t3\tappears to be part of DJD18 pl.VIII:6 iii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-704",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VIII",
+      "ed_fragment": "6 iii"
+    }
+  ],
+  "4Q266\t-704\t4\tDJD18 pl.VIII:6 iii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-704",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VIII",
+      "ed_fragment": "6 iii"
+    }
+  ],
+  "4Q266\t-704\t5\tDJD18 pl.VIII:6 iii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-704",
+      "fragment": "5",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VIII",
+      "ed_fragment": "6 iii"
+    }
+  ],
+  "4Q266\t-704\t7\tDJD18 pl.VIII:6 iii a": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-704",
+      "fragment": "7",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VIII",
+      "ed_fragment": "6 iii a"
+    }
+  ],
+  "4Q266\t-704\t8\tDJD18 pl.VIII:6 iii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-704",
+      "fragment": "8",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VIII",
+      "ed_fragment": "6 iii"
+    }
+  ],
+  "4Q266\t(704/1)\t2\tDJD18 pl.VII:6 i": [
+    {
+      "manuscript": "4Q266",
+      "plate": "(704/1)",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VII",
+      "ed_fragment": "6 i"
+    }
+  ],
+  "4Q266\t(704/1)\t3\tDJD18 pl.VII:6 ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "(704/1)",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VII",
+      "ed_fragment": "6 ii"
+    }
+  ],
+  "4Q266\t(704/1)\t1\tDJD18 pl.VII:6 ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "(704/1)",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VII",
+      "ed_fragment": "6 ii"
+    }
+  ],
+  "4Q266\t(704/1)\t4\tDJD18 pl.VII:6 ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "(704/1)",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "VII",
+      "ed_fragment": "6 ii"
+    }
+  ],
+  "4Q266\t-707\t1\tDJD18 pl.XIII:10 ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-707",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XIII",
+      "ed_fragment": "10 ii"
+    }
+  ],
+  "4Q266\t-707\t2\tDJD18 pl.XIII:10 ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-707",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XIII",
+      "ed_fragment": "10 ii"
+    }
+  ],
+  "4Q266\t-707\t3\tDJD18 pl.XII:10 i": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-707",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XII",
+      "ed_fragment": "10 i"
+    }
+  ],
+  "4Q266\t-707\t4\tDJD18 pl.XII:10 i": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-707",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XII",
+      "ed_fragment": "10 i"
+    }
+  ],
+  "4Q266\t-707\t5\tDJD18 pl.XIII:10 ii": [
+    {
+      "manuscript": "4Q266",
+      "plate": "-707",
+      "fragment": "5",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XIII",
+      "ed_fragment": "10 ii"
+    }
+  ],
+  "4Q267\t-107\t8\tDJD18 pl.XX:9 iv": [
+    {
+      "manuscript": "4Q267",
+      "plate": "-107",
+      "fragment": "8",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XX",
+      "ed_fragment": "9 iv"
+    }
+  ],
+  "4Q267\t-107\t10\tDJD18 pl.XX:9 i": [
+    {
+      "manuscript": "4Q267",
+      "plate": "-107",
+      "fragment": "10",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XX",
+      "ed_fragment": "9 i"
+    }
+  ],
+  "4Q267\t-107\t9\tDJD18 pl.XX:9 iv": [
+    {
+      "manuscript": "4Q267",
+      "plate": "-107",
+      "fragment": "9",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XX",
+      "ed_fragment": "9 iv"
+    }
+  ],
+  "4Q267\t-107\t11\tDJD18 pl.XX:9 v": [
+    {
+      "manuscript": "4Q267",
+      "plate": "-107",
+      "fragment": "11",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XX",
+      "ed_fragment": "9 v"
+    }
+  ],
+  "4Q267\t-107\t12\tDJD18 pl.XX:9 v": [
+    {
+      "manuscript": "4Q267",
+      "plate": "-107",
+      "fragment": "12",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XX",
+      "ed_fragment": "9 v"
+    }
+  ],
+  "4Q267\t-107\t19\tDJD18 pl.XXI:9 vi": [
+    {
+      "manuscript": "4Q267",
+      "plate": "-107",
+      "fragment": "19",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXI",
+      "ed_fragment": "9 vi"
+    }
+  ],
+  "4Q267\t-107\t17\tDJD18 pl.XX:9 ii": [
+    {
+      "manuscript": "4Q267",
+      "plate": "-107",
+      "fragment": "17",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XX",
+      "ed_fragment": "9 ii"
+    }
+  ],
+  "4Q267\t-107\t15\tDJD18 pl.XX:9 ii": [
+    {
+      "manuscript": "4Q267",
+      "plate": "-107",
+      "fragment": "15",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XX",
+      "ed_fragment": "9 ii"
+    }
+  ],
+  "4Q267\t-107\t25\tDJD18 pl.XX:9 iii": [
+    {
+      "manuscript": "4Q267",
+      "plate": "-107",
+      "fragment": "25",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XX",
+      "ed_fragment": "9 iii"
+    }
+  ],
+  "4Q267\t-107\t26\tDJD18 pl.XX:9 iii": [
+    {
+      "manuscript": "4Q267",
+      "plate": "-107",
+      "fragment": "26",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XX",
+      "ed_fragment": "9 iii"
+    }
+  ],
+  "4Q267\t-107\t24\tDJD18 pl.XX:9 iii": [
+    {
+      "manuscript": "4Q267",
+      "plate": "-107",
+      "fragment": "24",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XX",
+      "ed_fragment": "9 iii"
+    }
+  ],
+  "4Q269\t-75\t11\tDJD36 pl.IX:15 + DJD33 pl.XIV:20": [
+    {
+      "manuscript": "4Q269",
+      "plate": "-75",
+      "fragment": "11",
+      "edition": "DJD",
+      "volume": "36",
+      "ed_plate": "IX",
+      "ed_fragment": "15 +"
+    }
+  ],
+  "4Q269\t-75\t25\tDJD36 pl.IX:16 + DJD33 pl.XIV:29": [
+    {
+      "manuscript": "4Q269",
+      "plate": "-75",
+      "fragment": "25",
+      "edition": "DJD",
+      "volume": "36",
+      "ed_plate": "IX",
+      "ed_fragment": "16 +"
+    }
+  ],
+  "4Q27\t-1087\t18\tDJD 14 pl. VII:44": [
+    {
+      "manuscript": "4Q27",
+      "plate": "-1087",
+      "fragment": "18",
+      "edition": "DJD",
+      "volume": null,
+      "ed_plate": " VII",
+      "ed_fragment": "44"
+    }
+  ],
+  "4Q270\t-690\t4\tDJD18 pl.XXXI:6 ii": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-690",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXI",
+      "ed_fragment": "6 ii"
+    }
+  ],
+  "4Q270\t-690\t1\tDJD18 pl.XXXIII:6 iv": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-690",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXIII",
+      "ed_fragment": "6 iv"
+    }
+  ],
+  "4Q270\t-690\t2\tDJD18 pl.XXXI:6 i": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-690",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXI",
+      "ed_fragment": "6 i"
+    }
+  ],
+  "4Q270\t-690\t5\tDJD18 pl.XXXIII:6 iv": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-690",
+      "fragment": "5",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXIII",
+      "ed_fragment": "6 iv"
+    }
+  ],
+  "4Q270\t-690\t3\tDJD18 pl.XXXIII:6 v": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-690",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXIII",
+      "ed_fragment": "6 v"
+    }
+  ],
+  "4Q270\t-690\t7\tDJD18 pl.XXXI:6 i": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-690",
+      "fragment": "7",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXI",
+      "ed_fragment": "6 i"
+    }
+  ],
+  "4Q270\t-690\t6\tDJD18 pl.XXXI:6 i": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-690",
+      "fragment": "6",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXI",
+      "ed_fragment": "6 i"
+    }
+  ],
+  "4Q270\t-690\t10\tDJD18 pl.XXXI:6 i": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-690",
+      "fragment": "10",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXI",
+      "ed_fragment": "6 i"
+    }
+  ],
+  "4Q270\t-690\t8\tDJD18 pl.XXXI:6 i": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-690",
+      "fragment": "8",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXI",
+      "ed_fragment": "6 i"
+    }
+  ],
+  "4Q270\t-690\t9\tDJD18 pl.XXXII-XXXIII:6 iii-v": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-690",
+      "fragment": "9",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXII",
+      "ed_fragment": "6 iii-v"
+    },
+    {
+      "manuscript": "4Q270",
+      "plate": "-690",
+      "fragment": "9",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXIII",
+      "ed_fragment": "6 iii-v"
+    }
+  ],
+  "4Q270\t-690\t11\tDJD18 pl.XXXIII:6 iv": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-690",
+      "fragment": "11",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXIII",
+      "ed_fragment": "6 iv"
+    }
+  ],
+  "4Q270\t-690\t12\tDJD18 pl.XXXII:6 iii": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-690",
+      "fragment": "12",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXII",
+      "ed_fragment": "6 iii"
+    }
+  ],
+  "4Q270\t-690\t19\tDJD18 pl.XXXI:6 ii": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-690",
+      "fragment": "19",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXI",
+      "ed_fragment": "6 ii"
+    }
+  ],
+  "4Q270\t-697\t2\tDJD18 pl.XXXIII:6 iv": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-697",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXIII",
+      "ed_fragment": "6 iv"
+    }
+  ],
+  "4Q270\t-697\t13\tDJD18 pl.XXXIII:6 iv": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-697",
+      "fragment": "13",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXIII",
+      "ed_fragment": "6 iv"
+    }
+  ],
+  "4Q270\t-697\t9\tDJD18 pl.XXVIII:3 ii a": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-697",
+      "fragment": "9",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXVIII",
+      "ed_fragment": "3 ii a"
+    }
+  ],
+  "4Q270\t-698\t1\tDJD18 pl.XXVI:1 ii b": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-698",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXVI",
+      "ed_fragment": "1 ii b"
+    }
+  ],
+  "4Q270\t-698\t2\tDJD18 pl.XXVI:1 ii a": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-698",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXVI",
+      "ed_fragment": "1 ii a"
+    }
+  ],
+  "4Q270\t-698\t3\tDJD18 pl.XXVI:1 i": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-698",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXVI",
+      "ed_fragment": "1 i"
+    }
+  ],
+  "4Q270\t-698\t4\tDJD18 pl.XXVI:1 i": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-698",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXVI",
+      "ed_fragment": "1 i"
+    }
+  ],
+  "4Q270\t-698\t5\tDJD18 pl.XXVI:1 i": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-698",
+      "fragment": "5",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXVI",
+      "ed_fragment": "1 i"
+    }
+  ],
+  "4Q270\t-698\t6\tDJD18 pl.XXVI:1 i": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-698",
+      "fragment": "6",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXVI",
+      "ed_fragment": "1 i"
+    }
+  ],
+  "4Q270\t-698\t7\tDJD18 pl.XXVIII:3 i": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-698",
+      "fragment": "7",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXVIII",
+      "ed_fragment": "3 i"
+    }
+  ],
+  "4Q270\t-698\t9\tDJD18 pl.XXVIII:3 ii": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-698",
+      "fragment": "9",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXVIII",
+      "ed_fragment": "3 ii"
+    }
+  ],
+  "4Q270\t-698\t10\tDJD18 pl.XXVIII:3 ii": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-698",
+      "fragment": "10",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXVIII",
+      "ed_fragment": "3 ii"
+    }
+  ],
+  "4Q270\t-698\t12\tDJD18 pl.XXIX:3 iii": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-698",
+      "fragment": "12",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXIX",
+      "ed_fragment": "3 iii"
+    }
+  ],
+  "4Q270\t-698\t13\tDJD18 pl.XXIX:3 iii": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-698",
+      "fragment": "13",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXIX",
+      "ed_fragment": "3 iii"
+    }
+  ],
+  "4Q270\t-698\t15\tDJD18 pl.XXIX:3 iii": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-698",
+      "fragment": "15",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXIX",
+      "ed_fragment": "3 iii"
+    }
+  ],
+  "4Q270\t-703\t1\tDJD18 pl.XXXIV:7 i": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-703",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXIV",
+      "ed_fragment": "7 i"
+    }
+  ],
+  "4Q270\t-703\t2\tDJD18 pl.XXXIV:7 i": [
+    {
+      "manuscript": "4Q270",
+      "plate": "-703",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "18",
+      "ed_plate": "XXXIV",
+      "ed_fragment": "7 i"
+    }
+  ],
+  "4Q29\t-1089\t5\t:RevQ21 pg.646": [
+    {
+      "manuscript": "4Q29",
+      "plate": "-1089",
+      "fragment": "5",
+      "edition": "RevQ",
+      "volume": "21",
+      "ed_plate": null,
+      "ed_fragment": "RevQ21 pg.646"
+    }
+  ],
+  "4Q29\t-1089\t6\t:RevQ21 pg.646": [
+    {
+      "manuscript": "4Q29",
+      "plate": "-1089",
+      "fragment": "6",
+      "edition": "RevQ",
+      "volume": "21",
+      "ed_plate": null,
+      "ed_fragment": "RevQ21 pg.646"
+    }
+  ],
+  "4Q29\t-390\t1\tDJD14 pl.II:5-8": [
+    {
+      "manuscript": "4Q29",
+      "plate": "-390",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "14",
+      "ed_plate": "II",
+      "ed_fragment": "5-8"
+    }
+  ],
+  "4Q319\t-683\t7\tDJD21 pl.X:1+2 (incorrect join)": [
+    {
+      "manuscript": "4Q319",
+      "plate": "-683",
+      "fragment": "7",
+      "edition": "DJD",
+      "volume": "21",
+      "ed_plate": "X",
+      "ed_fragment": "1+2",
+      "comment": "(incorrect join)"
+    }
+  ],
+  "4Q324\t-240\t9\tDJD28 pl.LIX:3 ii": [
+    {
+      "manuscript": "4Q324",
+      "plate": "-240",
+      "fragment": "9",
+      "edition": "DJD",
+      "volume": "28",
+      "ed_plate": "LIX",
+      "ed_fragment": "3 ii"
+    }
+  ],
+  "4Q341\t-346\t2\tDJD36 pl. XVIII": [
+    {
+      "manuscript": "4Q341",
+      "plate": "-346",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "36",
+      "ed_plate": " XVIII",
+      "ed_fragment": null
+    }
+  ],
+  "4Q363\t-112\t2\tDJD28. pl.XLI  II:1": [
+    {
+      "manuscript": "4Q363",
+      "plate": "-112",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "28",
+      "ed_plate": "XLI  II",
+      "ed_fragment": "1"
+    }
+  ],
+  "4Q372\t-337\t25\tDJD28 pl. XLVIII:7 (top section)": [
+    {
+      "manuscript": "4Q372",
+      "plate": "-337",
+      "fragment": "25",
+      "edition": "DJD",
+      "volume": "28",
+      "ed_plate": " XLVIII",
+      "ed_fragment": "7"
+    }
+  ],
+  "4Q387a\t-503\t36\tDJD30 pl. XII:7": [
+    {
+      "manuscript": "4Q387a",
+      "plate": "-503",
+      "fragment": "36",
+      "edition": "DJD",
+      "volume": "30",
+      "ed_plate": " XII",
+      "ed_fragment": "7"
+    }
+  ],
+  "4Q397\t(121a)\t8\tDJD10 pl.V:11-13": [
+    {
+      "manuscript": "4Q397",
+      "plate": "(121a)",
+      "fragment": "8",
+      "edition": "DJD",
+      "volume": "10",
+      "ed_plate": "V",
+      "ed_fragment": "11-13"
+    }
+  ],
+  "4Q400\t-674\t4\tDJD11 pl:XVI:5.": [
+    {
+      "manuscript": "4Q400",
+      "plate": "-674",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "11",
+      "ed_plate": "",
+      "ed_fragment": "XVI:5"
+    }
+  ],
+  "4Q437\t-516\t3\tDJD29 pl.XXII:2b-2f": [
+    {
+      "manuscript": "4Q437",
+      "plate": "-516",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "29",
+      "ed_plate": "XXII",
+      "ed_fragment": "2b-2f"
+    }
+  ],
+  "4Q440b\t-196\t63\tDJD36 pl.XXIV:1 + DJD33 pl.XLI:81": [
+    {
+      "manuscript": "4Q440b",
+      "plate": "-196",
+      "fragment": "63",
+      "edition": "DJD",
+      "volume": "36",
+      "ed_plate": "XXIV",
+      "ed_fragment": "1 +"
+    }
+  ],
+  "4Q447\t-196\t10\tDJD29 pl.XXVI:1 + DJD33 pl.XLI:16": [
+    {
+      "manuscript": "4Q447",
+      "plate": "-196",
+      "fragment": "10",
+      "edition": "DJD",
+      "volume": "29",
+      "ed_plate": "XXVI",
+      "ed_fragment": "1 +"
+    }
+  ],
+  "4Q476a\t-71\t35\tDJD 29 pl. XXVIII:1": [
+    {
+      "manuscript": "4Q476a",
+      "plate": "-71",
+      "fragment": "35",
+      "edition": "DJD",
+      "volume": null,
+      "ed_plate": " XXVIII",
+      "ed_fragment": "1"
+    }
+  ],
+  "4Q476a\t-71\t47\tDJD 29 pl. XXVIII:2": [
+    {
+      "manuscript": "4Q476a",
+      "plate": "-71",
+      "fragment": "47",
+      "edition": "DJD",
+      "volume": null,
+      "ed_plate": " XXVIII",
+      "ed_fragment": "2"
+    }
+  ],
+  "4Q491\t-1001\t3\tDJD7 pl.V:part of 1": [
+    {
+      "manuscript": "4Q491",
+      "plate": "-1001",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "7",
+      "ed_plate": "V",
+      "ed_fragment": "part of 1"
+    }
+  ],
+  "4Q503\t(461/Rec)\t1\tDJD7 pl.XXXV:1-9": [
+    {
+      "manuscript": "4Q503",
+      "plate": "(461/Rec)",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "7",
+      "ed_plate": "XXXV",
+      "ed_fragment": "1-9"
+    }
+  ],
+  "4Q504\t-30\t40\tDJD7 pl.LIII: CONSIST OF 3 SMALL FRAGMENTS WHICH A": [
+    {
+      "manuscript": "4Q504",
+      "plate": "-30",
+      "fragment": "40",
+      "edition": "DJD",
+      "volume": "7",
+      "ed_plate": "LIII",
+      "ed_fragment": "CONSIST OF 3 SMALL FRAGMENTS WHICH A"
+    }
+  ],
+  "4Q504\t-30\t41\tDJD7 pl.LIII:PROBABLY 41, DIFFICULT TO IDENTIFY": [
+    {
+      "manuscript": "4Q504",
+      "plate": "-30",
+      "fragment": "41",
+      "edition": "DJD",
+      "volume": "7",
+      "ed_plate": "LIII",
+      "ed_fragment": "PROBABLY 41, DIFFICULT TO IDENTIFY"
+    }
+  ],
+  "4Q51\t-1100\t1\tDJD17 pl.XV: + pl.XIV:57a": [
+    {
+      "manuscript": "4Q51",
+      "plate": "-1100",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "17",
+      "ed_plate": "XV",
+      "ed_fragment": "+ pl.XIV:57a"
+    }
+  ],
+  "4Q51\t-1100\t4\tDJD17 pl.XV:61 + pl.XVa:61+64b": [
+    {
+      "manuscript": "4Q51",
+      "plate": "-1100",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "17",
+      "ed_plate": "XV",
+      "ed_fragment": "61 + pl.XVa:61+64b"
+    }
+  ],
+  "4Q51\t-998\t2\tDJD17 pl.II:a + pl.III:a": [
+    {
+      "manuscript": "4Q51",
+      "plate": "-998",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "17",
+      "ed_plate": "II",
+      "ed_fragment": "a + pl.III:a"
+    }
+  ],
+  "4Q51\t-998\t5\tDJD17 pl.I:b + pl.II:c": [
+    {
+      "manuscript": "4Q51",
+      "plate": "-998",
+      "fragment": "5",
+      "edition": "DJD",
+      "volume": "17",
+      "ed_plate": "I",
+      "ed_fragment": "b + pl.II:c"
+    }
+  ],
+  "4Q60\t-324\t10\tDJD15 pl.XIX:part of 12ii + 12i": [
+    {
+      "manuscript": "4Q60",
+      "plate": "-324",
+      "fragment": "10",
+      "edition": "DJD",
+      "volume": "15",
+      "ed_plate": "XIX",
+      "ed_fragment": "part of 12ii + 12i"
+    }
+  ],
+  "4Q60\t-324\t13\tDJD15 pl.XX:part of 24": [
+    {
+      "manuscript": "4Q60",
+      "plate": "-324",
+      "fragment": "13",
+      "edition": "DJD",
+      "volume": "15",
+      "ed_plate": "XX",
+      "ed_fragment": "part of 24"
+    }
+  ],
+  "4Q60\t-324\t14\tDJD15 pl.XX:part of 24": [
+    {
+      "manuscript": "4Q60",
+      "plate": "-324",
+      "fragment": "14",
+      "edition": "DJD",
+      "volume": "15",
+      "ed_plate": "XX",
+      "ed_fragment": "part of 24"
+    }
+  ],
+  "4Q60\t-324\t8\tDJD15 pl.XIX:part of 12ii": [
+    {
+      "manuscript": "4Q60",
+      "plate": "-324",
+      "fragment": "8",
+      "edition": "DJD",
+      "volume": "15",
+      "ed_plate": "XIX",
+      "ed_fragment": "part of 12ii"
+    }
+  ],
+  "4Q61\t-175\t1\tDJD15 pl.XXI:1-4": [
+    {
+      "manuscript": "4Q61",
+      "plate": "-175",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "15",
+      "ed_plate": "XXI",
+      "ed_fragment": "1-4"
+    }
+  ],
+  "4Q8\t-1073\t1\tDJD12 pl.XII:h-title": [
+    {
+      "manuscript": "4Q8",
+      "plate": "-1073",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "12",
+      "ed_plate": "XII",
+      "ed_fragment": "h-title"
+    }
+  ],
+  "4Q82\t-1143\t3\tDJD15 pl.LIII:8 + pl.LV:8": [
+    {
+      "manuscript": "4Q82",
+      "plate": "-1143",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "15",
+      "ed_plate": "LIII",
+      "ed_fragment": "8 + pl.LV:8"
+    }
+  ],
+  "5/6Hev 1a 534\t-534\t1\tDJD38 pl.XXIV:1-2": [
+    {
+      "manuscript": "5/6Hev 1a 534",
+      "plate": "-534",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "38",
+      "ed_plate": "XXIV",
+      "ed_fragment": "1-2"
+    }
+  ],
+  "5/6Hev50\t(*203/1)\t1\tJDS3 Fig.37": [
+    {
+      "manuscript": "5/6Hev50",
+      "plate": "(*203/1)",
+      "fragment": "1",
+      "edition": "JDS",
+      "volume": "3",
+      "ed_plate": " Fig.37",
+      "ed_fragment": null
+    }
+  ],
+  "7Q1\t-789\t1\tDJD3 pl.XXX:1-1": [
+    {
+      "manuscript": "7Q1",
+      "plate": "-789",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "3",
+      "ed_plate": "XXX",
+      "ed_fragment": "1-1"
+    }
+  ],
+  "7Q1\t-789\t8\tDJD3 pl.XXX:1-2": [
+    {
+      "manuscript": "7Q1",
+      "plate": "-789",
+      "fragment": "8",
+      "edition": "DJD",
+      "volume": "3",
+      "ed_plate": "XXX",
+      "ed_fragment": "1-2"
+    }
+  ],
+  "7Q4\t-789\t4\tDJD3 pl.XXX:4-2": [
+    {
+      "manuscript": "7Q4",
+      "plate": "-789",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "3",
+      "ed_plate": "XXX",
+      "ed_fragment": "4-2"
+    }
+  ],
+  "7Q4\t-789\t5\tDJD3 pl.XXX:4-1": [
+    {
+      "manuscript": "7Q4",
+      "plate": "-789",
+      "fragment": "5",
+      "edition": "DJD",
+      "volume": "3",
+      "ed_plate": "XXX",
+      "ed_fragment": "4-1"
+    }
+  ],
+  "7Q7\t-789\t13\tDJD3 pl.XXX:7-1": [
+    {
+      "manuscript": "7Q7",
+      "plate": "-789",
+      "fragment": "13",
+      "edition": "DJD",
+      "volume": "3",
+      "ed_plate": "XXX",
+      "ed_fragment": "7-1"
+    }
+  ],
+  "7Q7\t-789\t12\tDJD3 pl.XXX:7-2": [
+    {
+      "manuscript": "7Q7",
+      "plate": "-789",
+      "fragment": "12",
+      "edition": "DJD",
+      "volume": "3",
+      "ed_plate": "XXX",
+      "ed_fragment": "7-2"
+    }
+  ],
+  "8Hev1\t(530/1)\t3\tDJD8 pl.XVI:a+b (bottom right missing)": [
+    {
+      "manuscript": "8Hev1",
+      "plate": "(530/1)",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "8",
+      "ed_plate": "XVI",
+      "ed_fragment": "a+b",
+      "comment": "(bottom right missing)"
+    }
+  ],
+  "8Hev1\t-531\t3\tDJD8 pl.VI:part of b + c": [
+    {
+      "manuscript": "8Hev1",
+      "plate": "-531",
+      "fragment": "3",
+      "edition": "DJD",
+      "volume": "8",
+      "ed_plate": "VI",
+      "ed_fragment": "part of b + c"
+    }
+  ],
+  "8Hev1\t-531\t4\tDJD8 pl.V:b + pl.VI:b": [
+    {
+      "manuscript": "8Hev1",
+      "plate": "-531",
+      "fragment": "4",
+      "edition": "DJD",
+      "volume": "8",
+      "ed_plate": "V",
+      "ed_fragment": "b + pl.VI:b"
+    }
+  ],
+  "8Hev1\t-531\t5\tDJD8 pl.V:appears to be part of b": [
+    {
+      "manuscript": "8Hev1",
+      "plate": "-531",
+      "fragment": "5",
+      "edition": "DJD",
+      "volume": "8",
+      "ed_plate": "V",
+      "ed_fragment": "appears to be part of b"
+    }
+  ],
+  "Mas 1e\t(*237)\t1\tMasada VI, Ill.9": [
+    {
+      "manuscript": "Mas 1e",
+      "plate": "(*237)",
+      "fragment": "1",
+      "edition": "MAS",
+      "volume": "VI",
+      "ed_plate": "Ill.9",
+      "ed_fragment": null
+    }
+  ],
+  "Mas 1f\t(*81)\t1\tMasada VI Illustration 10, page 93": [
+    {
+      "manuscript": "Mas 1f",
+      "plate": "(*81)",
+      "fragment": "1",
+      "edition": "MAS",
+      "volume": "VI",
+      "ed_plate": "Illustration 10, page 93",
+      "ed_fragment": null
+    }
+  ],
+  "Mas 1f\t(*81)\t2\tMasada VI Illustration 10, page 93": [
+    {
+      "manuscript": "Mas 1f",
+      "plate": "(*81)",
+      "fragment": "2",
+      "edition": "MAS",
+      "volume": "VI",
+      "ed_plate": "Illustration 10, page 93",
+      "ed_fragment": null
+    }
+  ],
+  "Mas 1h\t(*238)\t1\tMasada 6 pl.8 (pages 210-211)": [
+    {
+      "manuscript": "Mas 1h",
+      "plate": "(*238)",
+      "fragment": "1",
+      "edition": "MAS",
+      "volume": "6",
+      "ed_plate": "8 ",
+      "ed_fragment": ""
+    }
+  ],
+  "Mas 1h\t(*238)\t2\tMasada 6 pl.8 (pages 210-211)": [
+    {
+      "manuscript": "Mas 1h",
+      "plate": "(*238)",
+      "fragment": "2",
+      "edition": "MAS",
+      "volume": "6",
+      "ed_plate": "8 ",
+      "ed_fragment": ""
+    }
+  ],
+  "Mas 1h\t(*238)\t3\tMasada 6 pl.8 (pages 210-211)": [
+    {
+      "manuscript": "Mas 1h",
+      "plate": "(*238)",
+      "fragment": "3",
+      "edition": "MAS",
+      "volume": "6",
+      "ed_plate": "8 ",
+      "ed_fragment": ""
+    }
+  ],
+  "Mas 1j\t(*236)\t1\tMasada6 pl.14 (page 118)": [
+    {
+      "manuscript": "Mas 1j",
+      "plate": "(*236)",
+      "fragment": "1",
+      "edition": "MAS",
+      "volume": "6",
+      "ed_plate": "14 ",
+      "ed_fragment": ""
+    }
+  ],
+  "Mas 1o\t(*235/1)\t1\tMasada6 pl.18 (page 139)": [
+    {
+      "manuscript": "Mas 1o",
+      "plate": "(*235/1)",
+      "fragment": "1",
+      "edition": "MAS",
+      "volume": "6",
+      "ed_plate": "18 ",
+      "ed_fragment": ""
+    }
+  ],
+  "Mas723\t(*59)\t1\tMasada2 pl.4:723": [
+    {
+      "manuscript": "Mas723",
+      "plate": "(*59)",
+      "fragment": "1",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "4:723",
+      "ed_fragment": "723"
+    }
+  ],
+  "Mas723\t(*59)\t2\tMasada2 pl.4:723": [
+    {
+      "manuscript": "Mas723",
+      "plate": "(*59)",
+      "fragment": "2",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "4:723",
+      "ed_fragment": "723"
+    }
+  ],
+  "Mas723\t(*59)\t4\tMasada2 pl.4:723": [
+    {
+      "manuscript": "Mas723",
+      "plate": "(*59)",
+      "fragment": "4",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "4:723",
+      "ed_fragment": "723"
+    }
+  ],
+  "Mas731\t(*44)\t1\tMasada2 pl.6:731": [
+    {
+      "manuscript": "Mas731",
+      "plate": "(*44)",
+      "fragment": "1",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "6:731",
+      "ed_fragment": "731"
+    }
+  ],
+  "Mas731\t(*44)\t2\tMasada2 pl.6:731": [
+    {
+      "manuscript": "Mas731",
+      "plate": "(*44)",
+      "fragment": "2",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "6:731",
+      "ed_fragment": "731"
+    }
+  ],
+  "Mas731\t(*44)\t3\tMasada2 pl.6:731": [
+    {
+      "manuscript": "Mas731",
+      "plate": "(*44)",
+      "fragment": "3",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "6:731",
+      "ed_fragment": "731"
+    }
+  ],
+  "Mas731\t(*44)\t4\tMasada2 pl.6:731": [
+    {
+      "manuscript": "Mas731",
+      "plate": "(*44)",
+      "fragment": "4",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "6:731",
+      "ed_fragment": "731"
+    }
+  ],
+  "Mas731\t(*44)\t5\tMasada2 pl.6:731": [
+    {
+      "manuscript": "Mas731",
+      "plate": "(*44)",
+      "fragment": "5",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "6:731",
+      "ed_fragment": "731"
+    }
+  ],
+  "Mas731\t(*44)\t6\tMasada2 pl.6:731": [
+    {
+      "manuscript": "Mas731",
+      "plate": "(*44)",
+      "fragment": "6",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "6:731",
+      "ed_fragment": "731"
+    }
+  ],
+  "Mas731\t(*44)\t7\tMasada2 pl.6:731": [
+    {
+      "manuscript": "Mas731",
+      "plate": "(*44)",
+      "fragment": "7",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "6:731",
+      "ed_fragment": "731"
+    }
+  ],
+  "Mas738\t(*63)\t1\tMasada II pl.7:738": [
+    {
+      "manuscript": "Mas738",
+      "plate": "(*63)",
+      "fragment": "1",
+      "edition": "MAS",
+      "volume": "II",
+      "ed_plate": "7:738",
+      "ed_fragment": "738"
+    }
+  ],
+  "Mas738\t(*63)\t5\tMasada II pl.7:738": [
+    {
+      "manuscript": "Mas738",
+      "plate": "(*63)",
+      "fragment": "5",
+      "edition": "MAS",
+      "volume": "II",
+      "ed_plate": "7:738",
+      "ed_fragment": "738"
+    }
+  ],
+  "Mas738\t(*63)\t7\tMasada II pl.7:738": [
+    {
+      "manuscript": "Mas738",
+      "plate": "(*63)",
+      "fragment": "7",
+      "edition": "MAS",
+      "volume": "II",
+      "ed_plate": "7:738",
+      "ed_fragment": "738"
+    }
+  ],
+  "Mas749\t(*43)\t1\tMasada2 pl.10:749a": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "1",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749a",
+      "ed_fragment": "749a"
+    }
+  ],
+  "Mas749\t(*43)\t2\tMasada2 pl.10:749c": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "2",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749c",
+      "ed_fragment": "749c"
+    }
+  ],
+  "Mas749\t(*43)\t3\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "3",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t4\tMasada2 pl.10:749d": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "4",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749d",
+      "ed_fragment": "749d"
+    }
+  ],
+  "Mas749\t(*43)\t5\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "5",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t6\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "6",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t7\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "7",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t8\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "8",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t9\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "9",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t10\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "10",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t11\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "11",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t12\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "12",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t13\tMasada2 pl.10:749f": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "13",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749f",
+      "ed_fragment": "749f"
+    }
+  ],
+  "Mas749\t(*43)\t14\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "14",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t15\tMasada2 pl.10:749e": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "15",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749e",
+      "ed_fragment": "749e"
+    }
+  ],
+  "Mas749\t(*43)\t16\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "16",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t17\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "17",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t18\tMasada2 pl.10:749g": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "18",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749g",
+      "ed_fragment": "749g"
+    }
+  ],
+  "Mas749\t(*43)\t19\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "19",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t20\tMasada2 pl.10:749h": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "20",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749h",
+      "ed_fragment": "749h"
+    }
+  ],
+  "Mas749\t(*43)\t21\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "21",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t22\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "22",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t23\tMasada2 pl.10:749": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "23",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749",
+      "ed_fragment": "749"
+    }
+  ],
+  "Mas749\t(*43)\t24\tMasada2 pl.10:749i": [
+    {
+      "manuscript": "Mas749",
+      "plate": "(*43)",
+      "fragment": "24",
+      "edition": "MAS",
+      "volume": "2",
+      "ed_plate": "10:749i",
+      "ed_fragment": "749i"
+    }
+  ],
+  "MUR173\t-642\t1\tDJD2 pl.CVII;": [
+    {
+      "manuscript": "MUR173",
+      "plate": "-642",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "2",
+      "ed_plate": "CVII;",
+      "ed_fragment": null
+    }
+  ],
+  "MUR26\t-725\t1\tDJD2 pl.XXXIX:26 1 (right)\nDJD27 pl. XXIX:b": [
+    {
+      "manuscript": "MUR26",
+      "plate": "-725",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "2",
+      "ed_plate": "XXXIX",
+      "ed_fragment": "26 1",
+      "comment": "(right)"
+    }
+  ],
+  "MUR26\t-725\t2\tDJD2 pl.XXXIX:26 1 (left)\nDJD27 pl.XXIX:c": [
+    {
+      "manuscript": "MUR26",
+      "plate": "-725",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "2",
+      "ed_plate": "XXXIX",
+      "ed_fragment": "26 1",
+      "comment": "(left)"
+    }
+  ],
+  "MUR30\t-791\t1\tDJD2 pl.XLI,XLII": [
+    {
+      "manuscript": "MUR30",
+      "plate": "-791",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "2",
+      "ed_plate": "XLI,XLII",
+      "ed_fragment": null
+    }
+  ]
+}

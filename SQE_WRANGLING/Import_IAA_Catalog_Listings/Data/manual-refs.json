@@ -1,0 +1,51 @@
+{
+"4Q457\t-355\t1\tDJD29 pl.XXVII:2": [
+    {
+      "manuscript": "4Q457a",
+      "plate": "355",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "29",
+      "ed_plate": "XXVII",
+      "ed_fragment": "2"
+    },
+    {
+      "manuscript": "4Q457b",
+      "plate": "355",
+      "fragment": "1",
+      "edition": "DJD",
+      "volume": "29",
+      "ed_plate": "XXVII",
+      "ed_fragment": "2"
+    }
+  ],
+  "4Q457\t-355\t2\tDJD29 pl.XXVII:1": [
+    {
+      "manuscript": "4Q457a",
+      "plate": "355",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "29",
+      "ed_plate": "XXVII",
+      "ed_fragment": "1"
+    },
+    {
+      "manuscript": "4Q457b",
+      "plate": "355",
+      "fragment": "2",
+      "edition": "DJD",
+      "volume": "29",
+      "ed_plate": "XXVII",
+      "ed_fragment": "1"
+    },
+    {
+      "manuscript": "4Q1",
+      "plate": "391",
+      "fragment": "10",
+      "edition": "DJD",
+      "volume": "12",
+      "ed_plate": "III",
+      "ed_fragment": "24"
+    }
+  ]
+}

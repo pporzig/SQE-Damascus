@@ -1,0 +1,26 @@
+    "ed_fragment": "6b (left + centre)"
+    "ed_plate": "X+XI",
+    "ed_plate": "X+XI",
+    "ed_fragment": "part of 12ii + 12i"
+    "ed_plate": "XII + XIII + XIV",
+    "ed_fragment": "9iii a+b+c"
+    "ed_fragment": "42+ pl.XXII,12"
+    "ed_fragment": "15 + 33 + pl.XII,2"
+    "ed_fragment": "f + VIII,x"
+    "ed_fragment": "a + pl.III,a"
+    "ed_fragment": "b + pl.II,c"
+    "ed_fragment": " + pl.XIV,57a"
+    "ed_fragment": "61 + pl.XVa,61+64b"
+    "ed_plate": "X+XI",
+    "ed_fragment": "part of b + c"
+    "ed_fragment": "b + pl.VI,b"
+    "ed_fragment": "8 + pl.LV,8"
+    "ed_fragment": "a+b (bottom right missing)"
+    "ed_fragment": "2+3+4+5 + pl.XII,33"
+    "ed_fragment": "1 +"
+    "ed_fragment": "1 +"
+    "ed_fragment": "A+"
+    "ed_fragment": "F+"
+    "ed_fragment": "F+"
+    "ed_fragment": "J+"
+    "ed_fragment": "H+"
