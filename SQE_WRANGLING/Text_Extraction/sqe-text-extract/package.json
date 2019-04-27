@@ -1,0 +1,16 @@
+{
+  "name": "SQE-text-extract",
+  "description": "Script to extract running text from the SQE database.",
+  "author": {
+    "name": "Bronson Brown-deVost",
+    "email": "bronsonbdevost@aim.com",
+    "url": "https://www.brown-devost.com"
+  },
+  "scripts": {
+    "extract": "node SQE-text.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "mariadb": "^2.0.1-beta"
+  }
+}
