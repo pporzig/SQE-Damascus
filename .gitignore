@@ -2,7 +2,8 @@ tables/*.sql
 geom_tabls/*.sql
 .idea
 .vscode
-.psb
-.psd
 .DS_Store
-.ini
+
+*.psb
+*.psd
+*.ini
