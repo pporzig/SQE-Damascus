@@ -15,7 +15,7 @@ This repository contains data and information related to the work of the Damascu
 
 ### Lectures
 
-Tucker, James M., "Material Philology and Digital Editions: Charting a Way Forward?" Delivered at Haifa University on October 8, 2018. Accessible online: https://www.academia.edu/s/2bcdef8bd9/material-philology-and-digital-editions-charting-a-way-forward
+* Tucker, James M., "Material Philology and Digital Editions: Charting a Way Forward?" Delivered at Haifa University on October 8, 2018. Accessible online: https://www.academia.edu/s/2bcdef8bd9/material-philology-and-digital-editions-charting-a-way-forward
 
 ### Editorial Reports
 

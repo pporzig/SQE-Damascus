@@ -2,6 +2,10 @@
 
 ## Images: Palestine Archeaological Museum (PAM) and Israel Antiquities Authority (IAA-Images)
 
+### Gathering Evidence of Artefactual Remains
+
+#### Ready …, Set …, Tag
+
 ## Transcriptions: Interpretation of Text
 
 ## Fragments: Interpretation of Material
