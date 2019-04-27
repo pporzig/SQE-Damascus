@@ -3,7 +3,7 @@ geom_tabls/*.sql
 .idea
 .vscode
 .DS_Store
-
+env/
 *.psb
 *.psd
 *.ini

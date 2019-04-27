@@ -7,7 +7,7 @@ import sys
 import datetime
 import argparse
 
-# version 1.0
+# version 2.1 updated on 27-04-2019
 # James M. Tucker, PhD (cand.)
 # University of Toronto
 # Depedencies: xlsxwriter install with `pip3 install xlsxwriter`
@@ -47,6 +47,7 @@ def make_transcriber_notebook(args):
         cell_format = workbook.add_format()
     
         chars = workbook.add_worksheet(ws1_name_chars)
+        chars.freeze_panes(1, 0)
 
         header_labels_chars = [
             {'A1': 'id'},
@@ -62,21 +63,25 @@ def make_transcriber_notebook(args):
             {'K1': 'is_joined'},
             {'L1': 'kerning'},
             {'M1': 'damaged_sm'},
-            {'N1': 'damaged_legacy'},
-            {'O1': 'Angle'},
-            {'P1': 'he_human_0'},
-            {'Q1': 'he_human_1'},
-            {'R1': 'he_human_2'},
-            {'S1': 'he_human_3'},
-            {'T1': 'line_id'},
-            {'U1': 'line_status_int'},
-            {'V1': 'line_status_mid'},
-            {'W1': 'line_status_end'},
-            {'X1': 'commentary'}
+            {'N1': 'damaged_vis'},
+            {'O1': 'damaged_legacy'},
+            {'P1': 'Angle'},
+            {'Q1': 'he_palaeo_0'},
+            {'R1': 'he_palaeo_1'},
+            {'S1': 'he_lexical_0'},
+            {'T1': 'he_lexical_1'},
+            {'U1': 'he_morphsyn_0'},
+            {'V1': 'he_morphsyn_1'},
+            {'W1': 'line_id'},
+            {'X1': 'line_status_int'},
+            {'Y1': 'line_status_mid'},
+            {'Z1': 'line_status_end'},
+            {'AA1': 'commentary'}
         ]
 
         signs = workbook.add_worksheet(ws2_name_rois)
-
+        signs.freeze_panes(1, 0)
+        
         header_labels_signs = [
             {'A1': 'roi_id'},
             {'B1': 'iaa_related_to'},
@@ -92,11 +97,10 @@ def make_transcriber_notebook(args):
             {'L1': 'Height'},
             {'M1': 'Major'},
             {'N1': 'Minor'},
-            {'O1': 'Angle'},
-            {'P1': 'Circ.'},
-            {'Q1': 'AR'},
-            {'R1': 'Round'},
-            {'S1': 'Solidity'}
+            {'O1': 'Circ.'},
+            {'P1': 'AR'},
+            {'Q1': 'Round'},
+            {'R1': 'Solidity'}
         ]
 
 
@@ -116,7 +120,7 @@ def make_transcriber_notebook(args):
             for row in reader:
                 signs.write_number(row_count, 0, int(row[' ']))
                 chars.write_formula(row_count, 2, str('=SIGNs!' + 'A' + str(roi_id)))
-                chars.write_formula(row_count, 15, str('=SIGNs!' + 'O' + str(roi_id)))
+                chars.write_formula(row_count, 15, str('=SIGNs!' + 'P' + str(roi_id)))
                 roi_id += 1
 
                 signs.write_string(row_count, 3, str(row['Label']))
@@ -130,11 +134,11 @@ def make_transcriber_notebook(args):
                 signs.write_number(row_count, 11, int(row['Height']))
                 signs.write_number(row_count, 12, float(row['Major']))
                 signs.write_number(row_count, 13, float(row['Minor']))
-                signs.write_number(row_count, 14, int(row['Angle']))
-                signs.write_number(row_count, 15, float(row['Circ.']))
-                signs.write_number(row_count, 16, float(row['AR']))
-                signs.write_number(row_count, 17, float(row['Round']))
-                signs.write_number(row_count, 18, float(row['Solidity']))
+                chars.write_number(row_count, 15, int(row['Angle']))
+                signs.write_number(row_count, 14, float(row['Circ.']))
+                signs.write_number(row_count, 15, float(row['AR']))
+                signs.write_number(row_count, 16, float(row['Round']))
+                signs.write_number(row_count, 17, float(row['Solidity']))
 
                 boolean_list = ['True', 'False']
                 damaged_sm = ['False', 'True', 'relevant_w', 'relevant_h']
@@ -149,15 +153,17 @@ def make_transcriber_notebook(args):
                 chars.data_validation('K' + str(row_count), {'validate': 'list', 'source': boolean_list})
                 chars.data_validation('L' + str(row_count), {'validate': 'list', 'source': boolean_list})
                 chars.data_validation('M' + str(row_count), {'validate': 'list', 'source': damaged_sm})
-                chars.data_validation('N' + str(row_count), {'validate': 'list', 'source': damaged_legacy})
-                chars.data_validation('T' + str(row_count), {'validate': 'list', 'source': line_stats})
-                chars.data_validation('U' + str(row_count), {'validate': 'list', 'source': line_stats})
-                chars.data_validation('V' + str(row_count), {'validate': 'list', 'source': line_stats})
-                chars.data_validation('P' + str(row_count), {'validate': 'list', 'source': chars_opts})
+                chars.data_validation('N' + str(row_count), {'validate': 'list', 'source': boolean_list})
+                chars.data_validation('O' + str(row_count), {'validate': 'list', 'source': damaged_legacy})
+                chars.data_validation('X' + str(row_count), {'validate': 'list', 'source': line_stats})
+                chars.data_validation('Y' + str(row_count), {'validate': 'list', 'source': line_stats})
+                chars.data_validation('Z' + str(row_count), {'validate': 'list', 'source': line_stats})
                 chars.data_validation('Q' + str(row_count), {'validate': 'list', 'source': chars_opts})
                 chars.data_validation('R' + str(row_count), {'validate': 'list', 'source': chars_opts})
-                chars.data_validation('S' + str(row_count), {'validate': 'list', 'source': chars_opts})                                                                                                                                                   
-            
+                chars.data_validation('S' + str(row_count), {'validate': 'list', 'source': chars_opts})
+                chars.data_validation('T' + str(row_count), {'validate': 'list', 'source': chars_opts})
+                chars.data_validation('U' + str(row_count), {'validate': 'list', 'source': chars_opts})
+                chars.data_validation('V' + str(row_count), {'validate': 'list', 'source': chars_opts})
                 row_count += 1
 
 def main(argv):
