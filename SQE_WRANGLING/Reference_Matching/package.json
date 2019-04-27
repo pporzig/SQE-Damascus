@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "parse": "node parse-sqe-cols.js && node parse-iaa-refs.js && node match-refs.js"
+  },
+  "dependencies": {
+    "array-to-csv": "^1.0.1",
+    "chalk": "^2.4.2",
+    "csvtojson": "^2.0.8",
+    "mariadb": "^2.0.1-beta",
+    "roman-numeral-to-decimal": "^1.0.1",
+    "roman-numerals": "^0.3.2"
+  }
+}
