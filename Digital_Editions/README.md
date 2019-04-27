@@ -10,9 +10,9 @@
 
 ## Collating Evidence of Artefactual Remains
 
-#### Ready …, Set …, Tag and Link
+### Ready …, Set …, Tag and Link
 
-#### Run …
+### Run …
 
 ## Transcriptions: Interpretation of Text
 
