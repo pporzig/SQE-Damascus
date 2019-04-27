@@ -1,3 +1,6 @@
 tables/*.sql
 geom_tabls/*.sql
 .idea
+.vscode
+.psb
+.psd
