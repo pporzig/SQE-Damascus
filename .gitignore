@@ -5,3 +5,4 @@ geom_tabls/*.sql
 .psb
 .psd
 .DS_Store
+.ini
