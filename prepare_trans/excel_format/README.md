@@ -182,7 +182,7 @@ The following fields are located on the `CHARs` worksheet:
   * datatype = `INT`
   * defintion = character on image is not level with respect to the ruled line on column
 
-* `he_palaeo_0`:
+* `he_human_0`:
   * datatype = `VARCHAR`
   * definition = Define the sign with a char. Options are:
     - range of chars: א-ת;
@@ -190,7 +190,7 @@ The following fields are located on the `CHARs` worksheet:
     - s: scribal mark (describe in commentary);
     - and m: material damage (descirbe in commentary)
 
-* `he_palaeo_1`:
+* `he_human_1`:
   * datatype = `VARCHAR`
   * definition = Define the sign with a char _as a palaeographical viable option_.
     - range of chars: א-ת;
@@ -198,7 +198,7 @@ The following fields are located on the `CHARs` worksheet:
     - s: scribal mark (describe in commentary);
     - and m: material damage (descirbe in commentary)
 
-* `he_lexical_0`:
+* `he_human_3`:
   * datatype = `VARCHAR`
   * definition = Define the sign with a char _as palaeographical and lexical options permit_.
     - range of chars: א-ת;
@@ -206,21 +206,13 @@ The following fields are located on the `CHARs` worksheet:
     - s: scribal mark (describe in commentary);
     - and m: material damage (descirbe in commentary)
 
-* `he_lexical_1`:
+* `he_human_4`:
   * datatype = `VARCHAR`
   * definition = Define the sign with a char _as palaeographical and lexical options permit_. Options are:
     - range of chars: א-ת;
     - ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
     - s: scribal mark (describe in commentary);
     - and m: material damage (descirbe in commentary)
-
-* `he_morpsyn_0`:
-  * datatype = `VARCHAR`
-  * definition =
-
-* `he_morpsyn_1`:
-  * datatype = `VARCHAR`
-  * definition =
 
 * `line_id`:
   * datatype = `INT`

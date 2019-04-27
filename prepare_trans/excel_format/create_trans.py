@@ -66,17 +66,15 @@ def make_transcriber_notebook(args):
             {'N1': 'damaged_vis'},
             {'O1': 'damaged_legacy'},
             {'P1': 'Angle'},
-            {'Q1': 'he_palaeo_0'},
-            {'R1': 'he_palaeo_1'},
-            {'S1': 'he_lexical_0'},
-            {'T1': 'he_lexical_1'},
-            {'U1': 'he_morphsyn_0'},
-            {'V1': 'he_morphsyn_1'},
-            {'W1': 'line_id'},
-            {'X1': 'line_status_int'},
-            {'Y1': 'line_status_mid'},
-            {'Z1': 'line_status_end'},
-            {'AA1': 'commentary'}
+            {'Q1': 'he_human_0'},
+            {'R1': 'he_human_1'},
+            {'S1': 'he_human_2'},
+            {'T1': 'he_human_3'},
+            {'U1': 'line_id'},
+            {'V1': 'line_status_int'},
+            {'W1': 'line_status_mid'},
+            {'X1': 'line_status_end'},
+            {'Y1': 'commentary'}
         ]
 
         signs = workbook.add_worksheet(ws2_name_rois)
@@ -155,15 +153,13 @@ def make_transcriber_notebook(args):
                 chars.data_validation('M' + str(row_count), {'validate': 'list', 'source': damaged_sm})
                 chars.data_validation('N' + str(row_count), {'validate': 'list', 'source': boolean_list})
                 chars.data_validation('O' + str(row_count), {'validate': 'list', 'source': damaged_legacy})
+                chars.data_validation('V' + str(row_count), {'validate': 'list', 'source': line_stats})
+                chars.data_validation('W' + str(row_count), {'validate': 'list', 'source': line_stats})
                 chars.data_validation('X' + str(row_count), {'validate': 'list', 'source': line_stats})
-                chars.data_validation('Y' + str(row_count), {'validate': 'list', 'source': line_stats})
-                chars.data_validation('Z' + str(row_count), {'validate': 'list', 'source': line_stats})
                 chars.data_validation('Q' + str(row_count), {'validate': 'list', 'source': chars_opts})
                 chars.data_validation('R' + str(row_count), {'validate': 'list', 'source': chars_opts})
                 chars.data_validation('S' + str(row_count), {'validate': 'list', 'source': chars_opts})
                 chars.data_validation('T' + str(row_count), {'validate': 'list', 'source': chars_opts})
-                chars.data_validation('U' + str(row_count), {'validate': 'list', 'source': chars_opts})
-                chars.data_validation('V' + str(row_count), {'validate': 'list', 'source': chars_opts})
                 row_count += 1
 
 def main(argv):
