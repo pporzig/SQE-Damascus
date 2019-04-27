@@ -2,11 +2,7 @@
 
 ____
 
-# License
-
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
-
-© 2019 James M. Tucker
+The following is the data structured created by James M. Tucker.
 ____
 
 # Description
@@ -170,11 +166,23 @@ The following fields are located on the `CHARs` worksheet:
   * datatype = `TINYINT`
   * definition = Is the char under question kerned with the character adjacent to its writing direction? If so, mark with 1.
 
-* `damaged`:
+* `damaged_sm`:
   * datatype = `ENUM` (TRUE, FALSE, RELEVANT_X [or *_W], RELEVANT_Y [or *_H])
   * definition = Is the char under question damaged by either material causes or severe surface wear? If so, mark with 1. If, however, the width or height of the character is still believed to be relevant for font statistics, then designate which axis is still potentially undamaged. This is a preliminary decision. The font algorithm can run further metrics against the roi and include in the [Font Report](https://jamesmtucker.com). N.B.: The font algorithm is not yet published, but will be made available at the above link in due time.
+  * UPDATE: damaged_Schiftenmetric implies that, _with respect to designing a font to reverse engineer large scale textual reconstructions_, any sign whose extant ink traces impair an accurate assessment of the height and width of an idiograph is excused from the allographic set of a character of the same definition
+* `damaged_vis`:
+  * datatype = `BOOLEAN`
+  * definition = damaged_visual implies that, with respect to modelling the scribal hand of scribe x apart from photographic evidence, any sign whose extant ink is imparied by physical conditions, such as ink flaking or damaged parchment, is set in any desired colour of font other than black. Degregadation of such a character is comparatively ascertained through a binarized representation of the character whose pixel values are equal to 255 divided by the average of its allograph.
 
-* `he_human_0`:
+* `damaged_legacy`:
+  * datatype = `ENUM` ('certain', 'probable', 'possible')
+  * definition = damaged_legacy implies that, with respect to modelling a textual reconstruction apart from photographic evidence, the DJD sigla of certain [א], probable_letter [char+\u0307], possible_letter [char+\u05af] are applied to an idiograph
+
+* `Angle`:
+  * datatype = `INT`
+  * defintion = character on image is not level with respect to the ruled line on column
+
+* `he_palaeo_0`:
   * datatype = `VARCHAR`
   * definition = Define the sign with a char. Options are:
     - range of chars: א-ת;
@@ -182,29 +190,37 @@ The following fields are located on the `CHARs` worksheet:
     - s: scribal mark (describe in commentary);
     - and m: material damage (descirbe in commentary)
 
-* `he_human_1`:
+* `he_palaeo_1`:
   * datatype = `VARCHAR`
-  * definition = Define the sign with a char. Options are:
+  * definition = Define the sign with a char _as a palaeographical viable option_.
     - range of chars: א-ת;
     - ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
     - s: scribal mark (describe in commentary);
     - and m: material damage (descirbe in commentary)
 
-* `he_human_2`:
+* `he_lexical_0`:
   * datatype = `VARCHAR`
-  * definition = Define the sign with a char. Options are:
+  * definition = Define the sign with a char _as palaeographical and lexical options permit_.
     - range of chars: א-ת;
     - ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
     - s: scribal mark (describe in commentary);
     - and m: material damage (descirbe in commentary)
 
-* `he_human_3`:
+* `he_lexical_1`:
   * datatype = `VARCHAR`
-  * definition = Define the sign with a char. Options are:
+  * definition = Define the sign with a char _as palaeographical and lexical options permit_. Options are:
     - range of chars: א-ת;
     - ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
     - s: scribal mark (describe in commentary);
     - and m: material damage (descirbe in commentary)
+
+* `he_morpsyn_0`:
+  * datatype = `VARCHAR`
+  * definition =
+
+* `he_morpsyn_1`:
+  * datatype = `VARCHAR`
+  * definition =
 
 * `line_id`:
   * datatype = `INT`
