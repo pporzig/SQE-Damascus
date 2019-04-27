@@ -4,3 +4,4 @@ geom_tabls/*.sql
 .vscode
 .psb
 .psd
+.DS_Store
