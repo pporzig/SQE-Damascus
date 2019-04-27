@@ -1,10 +1,18 @@
 # On the Data Structure of a Digital Editions of the Judean Desert
 
-## Images: Palestine Archeaological Museum (PAM) and Israel Antiquities Authority (IAA-Images)
+## The Role of Images in a Digital Edition
 
-### Gathering Evidence of Artefactual Remains
+### Palestine Archeaological Museum (PAM)
+
+### Israel Antiquities Authority (IAA-Images)
+
+### Additional Images
+
+### Collating Evidence of Artefactual Remains
 
 #### Ready …, Set …, Tag
+
+#### Run …
 
 ## Transcriptions: Interpretation of Text
 
