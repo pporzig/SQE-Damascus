@@ -138,9 +138,9 @@ def make_transcriber_notebook(args):
                 signs.write_number(row_count, 16, float(row['Round']))
                 signs.write_number(row_count, 17, float(row['Solidity']))
 
-                boolean_list = ['True', 'False']
-                damaged_sm = ['False', 'True', 'relevant_w', 'relevant_h']
-                damaged_legacy = ['certain', 'probable_letter', 'possible_letter']
+                boolean_list = ['null', 'True', 'False']
+                damaged_sm = ['null', 'False', 'True', 'relevant_w', 'relevant_h']
+                damaged_legacy = ['null', 'certain', 'probable_letter', 'possible_letter']
                 palaeo_attr = ['transformed', 'reinked', 'retraced', 'reinked?', 'retraced?', 'intralinear', 'creased']
                 line_stats = ['DAMAGED', 'DAMAGED_STILL_READ', 'NOT_DAMAGED']
                 
