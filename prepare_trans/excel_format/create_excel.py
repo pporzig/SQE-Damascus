@@ -140,7 +140,7 @@ def make_transcriber_notebook(args):
 
                 boolean_list = ['null', 'True', 'False']
                 damaged_sm = ['null', 'False', 'True', 'relevant_w', 'relevant_h']
-                damaged_legacy = ['null', 'certain', 'probable_letter', 'possible_letter']
+                damaged_legacy = ['null', 'certain', 'probable_letter', 'possible_letter', 'unknown']
                 palaeo_attr = ['transformed', 'reinked', 'retraced', 'reinked?', 'retraced?', 'intralinear', 'creased']
                 line_stats = ['DAMAGED', 'DAMAGED_STILL_READ', 'NOT_DAMAGED']
                 
