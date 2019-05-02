@@ -1,11 +1,12 @@
 # -*- coding: utf8 -*-
 
-import xlsxwriter
+import argparse
 import csv
+import datetime
 import os
 import sys
-import datetime
-import argparse
+
+import xlsxwriter
 
 # version 2.1 updated on 27-04-2019
 # James M. Tucker, PhD (cand.)
