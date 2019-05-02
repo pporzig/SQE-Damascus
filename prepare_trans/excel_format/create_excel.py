@@ -159,6 +159,7 @@ def make_transcriber_notebook(args):
                     "retraced?",
                     "intralinear",
                     "creased",
+                    "erased",
                 ]
                 line_stats = ["DAMAGED", "DAMAGED_STILL_READ", "NOT_DAMAGED"]
 
