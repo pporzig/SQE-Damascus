@@ -2,33 +2,39 @@
 
 ____
 
-The following is the data structured created by James M. Tucker.
+The following is the data structured created by James M. Tucker with in collaboration with Peter Porzig.
 ____
 
-# Description
+## Description
+
 While it is feasible to create a web based front-end to facilitate the process of transcription, it is equally possible to use existing software, as is the case here. Thus, the excel notebook is used for three reasons:
+
 1. The cost to engineer a web-based front-end is not trivial;
 2. The Excel file ensures data accuracy at several levels, thus enforcing best philological practices;
 3. Processing data in an Excel format is extensively supported in languages such as Perl, Python, and JavaScript.
 
-The  The following information structure facilitates a careful analysis of ancient artefacts, either lapidary and/or non-lapidary and in whatever language.
+The following information structure facilitates a careful analysis of ancient artefacts, either lapidary and/or non-lapidary and in whatever language.
 
 ## Create a Notebook
-The `create_trans.py` script generates a working notebook. To run this script, navigate to `~/DSS_Editions/transcriptions/` in your terminal. The script takes three arguments:
-1. frag_id
-2. roi_file
-3. scroll_id
 
-The `frag_id` is any id you assign to the artefact; thus, it is relative to whatever id you decide. What is more important for the script, however, is the `roi_file`. A `roi_id` file designates a Region of Interest (roi) on an image. I discussed this method some years ago in two conference presentations. I have made available the lecture from one of these conferences [here](https://www.academia.edu/7290280/Digital_Editions_of_the_Scrolls_and_Fragments_of_the_Judaean_Desert_Preliminary_Thoughts). The `roi_id` can be generated from either manual tagging of an artifact or by Computer Vision tools. Given the complexity and fragmentary status of the Judaean Desert fragments, both manual and computer vision tools are necessary (see below for further information about `roi_id`). Lastly, `scroll_id` is also a relative designation.
+The [`create_trans.py`](prepare_trans/excel_format/create_excel.py) script generates a working notebook. To run this script, navigate to `…/prepare_trans/excel_format/` in your terminal. The script takes three arguments:
+
+1. scroll_id
+2. frag_id
+3. roi.csv
+
+The `scroll_id` is any id you assign to the reconstruction of an assortment of artefacts so as to make a scroll; thus, it is relative to whatever id you decide. What is more important for the script, however, is the `roi.csv`. A `roi.csv` file designates Regions of Interest (roi) on an image. I discussed this method some years ago in two conference presentations. I have made available the lecture from one of these conferences [here](https://www.academia.edu/7290280/Digital_Editions_of_the_Scrolls_and_Fragments_of_the_Judaean_Desert_Preliminary_Thoughts). The `roi.csv` can be generated from either manual tagging of an artifact or by Computer Vision tools. Given the complexity and fragmentary status of the Judaean Desert fragments, both manual and computer vision tools are necessary (see below for further information about `roi.csv`). Lastly, `frag_id` is also a relative designation.
 
 ### Example
+
 As an example, the following bash command could be used to generate a transcription notebook. Assuming you are in the transcriptions directory:
 
-```
-python3 create_trans.py 001 roi.csv 001
+```pyhton
+python3 create_excel.py 001 001 roi.csv
 ```
 
 ## Structure of the Notebook
+
 The notebook is structured into two worksheets: `CHARs` and `SIGNs`.
 
 The rationale to make two worksheets is as follows. A digtial edition is fundamentally the "[interpretation of ancient media into new media](https://www.academia.edu/37560923/Material_Philology_and_Digital_Editions_Charting_a_Way_Forward)". Thus, any digital edition today is fundamentally built around high-resolution images of ancient artefacts. Once an image has been marked up with `region of interests` (= `rois`), one then has to provide a definition of aforedesignated rois. Once the specifications of the `rois` are made, it is no longer necessary to have this data primary. Thus, the `roi` specifications are placed in the `SIGNs` worksheet, and the `CHARs` workheet now comes into focus. Each worksheet is hereby explained in terms of their definitions and datatypes:
@@ -56,7 +62,6 @@ The following fields are located on the `SIGNs` worksheet:
 * `Area`:
   * datatype = `INT`
   * definition = the area of the segmented roi
-
 
 * `Mean`:
   * datatype = `FLOAT`
@@ -185,34 +190,34 @@ The following fields are located on the `CHARs` worksheet:
 * `he_human_0`:
   * datatype = `VARCHAR`
   * definition = Define the sign with a char. Options are:
-    - range of chars: א-ת;
-    - ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
-    - s: scribal mark (describe in commentary);
-    - and m: material damage (descirbe in commentary)
+    * range of chars: א-ת;
+    * ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
+    * s: scribal mark (describe in commentary);
+    * and m: material damage (descirbe in commentary)
 
 * `he_human_1`:
   * datatype = `VARCHAR`
   * definition = Define the sign with a char _as a palaeographical viable option_.
-    - range of chars: א-ת;
-    - ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
-    - s: scribal mark (describe in commentary);
-    - and m: material damage (descirbe in commentary)
+    * range of chars: א-ת;
+    * ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
+    * s: scribal mark (describe in commentary);
+    * and m: material damage (descirbe in commentary)
 
 * `he_human_3`:
   * datatype = `VARCHAR`
   * definition = Define the sign with a char _as palaeographical and lexical options permit_.
-    - range of chars: א-ת;
-    - ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
-    - s: scribal mark (describe in commentary);
-    - and m: material damage (descirbe in commentary)
+    * range of chars: א-ת;
+    * ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
+    * s: scribal mark (describe in commentary);
+    * and m: material damage (descirbe in commentary)
 
 * `he_human_4`:
   * datatype = `VARCHAR`
   * definition = Define the sign with a char _as palaeographical and lexical options permit_. Options are:
-    - range of chars: א-ת;
-    - ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
-    - s: scribal mark (describe in commentary);
-    - and m: material damage (descirbe in commentary)
+    * range of chars: א-ת;
+    * ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
+    * s: scribal mark (describe in commentary);
+    * and m: material damage (descirbe in commentary)
 
 * `line_id`:
   * datatype = `INT`
