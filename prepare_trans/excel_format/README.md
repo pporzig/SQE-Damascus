@@ -29,7 +29,7 @@ The `scroll_id` is any id you assign to the reconstruction of an assortment of a
 
 As an example, the following bash command could be used to generate a transcription notebook. Assuming you are in the transcriptions directory:
 
-```pyhton
+```python
 python3 create_excel.py 001 001 roi.csv
 ```
 
