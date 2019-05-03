@@ -7,9 +7,9 @@ Description is forthcoming
 ## Material According to DJD
 
 
-| id | sigla_id | biblio_id | artefact_siglum |
-| :---: | :---: | :---: | :---: | :---: |
-| 1239 | 457 | 17 | Frg. 1 a-b |
+| id    | sigla_id  | biblio_id | artefact_siglum |
+| :---: | :---:     |   :---:   | :---: |
+| 1239  | 457       | 17        | Frg. 1 a-b |
 | 1240 | 457 | 17 | Frg. 1 c-f |
 | 1241 | 457 | 17 | Frg. 2 i |
 | 1242 | 457 | 17 | Frg. 2 ii |
@@ -121,4 +121,4 @@ Description is forthcoming
 
 ## Material According to SQE
 
-Fortcoming
+Forthcoming
