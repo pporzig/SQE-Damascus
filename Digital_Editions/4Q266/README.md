@@ -6,6 +6,7 @@ Description is forthcoming
 
 ## Material According to DJD
 
+
 | id | sigla_id | biblio_id | artefact_siglum |
 | :---: | :---: | :---: | :---: | :---: |
 | 1239 | 457 | 17 | Frg. 1 a-b |
