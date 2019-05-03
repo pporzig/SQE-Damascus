@@ -27,6 +27,7 @@ def make_transcriber_notebook(args):
 
     ws1_name_chars = "CHARs"
     ws2_name_rois = "SIGNs"
+    ws3_name_subfrags = "Sub_Frags"
 
     with xlsxwriter.Workbook(wb_name) as workbook:
         workbook.set_properties(
@@ -84,6 +85,27 @@ def make_transcriber_notebook(args):
 
         signs = workbook.add_worksheet(ws2_name_rois)
         signs.freeze_panes(1, 0)
+        
+        frags = workbook.add_worksheet(ws3_name_subfrags)
+        header_labels_frags = [
+            {'A1': 'frag_id'},
+            {'B1': 'iaa_img_id'},
+            {'C1': 'Label'},
+            {'D1': 'Area'},
+            {"E1": "Mean"},
+            {"F1": "Min"},
+            {"G1": "Max"},
+            {"H1": "BX"},
+            {"I1": "BY"},
+            {"J1": "Width"},
+            {"K1": "Height"},
+            {"L1": "Major"},
+            {"M1": "Minor"},
+            {"N1": "Circ."},
+            {"O1": "AR"},
+            {"P1": "Round"},
+            {"Q1": "Solidity"}
+        ]
 
         header_labels_signs = [
             {"A1": "roi_id"},
@@ -119,6 +141,10 @@ def make_transcriber_notebook(args):
                 for k, v in item.items():
                     signs.write(k, v, cell_format.set_bold(True))
 
+            for item in header_labels_frags:
+                for k, v in item.items():
+                    frags.write(k, v, cell_format.set_bold(True))
+
             for row in reader:
                 signs.write_number(row_count, 0, int(row[" "]))
                 chars.write_formula(row_count, 2, str("=SIGNs!" + "A" + str(roi_id)))
@@ -149,7 +175,6 @@ def make_transcriber_notebook(args):
                     "certain",
                     "probable_letter",
                     "possible_letter",
-                    "unknown",
                 ]
                 palaeo_attr = [
                     "transformed",

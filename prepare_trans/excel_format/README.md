@@ -2,7 +2,7 @@
 
 ____
 
-The following is the data structured created by James M. Tucker with in collaboration with Peter Porzig.
+The following is the data structured created by James M. Tucker in collaboration with Peter Porzig.
 ____
 
 ## Description
@@ -35,9 +35,11 @@ python3 create_excel.py 001 001 roi.csv
 
 ## Structure of the Notebook
 
-The notebook is structured into two worksheets: `CHARs` and `SIGNs`.
+The notebook is contains three worksheets: `CHARs`, `SIGNs`, `Sub_Frags`.
 
-The rationale to make two worksheets is as follows. A digtial edition is fundamentally the "[interpretation of ancient media into new media](https://www.academia.edu/37560923/Material_Philology_and_Digital_Editions_Charting_a_Way_Forward)". Thus, any digital edition today is fundamentally built around high-resolution images of ancient artefacts. Once an image has been marked up with `region of interests` (= `rois`), one then has to provide a definition of aforedesignated rois. Once the specifications of the `rois` are made, it is no longer necessary to have this data primary. Thus, the `roi` specifications are placed in the `SIGNs` worksheet, and the `CHARs` workheet now comes into focus. Each worksheet is hereby explained in terms of their definitions and datatypes:
+The rationale to make three worksheets is as follows. A digtial edition is fundamentally the "[interpretation of ancient media into new media](https://www.academia.edu/37560923/Material_Philology_and_Digital_Editions_Charting_a_Way_Forward)". Thus, any digital edition today is fundamentally built around high-resolution images of ancient artefacts. To begin the process of making an edition, one needs to annotate the image of `regions of interest` (ROIs). `ROI`s are of great utility for clearly annotating what one observes, whether it is extant ink, holes made by larvae, or even subfragments on the IAA plates. After an image has been annotated with `region of interests` (= `rois`), one then has to provide a definition of aforedesignated `ROI`s. Once the specifications of the `rois` are made, it is no longer necessary to have the segmentation information in the foreground. Thus, the `ROI` specifications are placed in the `SIGNs` worksheet, and then the interest moves to the `CHARs` workheet. In the `CHAR`s worksheet, each ROI—apart from subfragments—is annotated (defined) as to its interpretation. As for `Sub_Frags`, this sheet holds the `ROI`s of any image whereby there are more than one fragment (especially when the PAM images can demonstrate how successive editors made joins throughout the early years of Qumran Research).
+
+Each worksheet is hereby explained in terms of their definitions and datatypes:
 
 ### The SIGNs Worksheet
 
@@ -238,3 +240,73 @@ The following fields are located on the `CHARs` worksheet:
 * `commentary`:
   * datatype = `VARCHAR`
   * definition = If you desire to clarify your decisions on the character level. Commentary for columns, sheets, and scrolls can be found/located elsewhere.
+
+### The Sub_Frags Worksheet
+
+* `frag_id`:
+  * datatype = `INT`
+  * definition = a segmented portion of a source image which defines a subfragment (normally in a linear development of ids for the `rois`, thus frag+id += 1)
+
+* `label`:
+  * datatype = `VARCHAR`
+  * definition = file source from which the `rois` were generated. This is automatically generated from Fiji, and reduplicates data from `iaa_related_to` or `pam_related_to`. Depending on further datamunging desires, this is not necessary, but it is preserved nonetheless.
+
+* `Area`:
+  * datatype = `INT`
+  * definition = the area of the segmented roi
+
+* `Mean`:
+  * datatype = `FLOAT`
+  * definition = Mean grey value (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `Min`:
+  * datatype = `INT`
+  * definition = Min grey value (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `Max`:
+  * datatype = `INT`
+  * definition = Max of grey value (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `BX`:
+  * datatype = `INT`
+  * definition = x-coordinate of bounding rectangle (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `BY`:
+  * datatype = `INT`
+  * definition = y-coordinate of bounding rectangle (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `Width`:
+  * datatype = `INT`
+  * definition = width of bounding rectangle (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `Height`:
+  * datatype = `INT`
+  * definition = height of bounding rectangle (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `Major`:
+  * datatype = `FLOAT`
+  * definition = For computational reasons but not necessary if not desired (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `Minor`:
+  * datatype = `FLOAT`
+  * definition = For computational reasons but not necessary if not desired (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `Angle`:
+  * datatype = `FLOAT`
+  * definition = Since the methodology ensures that transformations are always understood as interpretations, the need to regress to the original image is therefore crucial. This, however, complicates digital palaeographical practices. To correct this, this column centers the character to the angle of the dry-line.
+
+* `Circ.`:
+  * datatype = `FLOAT`
+  * definition = Shape descriptor (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html)); Not necessary in most cases.
+
+* `AR`:
+  * datatype = `FLOAT`
+  * definition = Shape descriptor (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html)); Not necessary in most cases.
+
+* `Round`:
+  * datatype = `FLOAT`
+  * definition = Shape descriptor (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html)); Not necessary in most cases.
+
+* `Solidity`:
+  * datatype = `FLOAT`
+  * definition = Shape descriptor (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html)); Not necessary in most cases.
