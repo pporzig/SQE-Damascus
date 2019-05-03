@@ -17,7 +17,7 @@ The following information structure facilitates a careful analysis of ancient ar
 
 ## Create a Notebook
 
-The [`create_trans.py`](prepare_trans/excel_format/create_excel.py) script generates a working notebook. To run this script, navigate to `…/prepare_trans/excel_format/` in your terminal. The script takes three arguments:
+The [`create_trans.py`](SQE-Damascus/prepare_trans/excel_format/create_excel.py) script generates a working notebook. To run this script, navigate to `…/prepare_trans/excel_format/` in your terminal. The script takes three arguments:
 
 1. scroll_id
 2. frag_id
