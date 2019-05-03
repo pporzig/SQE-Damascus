@@ -10,7 +10,6 @@ geom_tabls/*.sql
 env/
 *.psb
 *.psd
-*.ini
 
 #4Q266 Images
 Digital_Editions/4Q266/iaa_images
