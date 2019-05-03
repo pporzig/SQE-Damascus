@@ -1,9 +1,19 @@
+#SQE Related Data
 tables/*.sql
 geom_tabls/*.sql
-.idea
+
+#application or OS
 .vscode
 .DS_Store
+
+#Damascus related data
 env/
 *.psb
 *.psd
 *.ini
+
+#4Q266 Images
+Digital_Editions/4Q266/iaa_images
+Digital_Editions/4Q266/pam_images
+
+img_main/img/P*
