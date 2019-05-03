@@ -9,7 +9,7 @@ Description is forthcoming
 
 | id    | sigla_id  | biblio_id | artefact_siglum |
 | :---: | :---:     |   :---:   | :---: |
-| 1239  | 457       | 17        | Frg. 1 a-b |
+| 1239  | 457       | 17        | [Frg. 1 a-b](Digital_Editions/4Q266/457_1239_Frg_1_a) |
 | 1240 | 457 | 17 | Frg. 1 c-f |
 | 1241 | 457 | 17 | Frg. 2 i |
 | 1242 | 457 | 17 | Frg. 2 ii |
