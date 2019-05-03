@@ -14,7 +14,7 @@ Description is forthcoming
 | 1242 | 457 | 17 | Frg. 2 ii |
 | 1243 | 457 | 17 | Frg. 2 iii |
 | 1244 | 457 | 17 | Frg. 3 i |
-| 1245 | 457 | 17 | Frg. 3 ii | 
+| 1245 | 457 | 17 | Frg. 3 ii |
 | 1246 | 457 | 17 | Frg. 3 iii|
 | 1247 | 457 | 17 | Frg. 3 iv |
 | 1248 | 457 | 17 | Frg. 4 |
@@ -117,3 +117,7 @@ Description is forthcoming
 | 1345 | 457 | 17 | Frg. 73 |
 | 1346 | 457 | 17 | Frg. 74 |
 | 1347 | 457 | 17 | Frg. 75 |
+
+## Material According to SQE
+
+Fortcoming
