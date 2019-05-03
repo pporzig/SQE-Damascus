@@ -2,36 +2,44 @@
 
 ____
 
-The following is the data structured created by James M. Tucker.
+The following is the data structured created by James M. Tucker in collaboration with Peter Porzig.
 ____
 
-# Description
+## Description
+
 While it is feasible to create a web based front-end to facilitate the process of transcription, it is equally possible to use existing software, as is the case here. Thus, the excel notebook is used for three reasons:
+
 1. The cost to engineer a web-based front-end is not trivial;
 2. The Excel file ensures data accuracy at several levels, thus enforcing best philological practices;
 3. Processing data in an Excel format is extensively supported in languages such as Perl, Python, and JavaScript.
 
-The  The following information structure facilitates a careful analysis of ancient artefacts, either lapidary and/or non-lapidary and in whatever language.
+The following information structure facilitates a careful analysis of ancient artefacts, either lapidary and/or non-lapidary and in whatever language.
 
 ## Create a Notebook
-The `create_trans.py` script generates a working notebook. To run this script, navigate to `~/DSS_Editions/transcriptions/` in your terminal. The script takes three arguments:
-1. frag_id
-2. roi_file
-3. scroll_id
 
-The `frag_id` is any id you assign to the artefact; thus, it is relative to whatever id you decide. What is more important for the script, however, is the `roi_file`. A `roi_id` file designates a Region of Interest (roi) on an image. I discussed this method some years ago in two conference presentations. I have made available the lecture from one of these conferences [here](https://www.academia.edu/7290280/Digital_Editions_of_the_Scrolls_and_Fragments_of_the_Judaean_Desert_Preliminary_Thoughts). The `roi_id` can be generated from either manual tagging of an artifact or by Computer Vision tools. Given the complexity and fragmentary status of the Judaean Desert fragments, both manual and computer vision tools are necessary (see below for further information about `roi_id`). Lastly, `scroll_id` is also a relative designation.
+The [`create_trans.py`](create_excel.py) script generates a working notebook. To run this script, navigate to `…/prepare_trans/excel_format/` in your terminal. The script takes three arguments:
+
+1. scroll_id
+2. frag_id
+3. roi.csv
+
+The `scroll_id` is any id you assign to the reconstruction of an assortment of artefacts so as to make a scroll; thus, it is relative to whatever id you decide. What is more important for the script, however, is the `roi.csv`. A `roi.csv` file designates Regions of Interest (roi) on an image. I discussed this method some years ago in two conference presentations. I have made available the lecture from one of these conferences [here](https://www.academia.edu/7290280/Digital_Editions_of_the_Scrolls_and_Fragments_of_the_Judaean_Desert_Preliminary_Thoughts). The `roi.csv` can be generated from either manual tagging of an artifact or by Computer Vision tools. Given the complexity and fragmentary status of the Judaean Desert fragments, both manual and computer vision tools are necessary (see below for further information about `roi.csv`). Lastly, `frag_id` is also a relative designation.
 
 ### Example
+
 As an example, the following bash command could be used to generate a transcription notebook. Assuming you are in the transcriptions directory:
 
-```
-python3 create_trans.py 001 roi.csv 001
+```python
+python3 create_excel.py 001 001 roi.csv
 ```
 
 ## Structure of the Notebook
-The notebook is structured into two worksheets: `CHARs` and `SIGNs`.
 
-The rationale to make two worksheets is as follows. A digtial edition is fundamentally the "[interpretation of ancient media into new media](https://www.academia.edu/37560923/Material_Philology_and_Digital_Editions_Charting_a_Way_Forward)". Thus, any digital edition today is fundamentally built around high-resolution images of ancient artefacts. Once an image has been marked up with `region of interests` (= `rois`), one then has to provide a definition of aforedesignated rois. Once the specifications of the `rois` are made, it is no longer necessary to have this data primary. Thus, the `roi` specifications are placed in the `SIGNs` worksheet, and the `CHARs` workheet now comes into focus. Each worksheet is hereby explained in terms of their definitions and datatypes:
+The notebook is contains three worksheets: `CHARs`, `SIGNs`, `Sub_Frags`.
+
+The rationale to make three worksheets is as follows. A digtial edition is fundamentally the "[interpretation of ancient media into new media](https://www.academia.edu/37560923/Material_Philology_and_Digital_Editions_Charting_a_Way_Forward)". Thus, any digital edition today is fundamentally built around high-resolution images of ancient artefacts. To begin the process of making an edition, one needs to annotate the image of `regions of interest` (ROIs). `ROI`s are of great utility for clearly annotating what one observes, whether it is extant ink, holes made by larvae, or even subfragments on the IAA plates. After an image has been annotated with `region of interests` (= `rois`), one then has to provide a definition of aforedesignated `ROI`s. Once the specifications of the `rois` are made, it is no longer necessary to have the segmentation information in the foreground. Thus, the `ROI` specifications are placed in the `SIGNs` worksheet, and then the interest moves to the `CHARs` workheet. In the `CHAR`s worksheet, each ROI—apart from subfragments—is annotated (defined) as to its interpretation. As for `Sub_Frags`, this sheet holds the `ROI`s of any image whereby there are more than one fragment (especially when the PAM images can demonstrate how successive editors made joins throughout the early years of Qumran Research).
+
+Each worksheet is hereby explained in terms of their definitions and datatypes:
 
 ### The SIGNs Worksheet
 
@@ -56,7 +64,6 @@ The following fields are located on the `SIGNs` worksheet:
 * `Area`:
   * datatype = `INT`
   * definition = the area of the segmented roi
-
 
 * `Mean`:
   * datatype = `FLOAT`
@@ -185,34 +192,34 @@ The following fields are located on the `CHARs` worksheet:
 * `he_human_0`:
   * datatype = `VARCHAR`
   * definition = Define the sign with a char. Options are:
-    - range of chars: א-ת;
-    - ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
-    - s: scribal mark (describe in commentary);
-    - and m: material damage (descirbe in commentary)
+    * range of chars: א-ת;
+    * ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
+    * s: scribal mark (describe in commentary);
+    * and m: material damage (descirbe in commentary)
 
 * `he_human_1`:
   * datatype = `VARCHAR`
   * definition = Define the sign with a char _as a palaeographical viable option_.
-    - range of chars: א-ת;
-    - ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
-    - s: scribal mark (describe in commentary);
-    - and m: material damage (descirbe in commentary)
+    * range of chars: א-ת;
+    * ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
+    * s: scribal mark (describe in commentary);
+    * and m: material damage (descirbe in commentary)
 
 * `he_human_3`:
   * datatype = `VARCHAR`
   * definition = Define the sign with a char _as palaeographical and lexical options permit_.
-    - range of chars: א-ת;
-    - ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
-    - s: scribal mark (describe in commentary);
-    - and m: material damage (descirbe in commentary)
+    * range of chars: א-ת;
+    * ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
+    * s: scribal mark (describe in commentary);
+    * and m: material damage (descirbe in commentary)
 
 * `he_human_4`:
   * datatype = `VARCHAR`
   * definition = Define the sign with a char _as palaeographical and lexical options permit_. Options are:
-    - range of chars: א-ת;
-    - ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
-    - s: scribal mark (describe in commentary);
-    - and m: material damage (descirbe in commentary)
+    * range of chars: א-ת;
+    * ◦: readings are made on a fragment by fragment basis, without resorting to coincident text. Thus, use this siglum to designate an indeterminate character. Again, this is defined in relation to _palaeographical analysis_.;
+    * s: scribal mark (describe in commentary);
+    * and m: material damage (descirbe in commentary)
 
 * `line_id`:
   * datatype = `INT`
@@ -233,3 +240,73 @@ The following fields are located on the `CHARs` worksheet:
 * `commentary`:
   * datatype = `VARCHAR`
   * definition = If you desire to clarify your decisions on the character level. Commentary for columns, sheets, and scrolls can be found/located elsewhere.
+
+### The Sub_Frags Worksheet
+
+* `frag_id`:
+  * datatype = `INT`
+  * definition = a segmented portion of a source image which defines a subfragment (normally in a linear development of ids for the `rois`, thus frag+id += 1)
+
+* `label`:
+  * datatype = `VARCHAR`
+  * definition = file source from which the `rois` were generated. This is automatically generated from Fiji, and reduplicates data from `iaa_related_to` or `pam_related_to`. Depending on further datamunging desires, this is not necessary, but it is preserved nonetheless.
+
+* `Area`:
+  * datatype = `INT`
+  * definition = the area of the segmented roi
+
+* `Mean`:
+  * datatype = `FLOAT`
+  * definition = Mean grey value (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `Min`:
+  * datatype = `INT`
+  * definition = Min grey value (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `Max`:
+  * datatype = `INT`
+  * definition = Max of grey value (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `BX`:
+  * datatype = `INT`
+  * definition = x-coordinate of bounding rectangle (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `BY`:
+  * datatype = `INT`
+  * definition = y-coordinate of bounding rectangle (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `Width`:
+  * datatype = `INT`
+  * definition = width of bounding rectangle (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `Height`:
+  * datatype = `INT`
+  * definition = height of bounding rectangle (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `Major`:
+  * datatype = `FLOAT`
+  * definition = For computational reasons but not necessary if not desired (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `Minor`:
+  * datatype = `FLOAT`
+  * definition = For computational reasons but not necessary if not desired (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html))
+
+* `Angle`:
+  * datatype = `FLOAT`
+  * definition = Since the methodology ensures that transformations are always understood as interpretations, the need to regress to the original image is therefore crucial. This, however, complicates digital palaeographical practices. To correct this, this column centers the character to the angle of the dry-line.
+
+* `Circ.`:
+  * datatype = `FLOAT`
+  * definition = Shape descriptor (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html)); Not necessary in most cases.
+
+* `AR`:
+  * datatype = `FLOAT`
+  * definition = Shape descriptor (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html)); Not necessary in most cases.
+
+* `Round`:
+  * datatype = `FLOAT`
+  * definition = Shape descriptor (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html)); Not necessary in most cases.
+
+* `Solidity`:
+  * datatype = `FLOAT`
+  * definition = Shape descriptor (cf. [30.7](https://imagej.nih.gov/ij/docs/guide/146-30.html)); Not necessary in most cases.
