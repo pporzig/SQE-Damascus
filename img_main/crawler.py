@@ -81,61 +81,45 @@ def parse_source(html):
 
     soup = BeautifulSoup(html, "lxml")
     
+    
+    # print(len(img_details)) #check if result is the same as the showing X of X 
+    # print(image_content.prettify()) #check content in output
+
     sidebar = soup.find('div', {'class': "c-search-sidebar u-hide-small"})
-    print(sidebar)
+    # print(sidebar.prettify())
+
     ## Element :: Get The Title of the Composition
     title = soup.find('div', {"class": "c-search-sidebar__model-id c-search-sidebar__model-id--with-tooltip"})
+    qnum, humRead = title.text.split('-')
+    comp_data['ed_abbr'] = qnum.strip()
+    comp_data['title'] = humRead.replace(' ', '')
     
-    print(title.text.strip())
-    ##TODO 
-    # ed_humre = title.h1.text.replace('\n', '').strip()
-    # comp_data['ed_humre'] = ed_humre
+    sidebar_tags = sidebar.find_all('a', {'class': 'c-item-metadata__facet'})
+    
+    comp_data['cave_search'] = sidebar_tags[0].text.strip()
+    comp_data['composition'] = sidebar_tags[1].text.strip()
+    comp_data['text_type'] = sidebar_tags[2].text.strip()
+    comp_data['language'] = sidebar_tags[3].text.strip()
+    comp_data['script_style'] = sidebar_tags[4].text.strip()
+    comp_data['script'] = sidebar_tags[5].text.strip()
+    comp_data['material'] = sidebar_tags[6].text.strip()
 
-    # sigla_html = title.find("span", class_="ellipsis")
-    # sigla = sigla_html.text.strip()
-    # spl = re.compile(u'\u2013\u2009').split(sigla)
-    # ed_sig = spl[0].strip()
-    # ed_abbr = spl[1].strip()
-    # comp_data['ed_abbr'] = ed_abbr
+    
+    print(comp_data)
 
-    # Segregate List Items
-    # list_descrip = soup.find("dd")
-    # remainderCon = soup.find_all("dd", class_='link')
 
-    # CHILD SITE: Get site location and discard column name (cf. l 20)
-    # classes = list_descrip.find_all("dt") #Assume that this tuple and the next match.
-    # siteHeader = classes[0].text.strip()
-    # ste = remainderCon[0].text.replace('Qumran, ', '').strip()         #COMPLETE
+    #get body content
+    image_content = soup.find('div', {'class': 'c-search-page__content'})
+    # TODO: Pick up here and parse each image container into a dictionary
+    img_thumbs = image_content.find_all('div', {'class': 'c-image-result__image'})
 
-    # CHILD Manuscript Type 1: Get manuscript type (assume this is IAA designation)
-    # mssHeader = classes[1].text.strip()
-    # iaa_lit = remainderCon[1].text.strip()
-    # comp_data['iaa_lit'] = iaa_lit
+    # TODO: add each fragment dictionary to the comp_data dictionary
 
-    # CHILD Composition Type 2: Get composition type (assume this is DJD/2nd Lit)
-    # compHeader = classes[2].text.strip()
-    # iaa_comp = remainderCon[2].text.strip()
-    # comp_data['iaa_comp'] = iaa_comp
-
-    # CHILD Langauge 3
-    # langHeader = classes[3].text.strip()
-    # lang = remainderCon[3].text.strip()
-    # comp_data['lang'] = lang
-
-    # CHILD Script 6
-    # scrHeader = classes[4].text.strip()
-    # scr_type = remainderCon[4].text.strip()
-    # comp_data['scr_type'] = scr_type
-
-    # CHILD Period 5
-    # perHeader = classes[5].text.strip()
-    # pal_date = remainderCon[5].text.strip()
-    # comp_data['pal_date'] = pal_date
-
-    # CHILD Material
-    # matHeader = classes[6].text.strip()
-    # mater = remainderCon[6].text.strip()
-    # comp_data['mater'] = mater
+    
+    
+    
+    # for img in img_thumbs:
+    #     print(img)    
 
     ## Maagerim Transcription Link
     # maag_container = soup.find_all("dd", class_='link')
