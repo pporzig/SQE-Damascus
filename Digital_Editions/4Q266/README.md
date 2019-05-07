@@ -9,7 +9,8 @@ Description is forthcoming
 
 | id    | sigla_id  | biblio_id | DJD Siglum | SQE Siglum |
 | :---: | :---:     |   :---:   | :---: | :----: |
-| 1239  | 457       | 17        | [Frg. 1 a-b](457_1239_Frg_1_a/457_1239.xlsx) | Frag. 1 a |
+| 1239  | 457       | 17        | [Frg. 1 a-b](457_1239_Frg_1_a/457_1239.xlsx) | [Frag. 1 a א |
+| 1239  | 457       | 17        | [Frg. 1 a-b](457_1239_Frg_1_a/457_1239.xlsx) | Frag. 1 a ב |
 | 1240 | 457 | 17 | Frg. 1 c-f |
 | 1241 | 457 | 17 | Frg. 2 i |
 | 1242 | 457 | 17 | Frg. 2 ii |
