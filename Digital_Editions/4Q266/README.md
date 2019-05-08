@@ -7,7 +7,7 @@ Description is forthcoming
 ## Material According to DJD
 
 | id    | sigla_id  | biblio_id | DJD Siglum | sigla_id | SQE Siglum |
-| :---: | :---:     |   :---:   | :---: | :----: |
+| :---: | :---:     |   :---:   | :---: | :----: | :---: |
 | 1239  | 457       | 17        | [Frg. 1 a-b](457_1239_Frg_1_a/457_1239.xlsx) | 1927 | [Frag. 1 a א |
 | 1239  | 457       | 17        | [Frg. 1 a-b](457_1239_Frg_1_a/457_1239.xlsx) | 1928 | Frag. 1 a ב |
 | 1239  | 457       | 17        | [Frg. 1 a-b](457_1239_Frg_1_a/457_1239.xlsx) | 1929 | Frag. 1 b |
