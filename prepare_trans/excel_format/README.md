@@ -23,21 +23,23 @@ The [`create_trans.py`](create_excel.py) script generates a working notebook. To
 2. frag_id
 3. roi.csv
 
-The `scroll_id` is any id you assign to the reconstruction of an assortment of artefacts so as to make a scroll; thus, it is relative to whatever id you decide. What is more important for the script, however, is the `roi.csv`. A `roi.csv` file designates Regions of Interest (roi) on an image. I discussed this method some years ago in two conference presentations. I have made available the lecture from one of these conferences [here](https://www.academia.edu/7290280/Digital_Editions_of_the_Scrolls_and_Fragments_of_the_Judaean_Desert_Preliminary_Thoughts). The `roi.csv` can be generated from either manual tagging of an artifact or by Computer Vision tools. Given the complexity and fragmentary status of the Judaean Desert fragments, both manual and computer vision tools are necessary (see below for further information about `roi.csv`). Lastly, `frag_id` is also a relative designation.
+The `scroll_id` is any id you assign to the reconstruction of an assortment of artefacts so as to reconstruct a scroll; thus, it is relative to whatever id you decide. What is more important for the script, however, is the `roi.csv`. A `roi.csv` file designates Regions of Interest (`roi`) on an image. This method was discussed by James M. Tucker some years ago in two different conference presentations.The lecture from one of these conferences is available [here](https://www.academia.edu/7290280/Digital_Editions_of_the_Scrolls_and_Fragments_of_the_Judaean_Desert_Preliminary_Thoughts). The `roi.csv` can be generated from either manual tagging of an artefact and/or by Computer Vision tools. Given the complexity and fragmentary status of the Judaean Desert fragments, both manual and computer vision tools are necessary (see below for further information about `roi.csv`). Lastly, `frag_id` is also a relative designation.
 
 ### Example
 
 As an example, the following bash command could be used to generate a transcription notebook. Assuming you are in the transcriptions directory:
 
-```python
+```bash
 python3 create_excel.py 001 001 roi.csv
 ```
+
+This script runs the create_excel.py with the three necessary arguments. The first `001` and second `001` are the `scroll_id` and `frag_id` respectively. The `roi.csv` file is a csv file that would contain the necessary `roi` for any sign, understood as any region on an image which is of importance for matters of reconstruction.
 
 ## Structure of the Notebook
 
 The notebook is contains three worksheets: `CHARs`, `SIGNs`, `Sub_Frags`.
 
-The rationale to make three worksheets is as follows. A digtial edition is fundamentally the "[interpretation of ancient media into new media](https://www.academia.edu/37560923/Material_Philology_and_Digital_Editions_Charting_a_Way_Forward)". Thus, any digital edition today is fundamentally built around high-resolution images of ancient artefacts. To begin the process of making an edition, one needs to annotate the image of `regions of interest` (ROIs). `ROI`s are of great utility for clearly annotating what one observes, whether it is extant ink, holes made by larvae, or even subfragments on the IAA plates. After an image has been annotated with `region of interests` (= `rois`), one then has to provide a definition of aforedesignated `ROI`s. Once the specifications of the `rois` are made, it is no longer necessary to have the segmentation information in the foreground. Thus, the `ROI` specifications are placed in the `SIGNs` worksheet, and then the interest moves to the `CHARs` workheet. In the `CHAR`s worksheet, each ROI—apart from subfragments—is annotated (defined) as to its interpretation. As for `Sub_Frags`, this sheet holds the `ROI`s of any image whereby there are more than one fragment (especially when the PAM images can demonstrate how successive editors made joins throughout the early years of Qumran Research).
+The rationale to make three worksheets within one notebook is as follows: A digtial edition is fundamentally an "[interpretation of ancient media into new media](https://www.academia.edu/37560923/Material_Philology_and_Digital_Editions_Charting_a_Way_Forward)". Thus, any digital edition today is fundamentally built around high-resolution images of ancient artefacts. To begin the process of making an edition, one needs to annotate the image with `regions of interest` (`ROI`s). `ROI`s are of great utility for clearly annotating what one observes, whether it is extant ink, holes made by larvae, or even subfragments on the Israel Antiquities Authority (IAA) images. After an image has been annotated with `region of interests` (= `rois`), one then has to provide a definition of aforedesignated `ROI`s. Once the specifications of the `rois` are made, it is no longer necessary to have the segmentation information in the foreground—yet it must be easily editable. Thus, the `ROI` specifications are placed in the `SIGNs` worksheet, and then the focus shifts to the `CHARs` workheet. In the `CHAR`s worksheet, each ROI—apart from subfragments—is annotated (defined) as to its interpretation. For the final worksheet, `Sub_Frags`, this sheet holds the `ROI`s of any image whereby there are more than one fragment (especially when the PAM images can demonstrate how successive editors made joins throughout the early years of Qumran Research).
 
 Each worksheet is hereby explained in terms of their definitions and datatypes:
 
@@ -158,32 +160,33 @@ The following fields are located on the `CHARs` worksheet:
   * definition = An alternate sequence of numbers to specify the reading order of the chars.; if more than two, iterate to the nth occasion by simply adding a column.
 
 * `attr`:
-  * datatype = `ENUM` (transformed, reinked, reinked?, retraced, retraced?, supralinear, sublinear, creased)
-  * definition = This field captures __palaeographical__ attributes of a character
+  * datatype = `ENUM` (`transformed`, `reinked`, `reinked?`, `retraced`, `retraced?`, `interlinear`, `creased`)
+  * definition = This field captures **__palaeographical__** attributes of a character
 
 * `related_to`:
   * datatype = `INT`
   * definition = If a character, e.g., relates to a lacuna or is partially damaged by a larva hole, then link the two ids here (roi_ids); these can be computed and properly related into their associated tables later. Use a standard separator for multiple ids (e.g., 40-41-39, 40,41,39, or 40.41.39) [no need to be consistent, a script can detect the separator]
 
 * `is_joined`:
-  * datatype = `TINYINT`
+  * datatype = `BOOLEAN`
   * definition = More than one sign makes the char, based on a palaeographical _conclusion_. If so, associate specify it is joined. _N.B.: If a char is joined on the basis on two or more signs, then the reading_order is the same for all chars!_
 
 * `kerning`:
-  * datatype = `TINYINT`
+  * datatype = `BOOLEAN`
   * definition = Is the char under question kerned with the character adjacent to its writing direction? If so, mark with 1.
 
 * `damaged_sm`:
-  * datatype = `ENUM` (TRUE, FALSE, RELEVANT_X [or *_W], RELEVANT_Y [or *_H])
-  * definition = Is the char under question damaged by either material causes or severe surface wear? If so, mark with 1. If, however, the width or height of the character is still believed to be relevant for font statistics, then designate which axis is still potentially undamaged. This is a preliminary decision. The font algorithm can run further metrics against the roi and include in the [Font Report](https://jamesmtucker.com). N.B.: The font algorithm is not yet published, but will be made available at the above link in due time.
-  * UPDATE: damaged_Schiftenmetric implies that, _with respect to designing a font to reverse engineer large scale textual reconstructions_, any sign whose extant ink traces impair an accurate assessment of the height and width of an idiograph is excused from the allographic set of a character of the same definition
+  * datatype = `ENUM` (`TRUE`, `FALSE`, `RELEVANT_X` [or *_W], `RELEVANT_Y` [or *_H])
+  * definition = Is the char under question damaged by either material causes or severe surface wear? If so, tag as `TRUE`. If, however, the width or height of the character is still believed to be relevant for font statistics, then designate which axis is still potentially undamaged. This is a preliminary decision. The font algorithm can run further metrics against the `roi` and include it in the [Font Report](https://jamesmtucker.com). N.B.: The font algorithm is not yet published, but will be made available at the above link in due time.
+  * UPDATE: damaged_Schriftenmetric implies that, _with respect to designing a font to reverse engineer large scale textual reconstructions_, any sign whose extant ink traces impair an accurate assessment of the height and width of an idiograph is excused from the allographic set of a character of the same definition.
+
 * `damaged_vis`:
   * datatype = `BOOLEAN`
   * definition = damaged_visual implies that, with respect to modelling the scribal hand of scribe x apart from photographic evidence, any sign whose extant ink is imparied by physical conditions, such as ink flaking or damaged parchment, is set in any desired colour of font other than black. Degregadation of such a character is comparatively ascertained through a binarized representation of the character whose pixel values are equal to 255 divided by the average of its allograph.
 
 * `damaged_legacy`:
-  * datatype = `ENUM` ('certain', 'probable', 'possible')
-  * definition = damaged_legacy implies that, with respect to modelling a textual reconstruction apart from photographic evidence, the DJD sigla of certain [א], probable_letter [char+\u0307], possible_letter [char+\u05af] are applied to an idiograph
+  * datatype = `ENUM` (`certain`, `probable`, `possible`)
+  * definition = damaged_legacy implies that, with respect to modelling a textual reconstruction apart from photographic evidence, the DJD sigla of certain [א...ת = char], probable_letter [char + \u0307], possible_letter [char + \u05af] are applied to an idiograph.
 
 * `Angle`:
   * datatype = `INT`
@@ -226,15 +229,15 @@ The following fields are located on the `CHARs` worksheet:
   * definition = Line number on the fragment itself.
 
 * `line_status_int`:
-  * datatype = `ENUM` (DAMAGED, DAMAGED_STILL_READ, NOT_DAMAGED)
+  * datatype = `ENUM` (`DAMAGED`, `DAMAGED_STILL_READ`, `NOT_DAMAGED`)
   * definition = Designate the status of the beginning, middle, and end of line.
 
 * `line_status_mid`:
-  * datatype = `ENUM` (DAMAGED, DAMAGED_STILL_READ, NOT_DAMAGED)
+  * datatype = `ENUM` (`DAMAGED`, `DAMAGED_STILL_READ`, `NOT_DAMAGED`)
   * definition = Designate the status of the beginning, middle, and end of line.
 
 * `line_status_end`:
-  * datatype = `ENUM` (DAMAGED, DAMAGED_STILL_READ, NOT_DAMAGED)
+  * datatype = `ENUM` (`DAMAGED`, `DAMAGED_STILL_READ`, `NOT_DAMAGED`)
   * definition = Designate the status of the beginning, middle, and end of line.
 
 * `commentary`:
