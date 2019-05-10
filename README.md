@@ -4,7 +4,7 @@ This repository contains data and information related to the work of the Damascu
 
 ## Principal Editors of the Damascus Edition
 
-* James M. Tucker, PhD (cand), University of Toronto // Georg-August-Universität Göttingen
+* [James M. Tucker](https://utoronto.academia.edu/JamesTucker), PhD (cand), University of Toronto // Georg-August-Universität Göttingen
 * Dr. Peter Porzig, Georg-August-Universität Göttingen
 
 ## Publications and Information Related to Damascus Editorial Work
