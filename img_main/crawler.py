@@ -130,59 +130,40 @@ def parse_source(html):
         # Fragment Title (B-NUM)
         frag_data['title'] = frag_specs.find('span', {'class': 'c-image-result__title'}).text.strip()
         
-        # TODO: SPLIT ON COMMA AND GET PLATE AND FRAG
         # Fragment Plate Numbers
         frag_data['plate_nums'] = frag_specs.find('div', {'class': 'c-image-result__plate-numbers'}).text.strip()
         
         raw = frag_specs.text.strip()
 
         # Regex for Date taken:
-        date_cap = re.compile(r'Taken \w+ (\d{,4})')
-        img_date_found = date_cap.search(raw)
+        date_is = re.compile(r'Taken \w+ (\d{,4})')
+        img_date_found = date_is.search(raw)
         frag_data['img_date'] = img_date_found.group(1)
         
-        # TODO: KEEP PARSING ON REGEX
+        side_is = re.compile(r'\b(Verso)\b|\b(Recto)\b', flags=re.IGNORECASE)
+        side = side_is.search(raw)
+        if side is not None:
+            frag_data['side'] = side.group(1)
+        else:
+            frag_data['side'] = None
+
+        type_is = re.compile(r'(\b(Infrared) Image\b|\b(Color) Image\b|\b(Scanned Infrared) Negative\b)', flags=re.IGNORECASE)
+        type = type_is.search(raw)
+        frag_data['type'] = type.group(1)
+        
+        pam_is = re.compile(r'PAM M(\d{,2}\.\d{,3})')
+        pam = pam_is.search(raw)
+        if pam is not None:
+            frag_data['pam'] = pam.group(1)
+        else:
+            frag_data['pam'] = None
+
+        
+        # TODO: REINDEX PLATE NUM IF PAM is not None:
         print(frag_data)
 
-    
-    # print(img_thumbs)
-    
-    
-    # for img in img_thumbs:
-    #     print(img)    
-
-    ## Maagerim Transcription Link
-    # maag_container = soup.find_all("dd", class_='link')
-    # try:
-    #     maag_html = maag_container[7]
-    #     maag_link = maag_html.find('a')['href']
-    #     comp_data['maag'] = maag_link
-    # except Exception:
-    #         maag_html = "Null"
-    #         comp_data['maag'] = None
-
-    # Publication details (as list)
-    # publications = soup.find("div", {"id": "publications"})
-    # pubs = publications.find_all("li")
-
-    # results = soup.find("div", {"id": "results-container"})
-    # images = results.find_all("div", class_="result-item")
-
-    # for index, image in enumerate(images):
-    #     frag_data['id'] = index
-    #     frag_data['href'] = image.find('a')['href']
-
-    
-    #     image_info = image.find('div', class_="img-image-info")
-    #     image_elems = image_info.find_all('div')
-    #     frag_data['b_num'] = image_elems[0].text.strip()
-    #     pam_re = re.compile(r'PAM ([M|I][0-9-.]+)')
-    #     pam_num = pam_re.search(image_elems[2].text.strip())
-    #     if pam_num is None:
-    #         frag_data['PAM'] = "Null"
-    #     else:
-    #         frag_data['PAM'] = pam_num.group(1)
-    #         PAMS.append(frag_data['PAM'])
+        # TODO: Create final JSON for each fragment (not composition!)
+        
     return PAMS
 
 
