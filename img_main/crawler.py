@@ -104,18 +104,48 @@ def parse_source(html):
     comp_data['script'] = sidebar_tags[5].text.strip()
     comp_data['material'] = sidebar_tags[6].text.strip()
 
-    
-    print(comp_data)
 
 
     #get body content
-    image_content = soup.find('div', {'class': 'c-search-page__content'})
+    image_content = soup.find('div', {'class': 'o-search-result-layout__wrapper'})
     # TODO: Pick up here and parse each image container into a dictionary
     img_thumbs = image_content.find_all('div', {'class': 'c-image-result__image'})
 
     # TODO: add each fragment dictionary to the comp_data dictionary
+    
+    # print(image_content.prettify())
+    
+    img_regex = re.compile('o-search-result-layout.*')
+    imgs = image_content.find_all('a', {'class': img_regex})
+    for index, img in enumerate(imgs):
+        
+        # Fragment Thumbnail
+        url_div = img.find('div', {'class': 'c-image-result__image'})
+        thumb_re = re.compile(r'((http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9%_:?\+.~#&//=]*))')
+        thumb_http = thumb_re.search(url_div['style'])
+        frag_data['thumb'] = thumb_http.group(1)
+
+        frag_specs = img.find('div', {'class': 'c-image-result__metadata'})
+
+        # Fragment Title (B-NUM)
+        frag_data['title'] = frag_specs.find('span', {'class': 'c-image-result__title'}).text.strip()
+        
+        # TODO: SPLIT ON COMMA AND GET PLATE AND FRAG
+        # Fragment Plate Numbers
+        frag_data['plate_nums'] = frag_specs.find('div', {'class': 'c-image-result__plate-numbers'}).text.strip()
+        
+        raw = frag_specs.text.strip()
+
+        # Regex for Date taken:
+        date_cap = re.compile(r'Taken \w+ (\d{,4})')
+        img_date_found = date_cap.search(raw)
+        frag_data['img_date'] = img_date_found.group(1)
+        
+        # TODO: KEEP PARSING ON REGEX
+        print(frag_data)
 
     
+    # print(img_thumbs)
     
     
     # for img in img_thumbs:
@@ -142,11 +172,7 @@ def parse_source(html):
     #     frag_data['id'] = index
     #     frag_data['href'] = image.find('a')['href']
 
-    #     thumb = image.find('div', class_="ms-image-thumb").attrs
-    #     thumb_re = re.compile(r'((http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9%_:?\+.~#&//=]*))')
-    #     thumb_http = thumb_re.search(thumb['style'])
-    #     frag_data['thumb'] = thumb_http.group(1)
-
+    
     #     image_info = image.find('div', class_="img-image-info")
     #     image_elems = image_info.find_all('div')
     #     frag_data['b_num'] = image_elems[0].text.strip()
