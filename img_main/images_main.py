@@ -43,7 +43,7 @@ def main(args):
             else:
                 if re.match('^P|^' + str(args.iaa_plate) + '-', row['file_name']):
                     print("Downloading {} …".format(row['file_name']))
-                    # pull_down(row['file_name'], args.iaa_plate, args.size)
+                    pull_down(row['file_name'], args.iaa_plate, args.size)
                 else:
                     continue
 
