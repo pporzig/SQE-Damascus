@@ -36,15 +36,18 @@ def get_source(scroll):
     ## Adjust wait time dependent on internet speed
     count = refresh_times.text.strip()
     times = re.findall(r"\d+", count)
+    
 
     ## Clean Numbers to Get times to refresh
-    if int(times[1]) < 24:
+    if int(times[1]) == 12:
+        times[1] = 12
+    elif int(times[1]) < 24:
         times[1] = 24
-
-    refresh = int(times[1]) / int(times[0])
+    
+    refresh = (int(times[1]) / int(times[0]))
     x2load = str(refresh)
     print("Chrome will refresh " + x2load + " time(s).")
-
+    # print(refresh)
     if refresh == 1:
         pass
     else:
