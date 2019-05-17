@@ -20,6 +20,7 @@ def pull_down(f, plate, res):
     logging.basicConfig(filename='image_downloader.log', level=logging.DEBUG, format='%(asctime)s:%(levelname)s:%(message)s')
     logging.debug('Downloading {} at pct:{}'.format(f, res))
     
+    # As of 13-05-2019, the colour image profile is still incorrect
     url = str(nli) + str(f) + "/full/pct:" + str(res) + "/0/default.jpg"
     
     img = http.request('GET', url, preload_content=False)
